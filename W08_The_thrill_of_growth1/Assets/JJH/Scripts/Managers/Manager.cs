@@ -39,6 +39,7 @@ public class Manager : MonoBehaviour
         UI.Init();
         Battle.Init();
 
+        Manager.Synergy.CanvasInit(); // 반드시 먼저!
         GameObject tooltipPrefab = Resources.Load<GameObject>("UI/TooltipPanel");
         GameObject canvas = GameObject.Find("SynergyCanvas"); // 🎯 캔버스 오브젝트 찾기
 

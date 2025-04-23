@@ -1,11 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Character;
 using UnityEngine.UI;
 using System.Linq;
-using Unity.VisualScripting;
-using UnityEngine.EventSystems;
 
 public class SynergyManager
 {
@@ -198,21 +194,23 @@ public class SynergyManager
             if (holyCount >= 4)
             {
                 activatedFactions.Add(SynergyType.HolyLight);
-                ApplyAttackBuff(0.40f);
+                SynergyHelper.Instance.RunCoroutine(0.2f);
             }
             else if (holyCount >= 3)
             {
                 activatedFactions.Add(SynergyType.HolyLight);
-                ApplyAttackBuff(0.20f);
+                SynergyHelper.Instance.RunCoroutine(0.1f);
             }
             else if (holyCount >= 2)
             {
                 activatedFactions.Add(SynergyType.HolyLight);
-                ApplyAttackBuff(0.10f);
+                SynergyHelper.Instance.RunCoroutine(0.05f);
             }
         }
         DisplayActiveSynergies(activatedTypes, activatedFactions);
     }
+
+
     private void DisplayActiveSynergies(List<CharacterType> activeTypes, List<SynergyType> activeFactions)// 팩션 Ui
     {
         for (int i = 0; i < activeTypes.Count; i++)
@@ -235,8 +233,13 @@ public class SynergyManager
             UpdateUI(icon, desc); // 세력 아이콘 표시
         }
     }
-    void UpdateUI(Sprite icon, string description)
+    void UpdateUI(Sprite icon, string description) // UI 업데이트
     {
+        if (_synergySlots == null)
+        {
+            Debug.LogError("❗ _synergySlots 배열이 null입니다.");
+            return;
+        }
         if (_usedIcons.Contains(icon)) return;               // 중복 아이콘 표시 방지
         if (_currentIndex >= _synergySlots.Length) return;   // 슬롯 넘치면 무시
 
@@ -252,6 +255,7 @@ public class SynergyManager
         _usedIcons.Add(icon);
         _currentIndex++;
     }
+
     //------------------ 시너지 효과 적용 -----------------
     private void ApplyHpBuff(float ratio)
     {
@@ -271,7 +275,7 @@ public class SynergyManager
         foreach (GameObject obj in Manager.Battle.characterList)
         {
             Character ch = obj.GetComponent<Character>();
-            if (ch == null|| ch.characterType != CharacterType.Warrior) continue;
+            if (ch == null|| ch.synergyType != SynergyType.Kingdom) continue;
 
             ch.Damage *= 1 + ratio;
         }
@@ -292,7 +296,7 @@ public class SynergyManager
         foreach (GameObject obj in Manager.Battle.characterList)
         {
             Character ch = obj.GetComponent<Character>();
-            if (ch == null) continue;
+            if (ch == null || ch.characterType != CharacterType.Warrior) continue;
             ch.Vampiric *= 1 + ratio;
         }
     }
@@ -306,15 +310,52 @@ public class SynergyManager
         }
     }
 
-    IEnumerator LightHeal(float healPercent, float flat)
+    //  IEnumerator LightHeal(float healPercent) 얘는 SynergyHelper.cs에 있음 
+
+    public void ResetAndReevaluateSynergies(List<GameObject> characterList) //시너지 효과 제거
     {
-        yield return new WaitForSeconds(5f);
-        foreach (GameObject obj in Manager.Battle.characterList)
+        RemoveAllSynergyBuffs();
+        ClearSynergyUI();  // 아이콘 제거
+        EvaluateSynergies(characterList);  // 다시 조건 체크 후 적용
+    }
+    private void RemoveAllSynergyBuffs()
+    {
+
+            foreach (GameObject obj in Manager.Battle.characterList)
         {
-            Character ch = obj.GetComponent<Character>();
+            if (obj == null)
+                {
+                    Debug.LogWarning("⚠️ characterList 안에 null 오브젝트 있음");
+                    continue;
+                }
+
+                Character ch = obj.GetComponent<Character>();
+                if (ch == null)
+                {
+                    Debug.LogWarning($"⚠️ {obj.name}에 Character 컴포넌트 없음");
+                    continue;
+                }
+                ch = obj.GetComponent<Character>();
             if (ch == null) continue;
-            ch.Hp += ch.MaxHp * healPercent + flat;
-            Debug.Log("🛡️ 성광 시너지 발동!");
+
+            ch.MaxHp = ch.DefaultMaxHp;
+            ch.Damage = ch.DefaultDamage;
+            ch.AttackSpeed = ch.DefaultAttackSpeed;
+            ch.Vampiric = 0f;
+            ch.manaGain = ch.defaultManaGain;
+            SynergyHelper.Instance.StopHeal();
+
         }
+    }
+    private void ClearSynergyUI()
+    {
+        foreach (var slot in _synergySlots)
+        {
+            slot.sprite = null;
+            slot.color = new Color(1, 1, 1, 0); // 안 보이게 처리
+        }
+
+        _usedIcons.Clear();
+        _currentIndex = 0;
     }
 }
