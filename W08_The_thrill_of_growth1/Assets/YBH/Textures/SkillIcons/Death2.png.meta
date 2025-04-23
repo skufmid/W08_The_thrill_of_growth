@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 345c219850dd04948b23b501c7ab5f89
+guid: d742651bceb82424eab36575977e6358
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3432608960565325850
-    second: FireArcher_0
+      213: 7671078779260403301
+    second: Death2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,12 +126,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FireArcher_0
+      name: Death2_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 0
         y: 10
-        width: 494
+        width: 498
         height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a10b153b9a313af20800000000000000
-      internalID: 3432608960565325850
+      spriteID: 56e7ad1b185257a60800000000000000
+      internalID: 7671078779260403301
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      FireArcher_0: 3432608960565325850
+      Death2_0: 7671078779260403301
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 345c219850dd04948b23b501c7ab5f89
+guid: ab159305fcfe36c48ace81a2eb704acf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3432608960565325850
-    second: FireArcher_0
+      213: -5069886873525330791
+    second: Light1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FireArcher_0
+      name: Light1_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 10
-        width: 494
-        height: 480
+        x: 14
+        y: 3
+        width: 485
+        height: 481
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a10b153b9a313af20800000000000000
-      internalID: 3432608960565325850
+      spriteID: 99c5b1cffb424a9b0800000000000000
+      internalID: -5069886873525330791
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      FireArcher_0: 3432608960565325850
+      Light1_0: -5069886873525330791
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
