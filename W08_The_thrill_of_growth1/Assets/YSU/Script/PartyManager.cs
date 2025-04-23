@@ -159,6 +159,23 @@ public class PartyManager : MonoBehaviour
             return false;
 
         partySlots[slotIndex].character = character;
+
+        CombatLine.linePosition pos = CombatLine.linePosition.Back;
+        switch (slotIndex % 3)
+        {
+            case 2:
+                pos = CombatLine.linePosition.Front;
+                break;
+
+            case 1:
+                pos = CombatLine.linePosition.Middle;
+                break;
+
+            case 0:
+                pos = CombatLine.linePosition.Back;
+                break;
+        }
+        character.position = pos;
         partySlots[slotIndex].position = character.position;
         partySlots[slotIndex].isOccupied = true;
         
@@ -173,6 +190,9 @@ public class PartyManager : MonoBehaviour
 
         if (!partySlots[slotIndex].isOccupied)
             return false;
+
+        Character character = partySlots[slotIndex].character;
+        Manager.Battle.RemoveCharacter(character.gameObject);
 
         partySlots[slotIndex].character = null;
         partySlots[slotIndex].position = CombatLine.linePosition.None;

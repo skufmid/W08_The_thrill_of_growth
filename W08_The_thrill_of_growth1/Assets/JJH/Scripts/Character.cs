@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using static SynergyManager;
 using static UnityEngine.GraphicsBuffer;
 
@@ -23,11 +25,10 @@ public class Character:Unit
     {
         Manager.Game.OnEndStage += EndBattle;
         Manager.Game.OnStartStage += StartBattle;
+
         Init();
 
-
         Manager.Battle.AddCharacter(gameObject);
-        Invoke("StartAutoAttack", 1f);
     }
 
     protected override void Init()
@@ -52,18 +53,19 @@ public class Character:Unit
 
     private void StartBattle()
     {
-
-    }
-
-    private void EndBattle()
-    {
-        Debug.Log("FinishBattle 실행");
         MaxHp = DefaultMaxHp;
         Hp = MaxHp;
         Mp = 0;
         AttackSpeed = DefaultAttackSpeed;
         Damage = DefaultDamage;
         manaGain = defaultManaGain;
+
+        Invoke("StartAutoAttack", 0.5f);
+    }
+
+    private void EndBattle()
+    {
+        Debug.Log("FinishBattle 실행");
     }
 
     public void LevelUp()
@@ -74,6 +76,12 @@ public class Character:Unit
         {
             StarUP();
         }
+        CharacterSO character = Array.Find(Manager.Data.Charaters, c => c.Id == Id);
+        if (character == null) return;
+
+        DefaultMaxHp = character.BaseHP + (Level - 1) * character.HPPerLevel;
+        DefaultDamage = character.BaseDamage + (Level - 1) * character.DamagePerLevel;
+
     }
 
     public void StarUP()
@@ -118,7 +126,7 @@ public class Character:Unit
 
     private void OnMouseDown()
     {
-        //Character
+        Manager.UI.SetCharacterUI(this);
     }
 
     protected IEnumerator AutoAttackLoop()//캐릭터 기본 공격 시스템

@@ -24,7 +24,7 @@ public class CharacterCanvas : MonoBehaviour
     }
     private void Update()
     {
-        Aevent();
+        //Aevent();
     }
     void Aevent()
     {

@@ -153,7 +153,7 @@ public class StoreUI : MonoBehaviour
     {
         storeButton.onClick.AddListener(ToggleStore);
         readyButton.onClick.AddListener(OnReadyClicked);
-        
+
         // 초기에 준비완료 버튼 비활성화
         readyButton.gameObject.SetActive(false);
 
@@ -222,7 +222,7 @@ public class StoreUI : MonoBehaviour
         if (slotIndex >= 0 && slotIndex < spawnPositions.Length && spawnPositions[slotIndex] != null)
         {
             character = Instantiate(characterPrefab, spawnPositions[slotIndex].position, Quaternion.Euler(0, 180, 0));
-            
+
             // 현재 보유한 캐릭터들의 ID 목록 가져오기
             List<int> existingIds = new List<int>();
             for (int i = 0; i < GRID_SIZE; i++)
@@ -243,7 +243,7 @@ public class StoreUI : MonoBehaviour
 
             // 생성된 캐릭터에 ID 설정
             character.Id = newId;
-            
+
             return true;
         }
         return false;
@@ -255,7 +255,7 @@ public class StoreUI : MonoBehaviour
         if (character != null && character.Level < MAX_LEVEL)
         {
             int currentLevelUpPrice = baseLevelUpPrice + (character.Level - 1) * levelUpPriceIncrease;
-            
+
             if (playerData.HasEnoughGold(currentLevelUpPrice))
             {
                 if (playerData.SpendGold(currentLevelUpPrice))
@@ -277,7 +277,7 @@ public class StoreUI : MonoBehaviour
         if (character != null)
         {
             Destroy(character.gameObject);
-            
+
             if (partyManager.RemoveCharacter(slotIndex))
             {
                 playerData.AddGold(sellPrice);
@@ -373,13 +373,13 @@ public class StoreUI : MonoBehaviour
                     draggedCharacter = character;
                     dragStartSlot = GetSlotIndexFromPosition(character.transform.position);
                     originalPosition = character.transform.position;
-                    
+
                     // 캐릭터를 약간 위로 띄움
                     character.transform.position += Vector3.forward * dragOffset;
                 }
             }
         }
-        
+
         // 드래그 중
         if (draggedCharacter != null)
         {
@@ -393,7 +393,7 @@ public class StoreUI : MonoBehaviour
         {
             // 마우스 위치에서 가장 가까운 슬롯 찾기
             int targetSlot = GetNearestSlotIndex(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-            
+
             if (targetSlot != -1 && targetSlot != dragStartSlot)
             {
                 // 슬롯 교환 시도
@@ -446,28 +446,56 @@ public class StoreUI : MonoBehaviour
     private bool TrySwapCharacters(int fromSlot, int toSlot)
     {
         if (fromSlot == toSlot) return false;
-        
+
         Character fromChar = partyManager.GetCharacterAtSlot(fromSlot);
         Character toChar = partyManager.GetCharacterAtSlot(toSlot);
-        
+
         // 파티 매니저에서 캐릭터 교환
         if (partyManager.SwapCharacters(fromSlot, toSlot))
         {
             // 위치 교환
             Vector3 fromPos = spawnPositions[fromSlot].position;
             Vector3 toPos = spawnPositions[toSlot].position;
-            
-            if (fromChar != null) fromChar.transform.position = toPos;
-            if (toChar != null) toChar.transform.position = fromPos;
-            
+
+            // 전투 라인 위치 계산 및 설정
+            if (fromChar != null)
+            {
+                fromChar.transform.position = toPos;
+                fromChar.position = GetLinePositionForSlot(toSlot);
+            }
+            if (toChar != null)
+            {
+                toChar.transform.position = fromPos;
+                toChar.position = GetLinePositionForSlot(fromSlot);
+            }
+
             // UI 업데이트
             UpdateSlotUI(fromSlot);
             UpdateSlotUI(toSlot);
-            
+
             return true;
         }
-        
+
         return false;
+    }
+
+    // 슬롯 인덱스에 따른 전투 라인 위치 반환
+    private CombatLine.linePosition GetLinePositionForSlot(int slotIndex)
+    {
+        // 슬롯 인덱스를 열로 변환 (0,3,6: Back, 1,4,7: Middle, 2,5,8: Front)
+        int col = slotIndex % GRID_COLS;
+
+        switch (col)
+        {
+            case 0:
+                return CombatLine.linePosition.Back;
+            case 1:
+                return CombatLine.linePosition.Middle;
+            case 2:
+                return CombatLine.linePosition.Front;
+            default:
+                return CombatLine.linePosition.None;
+        }
     }
 
     private void OnReadyClicked()
@@ -477,7 +505,7 @@ public class StoreUI : MonoBehaviour
         storeButton.gameObject.SetActive(false);  // 상점 버튼 비활성화
         isStoreOpen = false;  // 상점 상태를 닫힘으로 설정
         UpdateAllSlotsUI();  // 모든 버튼 상태 업데이트
-        
+
         Manager.Game.StartStage(); // 스테이지 시작
         Debug.Log("준비 완료! 스테이지 시작!");
     }
@@ -499,4 +527,4 @@ public class StoreUI : MonoBehaviour
         readyButton.gameObject.SetActive(false);  // 초기 상태에서는 준비완료 버튼 비활성화
         UpdateAllSlotsUI();
     }
-} 
+}
