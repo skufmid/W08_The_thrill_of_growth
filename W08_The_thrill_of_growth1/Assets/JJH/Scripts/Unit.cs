@@ -22,6 +22,8 @@ public abstract class Unit : MonoBehaviour
     public GameObject attackTarget;         //적 타겟
     public GameObject projectilePrefab;     //투사체 프리팹
     public bool beginCombat;                //전투시작관련
+    public float defaultManaGain = 10f;     //공격중인지
+    public float manaGain;                  //마나 회복량
     //내부 상태
     protected bool isAttacking = false;
     private void Awake()
@@ -45,6 +47,7 @@ public abstract class Unit : MonoBehaviour
         Mp = 0;
         AttackSpeed = DefaultAttackSpeed;
         Damage = DefaultDamage;
+        defaultManaGain = manaGain;
     }
 
     public virtual void SkillAttack(float damage)
@@ -107,7 +110,7 @@ public abstract class Unit : MonoBehaviour
     {
         if (Mp < MaxMp)
         {
-            StartCoroutine(ManaGain(10f));
+            StartCoroutine(ManaGain(manaGain));
         }
     }
     public virtual IEnumerator ManaGain(float manaGain) // 마나 회복
