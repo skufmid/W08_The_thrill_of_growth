@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4cbddfa48314206439504822cf96787b, type: 3}
-  m_Name: Character0
+  m_Name: Character5
   m_EditorClassIdentifier: 
-  Id: 0
-  Name: "\uAC00\uB514\uC5B8"
-  Alliance: 0
-  Class: 0
+  Id: 5
+  Name: "\uAD11\uC804\uC0AC"
+  Alliance: 1
+  Class: 1
   sprite: {fileID: 0}
-  BaseHP: 214
-  HPPerLevel: 66.41
-  MP: 90
-  BaseDamage: 78
-  DamagePerLevel: 24.21
-  AttackSpeed: 1.18
+  BaseHP: 125
+  HPPerLevel: 38.79
+  MP: 110
+  BaseDamage: 87
+  DamagePerLevel: 27
+  AttackSpeed: 1
