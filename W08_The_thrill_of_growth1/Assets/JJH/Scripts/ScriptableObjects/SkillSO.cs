@@ -8,5 +8,9 @@ public class SkillSO : ScriptableObject
     public string Name;
     public Sprite sprite;
     public Animation animation;
+
+    public float[] Coefficients;
+
     [TextArea] public string SkillDescription;
+
 }

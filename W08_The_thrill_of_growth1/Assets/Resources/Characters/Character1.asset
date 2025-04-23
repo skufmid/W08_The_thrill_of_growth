@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Character1
   m_EditorClassIdentifier: 
   Id: 1
-  Name: "\uBD81\uBC29 \uB9C8\uBC95\uC0AC"
-  Alliance: 1
-  Class: 2
+  Name: "\uB098\uC774\uD2B8"
+  Alliance: 0
+  Class: 1
   sprite: {fileID: 0}
-  BaseHP: 450
-  HPPerLevel: 40
-  MP: 50
-  BaseDamage: 100
-  DamagePerLevel: 10
-  AttackSpeed: 1
+  BaseHP: 122
+  HPPerLevel: 37.86
+  MP: 110
+  BaseDamage: 87
+  DamagePerLevel: 27
+  AttackSpeed: 0.98

@@ -9,17 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cbddfa48314206439504822cf96787b, type: 3}
-  m_Name: Character0
+  m_Script: {fileID: 11500000, guid: 9ae3b74a59c1f494d9fc5f697965e53e, type: 3}
+  m_Name: SkillSO
   m_EditorClassIdentifier: 
   Id: 0
-  Name: "\uAC00\uB514\uC5B8"
-  Alliance: 0
-  Class: 0
+  Name: 
   sprite: {fileID: 0}
-  BaseHP: 214
-  HPPerLevel: 66.41
-  MP: 90
-  BaseDamage: 78
-  DamagePerLevel: 24.21
-  AttackSpeed: 1.18
+  animation: {fileID: 0}
+  Coefficients:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  SkillDescription: 

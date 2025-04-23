@@ -8,6 +8,8 @@ public class BattleManager
     public List<GameObject> enemyList;         //적 리스트
     public SynergyManager synergyManager;
 
+
+
     public void Init()
     {
         characterList = new List<GameObject>();
