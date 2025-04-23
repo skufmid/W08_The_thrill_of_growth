@@ -7,7 +7,7 @@ public class BattleManager
     public List<GameObject> characterList;      //캐릭터 리스트
     public List<GameObject> enemyList;         //적 리스트
     public SynergyManager synergyManager;
-
+    public bool isInBattle;
 
 
     public void Init()
@@ -23,6 +23,32 @@ public class BattleManager
     {
         enemyList.Add(enemy);
     }
+
+    public void RemoveCharacter(GameObject character) // 리스트에서 캐릭터 제거
+    {
+        if (characterList.Contains(character))
+        {
+            characterList.Remove(character);
+        }
+
+        if (characterList.Count == 0 && isInBattle)
+        {
+            Manager.Game.DefeatStage();
+        }
+    }
+    public void RemoveEnemy(GameObject enemy) // 리스트에서 적 제거
+    {
+        if (enemyList.Contains(enemy))
+        {
+            enemyList.Remove(enemy);
+        }
+
+        if (enemyList.Count == 0 && isInBattle)
+        {
+            Manager.Game.WinStage();
+        }
+    }
+
     public void CheckSynergies()
     {
         synergyManager.EvaluateSynergies(characterList);

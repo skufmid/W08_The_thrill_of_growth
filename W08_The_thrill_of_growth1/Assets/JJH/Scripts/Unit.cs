@@ -67,6 +67,7 @@ public abstract class Unit : MonoBehaviour
     public virtual void Die()
     {
         Debug.Log($"Unit {Name} Die");
+        gameObject.SetActive(false); 
     }
 
     public virtual GameObject SelectTarget()

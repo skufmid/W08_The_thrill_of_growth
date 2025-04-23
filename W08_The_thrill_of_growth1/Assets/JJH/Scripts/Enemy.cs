@@ -17,11 +17,14 @@ public class Enemy:Unit
         int level = Manager.Game.stageNum;
 
         Name = "해골 병사";
-        DefaultMaxHp = 100 + (level - 1) * 10f + Random.Range(-10, 10);
+        DefaultMaxHp = 30 + (level - 1) * 5f + Random.Range(-5, 5);
         MaxHp = DefaultMaxHp;
         MaxMp = Random.Range(25, 65);
-        DefaultDamage = 90 + (level - 1) * 9f + Random.Range(-10, 10);
+        DefaultDamage = 10 + (level - 1) * 2f + Random.Range(-5, 5);
         DefaultAttackSpeed = 0;
+
+        base.Init();
+        Debug.Log("Enemy Init");
     }
 
     public override void SkillAttack(int skillId)
@@ -32,6 +35,7 @@ public class Enemy:Unit
     public override void Die()
     {
         base.Die();
+        Manager.Battle.RemoveEnemy(gameObject);
         GiveAward();
     }
 

@@ -29,7 +29,7 @@ public class Character:Unit
 
     protected override void Init()
     {
-        CharacterSO character = Manager.Data.Charaters[Id];
+        CharacterSO character = Array.Find(Manager.Data.Charaters, c => c.Id == Id);
 
         Name = character.Name;
         DefaultMaxHp = character.BaseHP + (Level - 1) * character.HPPerLevel;
@@ -60,6 +60,11 @@ public class Character:Unit
     public void StarUP()
     {
         Star++;
+    }
+    public override void Die()
+    {
+        base.Die();
+        Manager.Battle.RemoveCharacter(gameObject);
     }
 
     public void StartAutoAttack()
