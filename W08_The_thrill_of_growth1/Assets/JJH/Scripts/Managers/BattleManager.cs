@@ -18,6 +18,7 @@ public class BattleManager
     public void AddCharacter(GameObject character)  //리스트에 캐릭터 추가
     {
         characterList.Add(character);
+        Debug.Log($"Add {Manager.Battle.characterList.Count}");
     }
     public void AddEnemy(GameObject enemy)      //리스트에 적 추가
     {
@@ -29,6 +30,8 @@ public class BattleManager
         if (characterList.Contains(character))
         {
             characterList.Remove(character);
+            Debug.Log($"Remove {Manager.Battle.characterList.Count}");
+
         }
 
         if (characterList.Count == 0 && isInBattle)

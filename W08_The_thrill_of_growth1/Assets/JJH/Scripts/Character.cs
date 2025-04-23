@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 using static SynergyManager;
@@ -125,8 +126,7 @@ public class Character:Unit
 
     private void OnMouseDown()
     {
-        Character character = GetComponent<Character>();
-        Manager.UI.SetCharacterUI(character);
+        Manager.UI.SetCharacterUI(this);
     }
 
     protected IEnumerator AutoAttackLoop()//캐릭터 기본 공격 시스템
