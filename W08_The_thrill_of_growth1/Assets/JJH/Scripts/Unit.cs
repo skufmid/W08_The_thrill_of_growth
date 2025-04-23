@@ -54,7 +54,7 @@ public abstract class Unit : MonoBehaviour
 
     public virtual void SkillAttack(int skillId)
     {
-        Manager.Skill.InvokeSkill(this, skillId);
+        //Manager.Skill.InvokeSkill(this, skillId);
         Debug.Log("Unit SkillAttack");
     }
 

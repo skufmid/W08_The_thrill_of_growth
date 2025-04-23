@@ -65,4 +65,21 @@ public class DataManager
         }
 
     }
+    public Sprite GetCharacterIcon(CharacterType type)   // 캐릭터 아이콘 가져오기
+    {
+        if (characterIcon.TryGetValue(type, out var icon))
+            return icon;
+
+        Debug.LogWarning($"[DataManager] 캐릭터 아이콘이 없습니다: {type}");
+        return null;
+    }
+
+    public Sprite GetSynergyIcon(SynergyType type)       // 시너지 아이콘 가져오기
+    {
+        if (synergyIcon.TryGetValue(type, out var icon))
+            return icon;
+
+        Debug.LogWarning($"[DataManager] 시너지 아이콘이 없습니다: {type}");
+        return null;
+    }
 }
