@@ -6,6 +6,7 @@ public class GameManager
 {
     public int stageNum;
     public Action OnStartStage;
+    public Action OnEndStage;
     public void Init()
     {
         stageNum = 1;
@@ -20,16 +21,18 @@ public class GameManager
 
     public void WinStage()
     {
+        OnEndStage?.Invoke();
         Manager.Battle.isInBattle = false;
         Debug.Log($"Stage Win! stageNum:{stageNum}");
-        StartStore();
         stageNum++;
+        StartStore();
     }
 
     public void DefeatStage()
     {
         Manager.Battle.isInBattle = false;
         Debug.Log($"Stage Lose! stageNum:{stageNum}");
+        // 게임 오버
     }
 
     public void StartStore()

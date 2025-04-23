@@ -12,7 +12,7 @@ public class Character:Unit
 
     public CombatLine combatLine;
     public CombatLine.linePosition position = CombatLine.linePosition.None;
-    public Action basicAttack;
+
     protected Coroutine _attackRoutine;
     public SynergyManager.SynergyType synergyType;
     public SynergyManager.CharacterType characterType;
@@ -21,7 +21,10 @@ public class Character:Unit
     }
     protected void Start()
     {
+        Manager.Game.OnEndStage += EndBattle;
+        Manager.Game.OnStartStage += StartBattle;
         Init();
+
 
         Manager.Battle.AddCharacter(gameObject);
         Invoke("StartAutoAttack", 1f);
@@ -45,6 +48,22 @@ public class Character:Unit
 
         base.Init();
         Debug.Log("Character Init");
+    }
+
+    private void StartBattle()
+    {
+
+    }
+
+    private void EndBattle()
+    {
+        Debug.Log("FinishBattle 실행");
+        MaxHp = DefaultMaxHp;
+        Hp = MaxHp;
+        Mp = 0;
+        AttackSpeed = DefaultAttackSpeed;
+        Damage = DefaultDamage;
+        manaGain = defaultManaGain;
     }
 
     public void LevelUp()
@@ -77,6 +96,8 @@ public class Character:Unit
     #region 플레이어 기본 공격
     public virtual void BasicAttack()   //기본 공격 모션출력
     {
+        if (!Manager.Battle.isInBattle) return;
+
         animator.SetTrigger("Attack");
         animator.SetFloat("SkillState", 0f);
     }
@@ -89,13 +110,15 @@ public class Character:Unit
     #endregion 플레이어 기본공격
     public override void SkillAttack(int skillId)
     {
+        if (!Manager.Battle.isInBattle) return;
         animator.SetTrigger("Attack");
         animator.SetFloat("SkillState", 1.0f);
         base.SkillAttack(skillId);
     }
-    public void Onclick()               //플레이어 눌렀을때 하단에 UI패널 나와야되니까.
-    {
 
+    private void OnMouseDown()
+    {
+        //Character
     }
 
     protected IEnumerator AutoAttackLoop()//캐릭터 기본 공격 시스템
@@ -105,6 +128,9 @@ public class Character:Unit
         while (true)
         {
             yield return new WaitForSeconds(interval);
+
+            if (!Manager.Battle.isInBattle) yield break;
+
             attackTarget = Manager.Battle.enemyList[0];
             if (attackTarget != null)
             {
