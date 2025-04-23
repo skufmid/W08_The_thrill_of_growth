@@ -50,6 +50,6 @@ public class Manager : MonoBehaviour
     }
     private void Start()
     {
-        _synergy.CanvasInit();
+        //_synergy.CanvasInit();
     }
 }
