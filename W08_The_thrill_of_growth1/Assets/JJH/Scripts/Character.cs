@@ -18,8 +18,12 @@ public class Character:Unit
     protected Coroutine _attackRoutine;
     public SynergyManager.SynergyType synergyType;
     public SynergyManager.CharacterType characterType;
+
+    private CharacterCanvas characterCanvas;
+
     protected virtual void Awake()
     {
+        characterCanvas = FindAnyObjectByType<CharacterCanvas>();
     }
     protected void Start()
     {
@@ -30,7 +34,7 @@ public class Character:Unit
 
         Manager.Battle.AddCharacter(gameObject);
     }
-     void OnDisable()
+    void OnDisable()
     {
         Manager.Game.OnEndStage -= EndBattle;
         Manager.Game.OnStartStage -= StartBattle;
@@ -131,7 +135,7 @@ public class Character:Unit
 
     private void OnMouseDown()
     {
-        Manager.UI.SetCharacterUI(this);
+        characterCanvas?.SetCharacter(this);
     }
 
     protected IEnumerator AutoAttackLoop()//캐릭터 기본 공격 시스템
