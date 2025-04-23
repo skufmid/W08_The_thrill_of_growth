@@ -1,10 +1,12 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
 
 public abstract class Unit : MonoBehaviour
 {
+    public int Id;                  // ID  0~15: 캐릭터, 100~: 적
     //기본스텟
     public float MaxHp;             //최대체력
     public float Hp;                //현재체력
@@ -18,11 +20,12 @@ public abstract class Unit : MonoBehaviour
     //애니메이션
     public Animator animator;
     public bool isUsingSkill;
-
     //전투관련
     public GameObject attackTarget;         //적 타겟
     public GameObject projectilePrefab;     //투사체 프리팹
-
+    public bool beginCombat;                //전투시작관련
+    public float defaultManaGain = 10f;     //공격중인지
+    public float manaGain;                  //마나 회복량
     //내부 상태
     protected bool isAttacking = false;
     private void Awake()
@@ -33,17 +36,25 @@ public abstract class Unit : MonoBehaviour
     {
         Init();
     }
-
+    protected virtual void Update()
+    {
+        if (beginCombat)
+        {
+            StartManaCharge();
+        }
+    }
     protected virtual void Init()
     {
         Hp = MaxHp;
         Mp = 0;
         AttackSpeed = DefaultAttackSpeed;
         Damage = DefaultDamage;
+        defaultManaGain = manaGain;
     }
 
-    public virtual void SkillAttack(float damage)
+    public virtual void SkillAttack(int skillId)
     {
+        Manager.Skill.InvokeSkill(this, skillId);
         Debug.Log("Unit SkillAttack");
     }
 
@@ -96,4 +107,26 @@ public abstract class Unit : MonoBehaviour
         Destroy(proj);
     }
 
+
+    //전투시작하면 마나차는 마나시스템 관련
+    public virtual void StartManaCharge() // 마나 회복 시작
+    {
+        if (Mp < MaxMp)
+        {
+            StartCoroutine(ManaGain(manaGain));
+        }
+    }
+    public virtual IEnumerator ManaGain(float manaGain) // 마나 회복
+    {
+        yield return new WaitForSeconds(1f);
+        Mp += manaGain;
+        if (Mp > MaxMp)
+            Mp = MaxMp;
+        if(Mp == MaxMp)
+        {
+            isUsingSkill = true;
+            SkillAttack(Id < 100 ? Id : 100); // 캐릭터는 똑같은 스킬 ID 실행, 적은 스킬 100 실행
+            Mp = 0;
+        }
+    }
 }

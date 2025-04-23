@@ -16,3 +16,15 @@ public enum EClass
     Archer,
 }
 
+public enum EStat
+{
+    MaxHp,
+    Hp,
+    MaxMp,
+    Mp,
+    DefaultAttackSpeed,
+    AttackSpeed,
+    DefaultDamage,
+    Damage,
+    LostHPRatio,
+}

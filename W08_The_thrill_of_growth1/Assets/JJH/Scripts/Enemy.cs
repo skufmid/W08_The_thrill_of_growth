@@ -8,10 +8,11 @@ public class Enemy:Unit
         animator = GetComponentInChildren<Animator>();
         Manager.Battle.AddEnemy(gameObject);
         Debug.Log(name);
+        beginCombat = true;                             //마나재생 시작하자마자 킬려고
     }
-    public override void SkillAttack(float damage)
+    public override void SkillAttack(int skillId)
     {
-        base.SkillAttack(Damage);
+        base.SkillAttack(skillId);
     }
 
     public override void Die()
@@ -34,5 +35,12 @@ public class Enemy:Unit
     {
         base.TakeDamage(damage);
         Debug.Log("ouch!" + name);
+    }
+    public virtual void DamagePlayer()   //플레이어에게 기본 공격 피해
+    {
+        
+            Character player = attackTarget.GetComponent<Character>();
+        player.TakeDamage(Damage);
+
     }
 }
