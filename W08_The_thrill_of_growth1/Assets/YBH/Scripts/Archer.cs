@@ -2,22 +2,24 @@ using UnityEngine;
 
 public class Archer:Character
 {
-    private BattleManager _battleManager; //전투매니저
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-       
-    }
+    public GameObject archerArrowPrefab;
 
     // Update is called once per frame
+    protected override void Awake()
+    {
+        base.Awake();
+        projectilePrefab = archerArrowPrefab;
+
+    }
+
     void Update()
     {
         
     }
-    public override void MeleeAttack()
+    public override void BasicAttack()
     {
-        base.MeleeAttack(); // 부모 메서드 호출
-        Debug.Log("ArcherArrow!"); // 추가 효과
+        base.BasicAttack(); // 부모의 기본 공격 실행
+        Debug.Log("ArcherArrow!"); // 아쳐 전용 효과 추가
     }
 }

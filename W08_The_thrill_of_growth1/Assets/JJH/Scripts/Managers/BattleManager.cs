@@ -12,15 +12,15 @@ public class BattleManager
         characterList = new List<GameObject>();
         enemyList = new List<GameObject>();
     }
-    public void AddCharacter(GameObject character)
+    public void AddCharacter(GameObject character)  //리스트에 캐릭터 추가
     {
         characterList.Add(character);
     }
-    public void AddEnemy(GameObject enemy)
+    public void AddEnemy(GameObject enemy)      //리스트에 적 추가
     {
         enemyList.Add(enemy);
     }
-    public GameObject GetTargetByPositionPriority()
+    public GameObject GetTargetByPositionPriority() //적 우선순위 시스템
     {
         CombatLine.linePosition[] priority = new CombatLine.linePosition[]
         {
@@ -50,5 +50,6 @@ public class BattleManager
 
         return null; // 타겟 없음
     }
+
 
 }
