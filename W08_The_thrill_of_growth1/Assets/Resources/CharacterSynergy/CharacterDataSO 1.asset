@@ -15,3 +15,5 @@ MonoBehaviour:
   charactertType: 1
   displayName: Warrior
   icon: {fileID: -8180171696930044909, guid: 751a99f4fa1e57740b17d4048fcf2ba4, type: 3}
+  description: "2\uC778: \uD761\uD608 +5% \n3\uC778: \uD761\uD608 +10%  \n4\uC778:
+    \uD761\uD608 +20%"

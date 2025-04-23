@@ -1,15 +1,32 @@
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class Enemy:Unit
 {
     private void Start()
     {
-        base.Init();
+        Init();
         animator = GetComponentInChildren<Animator>();
         Manager.Battle.AddEnemy(gameObject);
-        Debug.Log(name);
+        Debug.Log($"{name} Init");
         beginCombat = true;                             //마나재생 시작하자마자 킬려고
     }
+
+    protected override void Init()
+    {
+        int level = Manager.Game.stageNum;
+        Debug.Log($"{level} level 해골병사 소환");
+        Name = "해골 병사";
+        DefaultMaxHp = 30 + (level - 1) * 5f + Random.Range(-5, 5);
+        MaxHp = DefaultMaxHp;
+        MaxMp = Random.Range(25, 65);
+        DefaultDamage = 5 + (level - 1) * 3f + Random.Range(-2, 2);
+        DefaultAttackSpeed = 0;
+
+        base.Init();
+        Debug.Log("Enemy Init");
+    }
+
     public override void SkillAttack(int skillId)
     {
         SkillManager.Instance.InvokeEnemySkill(this);
@@ -18,6 +35,7 @@ public class Enemy:Unit
     public override void Die()
     {
         base.Die();
+        Manager.Battle.RemoveEnemy(gameObject);
         GiveAward();
     }
 
@@ -34,7 +52,6 @@ public class Enemy:Unit
     public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
-        Debug.Log("ouch!" + name);
     }
     public virtual void DamagePlayer()   //플레이어에게 기본 공격 피해
     {

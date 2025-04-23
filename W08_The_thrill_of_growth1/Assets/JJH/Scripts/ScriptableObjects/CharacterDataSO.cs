@@ -6,6 +6,6 @@ public class CharacterDataSO : ScriptableObject
     public SynergyManager.CharacterType charactertType;
     public string displayName;
     public Sprite icon;
-    public string description;
+    [TextArea] public string description;
 
 }

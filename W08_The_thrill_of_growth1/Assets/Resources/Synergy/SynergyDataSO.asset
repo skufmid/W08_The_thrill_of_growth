@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   synergyType: 0
   displayName: Kingdom
-  icon: {fileID: 403208247147482157, guid: fc1ce544a2a7d74408d3666db85885f8, type: 3}
+  icon: {fileID: 21300000, guid: 391c79340432edb4b9020a7973240a92, type: 3}
+  description: "2\uC778: \uACF5\uACA9\uB825 +10% \n3\uC778: \uACF5\uACA9\uB825 +20% 
+    \n4\uC778: \uACF5\uACA9\uB825 +40%"

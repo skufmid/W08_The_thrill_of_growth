@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   synergyType: 2
   displayName: Dark
-  icon: {fileID: -2456337592447410214, guid: e57687c3ded239a46a748a4a6710162c, type: 3}
+  icon: {fileID: 21300000, guid: 16abf6962ff6abb49aa94fcc4fdd048c, type: 3}
+  description: "4\uC778: 50% \uACF5\uACA9\uB825 \uC99D\uAC00"

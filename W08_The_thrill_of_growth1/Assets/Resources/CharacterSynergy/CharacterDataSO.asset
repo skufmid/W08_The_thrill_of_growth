@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charactertType: 0
   displayName: Tanker
-  icon: {fileID: 8464658014978847209, guid: d93ab3da4c020bc4a82427854aaa8596, type: 3}
+  icon: {fileID: 21300000, guid: f53d73da3f1bb1041a78279530aa4132, type: 3}
+  description: "2\uC778: \uCCB4\uB825 +10% \n3\uC778: \uCCB4\uB825 +20% \n4\uC778:
+    \uCCB4\uB825 +40%"

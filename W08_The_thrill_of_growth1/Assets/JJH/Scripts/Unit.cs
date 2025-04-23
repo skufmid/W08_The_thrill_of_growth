@@ -8,6 +8,8 @@ public abstract class Unit : MonoBehaviour
 {
     public int Id;                  // ID  0~15: 캐릭터, 100~: 적
     //기본스텟
+    public string Name;             //이름
+    public float DefaultMaxHp;     //기본최대체력
     public float MaxHp;             //최대체력
     public float Hp;                //현재체력
     public float MaxMp;             //최대마나
@@ -19,11 +21,10 @@ public abstract class Unit : MonoBehaviour
     public float Vampiric;          //흡혈수치
     //애니메이션
     public Animator animator;
-    public bool isUsingSkill;
     //전투관련
     public GameObject attackTarget;         //적 타겟
     public GameObject projectilePrefab;     //투사체 프리팹
-    public bool beginCombat;                //전투시작관련
+    public bool beginCombat = true;                //전투시작관련
     public float defaultManaGain = 10f;     //공격중인지
     public float manaGain;                  //마나 회복량
     //내부 상태
@@ -34,33 +35,27 @@ public abstract class Unit : MonoBehaviour
     }
     private void Start()
     {
-        Init();
+        
     }
-    protected virtual void Update()
-    {
-        if (beginCombat)
-        {
-            StartManaCharge();
-        }
-    }
+
     protected virtual void Init()
     {
         Hp = MaxHp;
         Mp = 0;
         AttackSpeed = DefaultAttackSpeed;
         Damage = DefaultDamage;
-        defaultManaGain = manaGain;
+        manaGain = defaultManaGain;
+
+        StartCoroutine(CoManaGain(manaGain));
     }
 
     public virtual void SkillAttack(int skillId)
     {
        SkillManager.Instance.InvokeSkill(this, skillId);
-       Debug.Log("Unit SkillAttack");
     }
 
     public virtual void TakeDamage(float damage)
     {
-        Debug.Log("Unit TakeDamage");
         Hp -= damage;
         if (Hp <= 0)
         {
@@ -70,12 +65,12 @@ public abstract class Unit : MonoBehaviour
 
     public virtual void Die()
     {
-        Debug.Log("Unit Die");
+        Debug.Log($"Unit {Name} Die");
+        gameObject.SetActive(false); 
     }
 
     public virtual GameObject SelectTarget()
     {
-        Debug.Log("Unit SelectTarget");
         return null;
     }
     public virtual void LaunchProjectile()//투사체 발사(공격에 붙히는 용도 이벤트)
@@ -107,26 +102,19 @@ public abstract class Unit : MonoBehaviour
         Destroy(proj);
     }
 
-
-    //전투시작하면 마나차는 마나시스템 관련
-    public virtual void StartManaCharge() // 마나 회복 시작
+    public virtual IEnumerator CoManaGain(float manaGain) // 마나 회복
     {
-        if (Mp < MaxMp)
+        while (true)
         {
-            StartCoroutine(ManaGain(manaGain));
-        }
-    }
-    public virtual IEnumerator ManaGain(float manaGain) // 마나 회복
-    {
-        yield return new WaitForSeconds(1f);
-        Mp += manaGain;
-        if (Mp > MaxMp)
-            Mp = MaxMp;
-        if(Mp == MaxMp)
-        {
-            isUsingSkill = true;
-            SkillAttack(Id < 100 ? Id : 100); // 캐릭터는 똑같은 스킬 ID 실행, 적은 스킬 100 실행
-            Mp = 0;
+            yield return new WaitForSeconds(1f);
+            Mp += manaGain;
+            if (Mp > MaxMp)
+                Mp = MaxMp;
+            if(Mp == MaxMp)
+            {
+                SkillAttack(Id < 100 ? Id : 100); // 캐릭터는 똑같은 스킬 ID 실행, 적은 스킬 100 실행
+                Mp = 0;
+            }
         }
     }
 }

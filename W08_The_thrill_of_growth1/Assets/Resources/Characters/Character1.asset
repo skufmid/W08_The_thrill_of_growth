@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 1
   Name: "\uB098\uC774\uD2B8"
-  Alliance: 0
-  Class: 1
-  sprite: {fileID: 0}
+  SynergyType: 0
+  CharacterType: 1
+  Prefabs: {fileID: 3137741277733123810, guid: 8e08dba3c7622464585843daed874291, type: 3}
   BaseHP: 122
   HPPerLevel: 37.86
   MP: 110

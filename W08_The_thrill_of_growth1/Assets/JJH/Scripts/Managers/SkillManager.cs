@@ -32,6 +32,8 @@ public class SkillManager : MonoBehaviour
         SkillSO skill = Array.Find(Manager.Data.Skills, s => s.Id == skillId);
         if (skillId >= 100) return;
 
+
+        Debug.Log($"Character {unit.Id} 스킬 실행");
         Character character = unit.GetComponent<Character>();
         coefficient = Manager.Data.Skills[skillId].Coefficients[character.Star];
         switch (skillId)
@@ -63,17 +65,18 @@ public class SkillManager : MonoBehaviour
                 Targets = new GameObject[1];
                 Targets[0] = unit.gameObject;
                 value = unit.MaxHp;
-                skillComponent.ApplyEffectAmountSkill(Targets, EStat.Hp, null, value * coefficient);
+                skillComponent.ApplyEffectAmountSkill(Targets, EStat.Hp, null, value * coefficient / 100);
                 break;
 
             case 5:
-                skillComponent.RepeatBasicAttack(character, Manager.Battle.GetRandomEnemy(1)[0], 3, coefficient * 0.01f);
+                skillComponent.RepeatBasicAttack(character, Manager.Battle.GetRandomEnemy(1)[0], 3, coefficient / 100);
                 break;
         }
     }
 
     public void InvokeEnemySkill(Enemy enemy)
     {
+        Debug.Log($"Enemy {enemy.Id} 스킬 실행");
         value = enemy.Damage;
         skillComponent.DamageSkill(new GameObject[] { Manager.Battle.GetTargetByPositionPriority() }, value);
     }

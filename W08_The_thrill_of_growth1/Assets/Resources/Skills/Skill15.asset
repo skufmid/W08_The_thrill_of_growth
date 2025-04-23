@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 15
   Name: "\uCC9C\uC0C1\uC758\uCD95\uBCF5"
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 86cb932bf1ca0234d9a9242997466cad, type: 3}
   animation: {fileID: 0}
   Coefficients:
   - 0
