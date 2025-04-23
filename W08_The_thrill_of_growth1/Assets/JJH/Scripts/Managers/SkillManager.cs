@@ -1,23 +1,80 @@
 using System;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class SkillManager : MonoBehaviour
 {
+
+    private static SkillManager _instance;
+    public static SkillManager Instance => _instance;
+
     SkillComponent skillComponent;
+
+    float value;
+    float coefficient;
+
+    private void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+            Init();
+        }
+    }
     public void Init()
     {
-        //skillComponent = GetComponent<SkillComponent>();
+        skillComponent = GetComponent<SkillComponent>();
     }
 
-    public void InvokeSkill(int skillId)
+    public void InvokeSkill(Unit unit, int skillId)
     {
         SkillSO skill = Array.Find(Manager.Data.Skills, s => s.Id == skillId);
+        if (skillId >= 100) return;
 
-        //switch (skillId)
-        //{
-        //    case 0:
-        //        _objects = skillComponent.ApplyEffectEnemyPercentSkill()
-        //        break;
-        //}
+        Character character = unit.GetComponent<Character>();
+        coefficient = Manager.Data.Skills[skillId].Coefficients[character.Star];
+        switch (skillId)
+        {
+            case 0:
+                value = unit.MaxHp;
+                skillComponent.DamageSkill(Manager.Battle.GetRandomEnemy(1), value * coefficient / 100);
+                break;
+
+            case 1:
+                float HpRatio = unit.Hp / unit.MaxHp;
+                if (HpRatio < 0.8f)
+                {
+                    coefficient = 1.00f;
+                }
+                skillComponent.DamageSkill(Manager.Battle.GetRandomEnemy(1), unit.Damage * coefficient / 100);
+                break;
+
+            case 2:
+                skillComponent.DamageSkill(Manager.Battle.GetRandomEnemy(3), unit.Damage * coefficient / 100);
+                break;
+
+            case 3:
+                GameObject[] Targets = Manager.Battle.characterList.ToArray();
+                skillComponent.ApplyEffectEnemyPercentSkill(Targets, EStat.AttackSpeed, null, EStat.AttackSpeed, coefficient);
+                break;
+
+            case 4:
+                Targets = new GameObject[1];
+                Targets[0] = unit.gameObject;
+                value = unit.MaxHp;
+                skillComponent.ApplyEffectAmountSkill(Targets, EStat.Hp, null, value * coefficient);
+                break;
+
+            case 5:
+                skillComponent.RepeatBasicAttack(character, Manager.Battle.GetRandomEnemy(1)[0], 3, coefficient * 0.01f);
+                break;
+        }
+    }
+
+    public void InvokeEnemySkill(Enemy enemy)
+    {
+        value = enemy.Damage;
+        skillComponent.DamageSkill(new GameObject[] { Manager.Battle.GetTargetByPositionPriority() }, value);
     }
 }

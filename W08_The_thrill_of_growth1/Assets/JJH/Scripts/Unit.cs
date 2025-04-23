@@ -54,8 +54,8 @@ public abstract class Unit : MonoBehaviour
 
     public virtual void SkillAttack(int skillId)
     {
-        //Manager.Skill.InvokeSkill(this, skillId);
-        Debug.Log("Unit SkillAttack");
+       SkillManager.Instance.InvokeSkill(this, skillId);
+       Debug.Log("Unit SkillAttack");
     }
 
     public virtual void TakeDamage(float damage)

@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ae3b74a59c1f494d9fc5f697965e53e, type: 3}
-  m_Name: Skill1
+  m_Name: Skill100
   m_EditorClassIdentifier: 
-  Id: 1
-  Name: "\uC704\uC555\uC758 \uD568\uC131"
+  Id: 100
+  Name: "\uC801\uC758 \uACF5\uACA9"
   sprite: {fileID: 0}
   animation: {fileID: 0}
   Coefficients:
-  - 0
-  - 140
-  - 150
-  - 160
-  - 170
-  SkillDescription: "\uC801\uC758 \uC804\uC758\uB97C \uAEBE\uB294 \uD3EC\uD6A8"
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  SkillDescription: "\uC801\uC758 \uAC15\uB825\uD55C \uACF5\uACA9\uC774\uB2E4."

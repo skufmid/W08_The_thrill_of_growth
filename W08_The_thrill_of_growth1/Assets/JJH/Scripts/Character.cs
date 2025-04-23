@@ -6,6 +6,9 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Character:Unit
 {
+    public int Level = 1;
+    public int Star = 1;
+
     public CombatLine combatLine;
     public CombatLine.linePosition position = CombatLine.linePosition.None;
     public Action basicAttack;
@@ -29,6 +32,22 @@ public class Character:Unit
         Invoke("StartAutoAttack", 1f);
 
     }
+
+    public void LevelUp()
+    {
+        if (Level == 30) return;
+        Level++;
+        if (Level % 10 == 0)
+        {
+            StarUP();
+        }
+    }
+
+    public void StarUP()
+    {
+        Star++;
+    }
+
     public void StartAutoAttack()
     {
         if (_attackRoutine != null)
@@ -43,9 +62,9 @@ public class Character:Unit
         animator.SetFloat("SkillState", 0f);
         Debug.Log("Character MeleeAttack");
     }
-    public virtual void DamageEnemy(Enemy Target)   //적에게 기본 공격 피해
+    public virtual void DamageEnemy(Enemy Target, float ratio=1f)   //적에게 기본 공격 피해
     {
-        Target.TakeDamage(Damage);
+        Target.TakeDamage(Damage * ratio);
         
     }
 
