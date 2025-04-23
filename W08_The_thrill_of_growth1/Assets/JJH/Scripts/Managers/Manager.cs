@@ -11,6 +11,7 @@ public class Manager : MonoBehaviour
     public static UIManager UI => Instance._ui;
     public static CharacterManager Character => Instance._character;
     public static BattleManager Battle => Instance._battle;
+    public static SynergyManager Synergy => Instance._synergy;
 
     private GameManager _game = new GameManager();
     private DataManager _data = new DataManager();
@@ -18,7 +19,7 @@ public class Manager : MonoBehaviour
     private UIManager _ui = new UIManager();
     private CharacterManager _character = new CharacterManager();
     private BattleManager _battle = new BattleManager();
-
+    private SynergyManager _synergy = new SynergyManager();
     private void Awake()
     {
         if (_instance == null)

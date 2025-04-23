@@ -6,6 +6,7 @@ public class BattleManager
     public static BattleManager Instance { get; private set; } //싱글톤
     public List<GameObject> characterList;      //캐릭터 리스트
     public List<GameObject> enemyList;         //적 리스트
+    public SynergyManager synergyManager;
 
     public void Init()
     {
@@ -19,6 +20,10 @@ public class BattleManager
     public void AddEnemy(GameObject enemy)      //리스트에 적 추가
     {
         enemyList.Add(enemy);
+    }
+    public void CheckSynergies()
+    {
+        synergyManager.EvaluateSynergies(characterList);
     }
     public GameObject GetTargetByPositionPriority() //적 우선순위 시스템
     {
