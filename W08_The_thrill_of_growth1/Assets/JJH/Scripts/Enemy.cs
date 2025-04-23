@@ -3,6 +3,11 @@ using UnityEngine.TextCore.Text;
 
 public class Enemy:Unit
 {
+    EnemyInfoUI enemyInfoUI;
+    public void Awake()
+    {
+        enemyInfoUI = FindAnyObjectByType<EnemyInfoUI>();
+    }
     private void Start()
     {
         Init();
@@ -42,6 +47,11 @@ public class Enemy:Unit
     public void GiveAward()
     {
         //Manager.Game.GetAward...
+    }
+
+    private void OnMouseDown()
+    {
+        enemyInfoUI.SetEnemyUI(this);
     }
 
     public override GameObject SelectTarget()
