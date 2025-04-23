@@ -8,7 +8,7 @@ public class CharacterSO : ScriptableObject
     public string Name;
     public EAlliance Alliance;
     public EClass Class;
-    public Sprite sprite;
+    public GameObject Prefabs;
 
     [Header("능력치")]
     public float BaseHP;

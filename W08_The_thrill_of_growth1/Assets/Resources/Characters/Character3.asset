@@ -16,7 +16,7 @@ MonoBehaviour:
   Name: "\uC5D8\uB9AC\uD2B8"
   Alliance: 0
   Class: 3
-  sprite: {fileID: 0}
+  Prefabs: {fileID: 2263515092317543974, guid: ab0deafcf6460f24681f76558340f486, type: 3}
   BaseHP: 104
   HPPerLevel: 32.28
   MP: 100
