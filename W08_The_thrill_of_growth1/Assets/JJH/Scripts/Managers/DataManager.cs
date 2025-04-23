@@ -56,12 +56,12 @@ public class DataManager
         }
         foreach (var synergy in synergyDataList)
         {
-            Debug.LogError($"시너지: {synergy.synergyType}, 아이콘: {synergy.icon.name}");
+            //Debug.LogError($"시너지: {synergy.synergyType}, 아이콘: {synergy.icon.name}");
         }
 
         foreach (var character in characterDataList)
         {
-            Debug.LogError($"시너지2: {character.charactertType}, 설명: {character.icon.name}");
+            //Debug.LogError($"시너지2: {character.charactertType}, 설명: {character.icon.name}");
         }
 
     }
