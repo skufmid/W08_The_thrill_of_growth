@@ -2,5 +2,5 @@ using UnityEngine;
 
 public class Skill : MonoBehaviour
 {
-    ActiveSkill
+    //InvokeSkill
 }

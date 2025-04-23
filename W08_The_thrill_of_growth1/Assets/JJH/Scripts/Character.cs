@@ -10,8 +10,8 @@ public class Character:Unit
     public CombatLine.linePosition position = CombatLine.linePosition.None;
     public Action basicAttack;
     protected Coroutine _attackRoutine;
-    public SynergyManager.SynergyType synergyType;
-    public SynergyManager.CharacterType characterType;
+    //public SynergyManager.SynergyType synergyType;
+    //public SynergyManager.CharacterType characterType;
     protected virtual void Awake()
     {
         animator = GetComponentInChildren<Animator>();
@@ -50,11 +50,11 @@ public class Character:Unit
     }
 
     #endregion 플레이어 기본공격
-    public override void SkillAttack(float damage)
+    public override void SkillAttack(int skillId)
     {
         animator.SetTrigger("Attack");
         animator.SetFloat("SkillState", 1.0f);
-        base.SkillAttack(Damage);
+        base.SkillAttack(skillId);
     }
     public void Onclick()               //플레이어 눌렀을때 하단에 UI패널 나와야되니까.
     {
