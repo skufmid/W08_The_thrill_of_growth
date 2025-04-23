@@ -19,9 +19,15 @@ public class TooltipManager : MonoBehaviour
 
     public void Show(string description, Vector2 position)
     {
-        panel.SetActive(true);
-        panel.transform.position = position;
+        if (string.IsNullOrEmpty(description))
+        {
+            Hide();
+            return;
+        }
+        Vector2 offset = new Vector2(30f, 0f); // 마우스 오른쪽으로 약간 띄움
+        panel.transform.position = position + offset;
         tooltipText.text = description;
+        panel.SetActive(true);
     }
 
     public void Hide()
