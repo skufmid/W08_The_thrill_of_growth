@@ -30,6 +30,11 @@ public class Character:Unit
 
         Manager.Battle.AddCharacter(gameObject);
     }
+     void OnDisable()
+    {
+        Manager.Game.OnEndStage -= EndBattle;
+        Manager.Game.OnStartStage -= StartBattle;
+    }
 
     protected override void Init()
     {
@@ -153,6 +158,8 @@ public class Character:Unit
             }
         }
     }
-    
+
+
+
 
 }
