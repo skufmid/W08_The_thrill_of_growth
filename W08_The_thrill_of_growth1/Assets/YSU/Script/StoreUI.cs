@@ -478,7 +478,16 @@ public class StoreUI : MonoBehaviour
         isStoreOpen = false;  // 상점 상태를 닫힘으로 설정
         UpdateAllSlotsUI();  // 모든 버튼 상태 업데이트
         
-        Debug.Log("준비 완료!");
+        Manager.Game.StartStage(); // 스테이지 시작
+        Debug.Log("준비 완료! 스테이지 시작!");
+    }
+
+    // 상점 UI 활성화
+    public void ShowStore()
+    {
+        storeButton.gameObject.SetActive(true);
+        isStoreOpen = false; // 상점은 닫힌 상태로 시작
+        UpdateAllSlotsUI();
     }
 
     // 게임 재시작이나 새 라운드 시작 시 호출할 메서드

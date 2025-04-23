@@ -37,6 +37,7 @@ public class GameManager
 
     public void StartStore()
     {
-
+        StoreUI.Instance.ShowStore();
+        Debug.Log("상점 시작!");
     }
 }
