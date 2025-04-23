@@ -15,12 +15,12 @@ public class Enemy:Unit
     protected override void Init()
     {
         int level = Manager.Game.stageNum;
-
+        Debug.Log($"{level} level 해골병사 소환");
         Name = "해골 병사";
         DefaultMaxHp = 30 + (level - 1) * 5f + Random.Range(-5, 5);
         MaxHp = DefaultMaxHp;
         MaxMp = Random.Range(25, 65);
-        DefaultDamage = 10 + (level - 1) * 2f + Random.Range(-5, 5);
+        DefaultDamage = 5 + (level - 1) * 3f + Random.Range(-2, 2);
         DefaultAttackSpeed = 0;
 
         base.Init();
