@@ -12,7 +12,7 @@ public class Enemy:Unit
     }
     public override void SkillAttack(int skillId)
     {
-        base.SkillAttack(skillId);
+        SkillManager.Instance.InvokeEnemySkill(this);
     }
 
     public override void Die()
@@ -39,7 +39,7 @@ public class Enemy:Unit
     public virtual void DamagePlayer()   //플레이어에게 기본 공격 피해
     {
         
-            Character player = attackTarget.GetComponent<Character>();
+        Character player = attackTarget.GetComponent<Character>();
         player.TakeDamage(Damage);
 
     }

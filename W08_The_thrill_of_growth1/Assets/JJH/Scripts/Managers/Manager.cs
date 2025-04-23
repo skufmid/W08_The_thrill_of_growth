@@ -9,7 +9,6 @@ public class Manager : MonoBehaviour
     public static DataManager Data => Instance._data;
     public static GameSceneManager Scene => Instance._scene;
     public static UIManager UI => Instance._ui;
-    public static SkillManager Skill => Instance._skill;
     public static BattleManager Battle => Instance._battle;
     public static SynergyManager Synergy => Instance._synergy;
 
@@ -17,7 +16,6 @@ public class Manager : MonoBehaviour
     private DataManager _data = new DataManager();
     private GameSceneManager _scene = new GameSceneManager();
     private UIManager _ui = new UIManager();
-    private SkillManager _skill = new SkillManager();
     private BattleManager _battle = new BattleManager();
     private SynergyManager _synergy = new SynergyManager();
     private void Awake()
@@ -37,7 +35,6 @@ public class Manager : MonoBehaviour
         Data.Init();
         Scene.Init();
         UI.Init();
-        Skill.Init();
         Battle.Init();
     }
     private void Start()
