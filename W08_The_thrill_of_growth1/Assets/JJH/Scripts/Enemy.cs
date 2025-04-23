@@ -10,9 +10,9 @@ public class Enemy:Unit
         Debug.Log(name);
         beginCombat = true;                             //마나재생 시작하자마자 킬려고
     }
-    public override void SkillAttack(float damage)
+    public override void SkillAttack(int skillId)
     {
-        base.SkillAttack(Damage);
+        base.SkillAttack(skillId);
     }
 
     public override void Die()

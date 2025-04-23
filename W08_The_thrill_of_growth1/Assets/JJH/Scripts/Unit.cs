@@ -1,10 +1,12 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
 
 public abstract class Unit : MonoBehaviour
 {
+    public int Id;                  // ID  0~15: 캐릭터, 100~: 적
     //기본스텟
     public float MaxHp;             //최대체력
     public float Hp;                //현재체력
@@ -50,8 +52,9 @@ public abstract class Unit : MonoBehaviour
         defaultManaGain = manaGain;
     }
 
-    public virtual void SkillAttack(float damage)
+    public virtual void SkillAttack(int skillId)
     {
+        Manager.Skill.InvokeSkill(this, skillId);
         Debug.Log("Unit SkillAttack");
     }
 
@@ -122,7 +125,7 @@ public abstract class Unit : MonoBehaviour
         if(Mp == MaxMp)
         {
             isUsingSkill = true;
-            SkillAttack(Damage);
+            SkillAttack(Id < 100 ? Id : 100); // 캐릭터는 똑같은 스킬 ID 실행, 적은 스킬 100 실행
             Mp = 0;
         }
     }
