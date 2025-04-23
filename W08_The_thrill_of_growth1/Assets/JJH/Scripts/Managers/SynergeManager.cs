@@ -15,18 +15,18 @@ public class SynergyManager
 
 
 
-    public void CanvasInit()
-    {
-        _synergyCanvas = GameObject.Find("SynergyCanvas").GetComponent<Canvas>();
-        Transform panel = _synergyCanvas.transform.Find("SynergyPanel");
+    //public void CanvasInit()
+    //{
+    //    _synergyCanvas = GameObject.Find("SynergyCanvas").GetComponent<Canvas>();
+    //    Transform panel = _synergyCanvas.transform.Find("SynergyPanel");
 
-        _synergySlots = panel.GetComponentsInChildren<Image>(); // 슬롯 미리 연결
-        _currentIndex = 0;
-        _usedIcons.Clear();
+    //    _synergySlots = panel.GetComponentsInChildren<Image>(); // 슬롯 미리 연결
+    //    _currentIndex = 0;
+    //    _usedIcons.Clear();
 
-        foreach (var slot in _synergySlots)
-            slot.sprite = null; // 초기화
-    }
+    //    foreach (var slot in _synergySlots)
+    //        slot.sprite = null; // 초기화
+    //}
     public void EvaluateSynergies(List<GameObject> characterList)
     {
         Dictionary<SynergyType, int> synergyCounts = new Dictionary<SynergyType, int>();
