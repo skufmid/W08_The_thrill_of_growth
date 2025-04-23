@@ -45,7 +45,7 @@ public class CharacterCanvas : MonoBehaviour
             return;
         }
 
-        nameText.text = character.name;
+        nameText.text = character.Name;
         hpText.text = $"{character.Hp} / {character.MaxHp}";
         mpText.text = $"{character.Mp} / {character.MaxMp}";
 
