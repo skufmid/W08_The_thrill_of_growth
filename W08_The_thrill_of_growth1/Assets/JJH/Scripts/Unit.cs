@@ -7,6 +7,7 @@ using static UnityEngine.GraphicsBuffer;
 public abstract class Unit : MonoBehaviour
 {
     public int Id;                  // ID  0~15: 캐릭터, 100~: 적
+    public bool isLive = true;
     //기본스텟
     public string Name;             //이름
     public float DefaultMaxHp;     //기본최대체력
