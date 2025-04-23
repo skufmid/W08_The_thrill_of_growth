@@ -135,7 +135,7 @@ public class Character:Unit
 
     private void OnMouseDown()
     {
-        characterCanvas?.SetCharacter(this);
+        characterCanvas?.SetCharacterUI(this);
     }
 
     protected IEnumerator AutoAttackLoop()//캐릭터 기본 공격 시스템
