@@ -6,6 +6,9 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Character:Unit
 {
+    public int Level = 1;
+    public int Star = 1;
+
     public CombatLine combatLine;
     public CombatLine.linePosition position = CombatLine.linePosition.None;
     public Action basicAttack;
@@ -29,6 +32,22 @@ public class Character:Unit
         Invoke("StartAutoAttack", 1f);
 
     }
+
+    public void LevelUp()
+    {
+        if (Level == 30) return;
+        Level++;
+        if (Level % 10 == 0)
+        {
+            StarUP();
+        }
+    }
+
+    public void StarUP()
+    {
+        Star++;
+    }
+
     public void StartAutoAttack()
     {
         if (_attackRoutine != null)
