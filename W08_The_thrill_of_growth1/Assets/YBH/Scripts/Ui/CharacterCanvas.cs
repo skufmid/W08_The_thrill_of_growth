@@ -13,13 +13,18 @@ public class CharacterCanvas : MonoBehaviour
     public TMP_Text allianceText;
     public TMP_Text classText;
     public TMP_Text skillDescText;
+    public TMP_Text skillNameText; // 스킬 이름을 표시할 텍스트 필드
     public SkillSO skillData; // 캐릭터에 ScriptableObject로 연결된 스킬
     [Header("레벨 표시")]
     public TMP_Text levelText;
 
     private void Start()
     {
-        Invoke("Aevent", 1f);
+        //Invoke("Aevent", 1f);
+    }
+    private void Update()
+    {
+        Aevent();
     }
     void Aevent()
     {
@@ -44,11 +49,12 @@ public class CharacterCanvas : MonoBehaviour
         hpText.text = $"{character.Hp} / {character.MaxHp}";
         mpText.text = $"{character.Mp} / {character.MaxMp}";
 
-        float totalDamage = character.DefaultDamage + (character.Damage - character.DefaultDamage);
-        float totalAttackSpeed = character.DefaultAttackSpeed + (character.AttackSpeed - character.DefaultAttackSpeed);
+        float totalDamage = character.Damage;
+        float totalAttackSpeed = character.AttackSpeed;
 
-        damageText.text = $"{totalDamage:F1}";
-        attackSpeedText.text = $"{totalAttackSpeed:F2}";
+        // Fixed the problematic line
+        damageText.text = $"{totalDamage:F1} (+{character.DefaultDamage:F1} + {character.Damage - character.DefaultDamage:F1})";
+        attackSpeedText.text = $"{totalAttackSpeed:F2}(+{character.DefaultAttackSpeed:F1} + {character.AttackSpeed - character.DefaultAttackSpeed:F1})";
 
         allianceText.text = character.synergyType.ToString();
         classText.text = character.characterType.ToString();
@@ -59,6 +65,11 @@ public class CharacterCanvas : MonoBehaviour
         {
             skillIcon.sprite = skill.sprite;
             skillDescText.text = skill.SkillDescription;
+            skillNameText.text = skill.Name;
+            // Replace the problematic line:
+
+            // With the following corrected line:
+            skillNameText.text = skill.Name;
         }
         else
         {
