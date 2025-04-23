@@ -62,9 +62,9 @@ public class Character:Unit
         animator.SetFloat("SkillState", 0f);
         Debug.Log("Character MeleeAttack");
     }
-    public virtual void DamageEnemy(Enemy Target)   //적에게 기본 공격 피해
+    public virtual void DamageEnemy(Enemy Target, float ratio=1f)   //적에게 기본 공격 피해
     {
-        Target.TakeDamage(Damage);
+        Target.TakeDamage(Damage * ratio);
         
     }
 

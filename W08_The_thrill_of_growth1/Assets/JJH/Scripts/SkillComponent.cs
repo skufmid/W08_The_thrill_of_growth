@@ -33,7 +33,7 @@ public class SkillComponent: MonoBehaviour
                 }
                 else
                 {
-                    StartCoroutine(ApplyAndRevert(unit, stat, amount, (float)duration));
+                    StartCoroutine(CoApplyAndRevert(unit, stat, amount, (float)duration));
                 }
             }
         }
@@ -92,7 +92,7 @@ public class SkillComponent: MonoBehaviour
                 }
                 else
                 {
-                    StartCoroutine(ApplyAndRevert(unit, stat, amount, (float)duration));
+                    StartCoroutine(CoApplyAndRevert(unit, stat, amount, (float)duration));
                 }
             }
         }
@@ -100,7 +100,7 @@ public class SkillComponent: MonoBehaviour
 
 
 
-    private IEnumerator ApplyAndRevert(Unit unit, EStat stat, float amount, float duration)
+    private IEnumerator CoApplyAndRevert(Unit unit, EStat stat, float amount, float duration)
     {
         // 1) 적용
         ModifyStat(unit, stat, amount);
@@ -140,6 +140,32 @@ public class SkillComponent: MonoBehaviour
             case EStat.Damage:
                 unit.Damage += amount;
                 break;
+        }
+    }
+
+    public void RepeatBasicAttack(Character character, GameObject attackTarget, int repeatNum, float ratio)
+    {
+        StartCoroutine(CoBasicAttack(character, attackTarget, repeatNum, ratio));
+    }
+
+    private IEnumerator CoBasicAttack(Character character, GameObject attackTarget, int repeatNum, float ratio)
+    {
+        float interval = 0.2f;
+
+        for (int i = 0; i < repeatNum; i++)
+        {
+            yield return new WaitForSeconds(interval);
+            if (attackTarget == null) yield break;
+        
+            Enemy enemy = attackTarget.GetComponent<Enemy>();
+            if (enemy == null) yield break;
+
+            character.BasicAttack(); // Enemy 타입으로 전달
+            character.LaunchProjectile();
+            Debug.Log("LaunchProjectile");
+            yield return new WaitForSeconds(0.3f); // 투사체 발사 후 대기
+            character.DamageEnemy(enemy, ratio);
+            
         }
     }
 }

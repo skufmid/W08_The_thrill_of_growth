@@ -65,6 +65,10 @@ public class SkillManager : MonoBehaviour
                 value = unit.MaxHp;
                 skillComponent.ApplyEffectAmountSkill(Targets, EStat.Hp, null, value * coefficient);
                 break;
+
+            case 5:
+                skillComponent.RepeatBasicAttack(character, Manager.Battle.GetRandomEnemy(1)[0], 3, coefficient * 0.01f);
+                break;
         }
     }
 
