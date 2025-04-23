@@ -19,6 +19,14 @@ public class Character:Unit
     protected virtual void Awake()
     {
     }
+    protected void Start()
+    {
+        Init();
+
+        Manager.Battle.AddCharacter(gameObject);
+        Invoke("StartAutoAttack", 1f);
+    }
+
     protected override void Init()
     {
         CharacterSO character = Manager.Data.Charaters[Id];
@@ -37,14 +45,6 @@ public class Character:Unit
 
         base.Init();
         Debug.Log("Character Init");
-    }
-    protected void Start()
-    {
-        Init();
-
-        Manager.Battle.AddCharacter(gameObject);
-        Invoke("StartAutoAttack", 1f);
-
     }
 
     public void LevelUp()
