@@ -1,0 +1,41 @@
+using UnityEngine;
+
+public class Manager : MonoBehaviour
+{
+    private static Manager _instance;
+    public static Manager Instance => _instance;
+
+    public static GameManager Game => Instance._game;
+    public static DataManager Data => Instance._data;
+    public static GameSceneManager Scene => Instance._scene;
+    public static UIManager UI => Instance._ui;
+    public static CharacterManager Character => Instance._character;
+    public static BattleManager Battle => Instance._battle;
+
+    private GameManager _game = new GameManager();
+    private DataManager _data = new DataManager();
+    private GameSceneManager _scene = new GameSceneManager();
+    private UIManager _ui = new UIManager();
+    private CharacterManager _character = new CharacterManager();
+    private BattleManager _battle = new BattleManager();
+
+    private void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+            Init();
+        }
+    }
+
+    private void Init()
+    {
+        Game.Init();
+        Data.Init();
+        Scene.Init();
+        UI.Init();
+        Character.Init();
+        Battle.Init();
+    }
+}
