@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using Unity.VisualScripting;
 
 public class SynergyManager
 {
@@ -13,7 +14,10 @@ public class SynergyManager
     HashSet<Sprite> _usedIcons = new(); // 중복 방지
     Text _synergyText; // 시너지 텍스트
 
-
+    public void Init()
+    {
+        Manager.Game.OnStartStage += () => EvaluateSynergies(Manager.Battle.characterList); // 스테이지 시작 시 시너지 평가
+    }
     public void CanvasInit()
     {
         _synergyCanvas = GameObject.Find("SynergyCanvas").GetComponent<Canvas>();
@@ -28,6 +32,7 @@ public class SynergyManager
             slot.color = new Color(1, 1, 1, 0); // 알파 0으로 안 보이게
         }
     }
+
     public void EvaluateSynergies(List<GameObject> characterList)
     {
         Dictionary<SynergyType, int> synergyCounts = new Dictionary<SynergyType, int>();
