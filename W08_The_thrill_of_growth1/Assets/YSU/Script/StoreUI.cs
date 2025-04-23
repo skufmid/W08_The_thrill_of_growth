@@ -220,7 +220,7 @@ public class StoreUI : MonoBehaviour
         character = null;
         if (slotIndex >= 0 && slotIndex < spawnPositions.Length && spawnPositions[slotIndex] != null)
         {
-            character = Instantiate(characterPrefab, spawnPositions[slotIndex].position, Quaternion.identity);
+            character = Instantiate(characterPrefab, spawnPositions[slotIndex].position, Quaternion.Euler(0, 180, 0));
             
             // 현재 보유한 캐릭터들의 ID 목록 가져오기
             List<int> existingIds = new List<int>();
