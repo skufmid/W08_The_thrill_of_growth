@@ -32,6 +32,8 @@ public class SkillManager : MonoBehaviour
         SkillSO skill = Array.Find(Manager.Data.Skills, s => s.Id == skillId);
         if (skillId >= 100) return;
 
+
+        Debug.Log($"Character {unit.Id} 스킬 실행");
         Character character = unit.GetComponent<Character>();
         coefficient = Manager.Data.Skills[skillId].Coefficients[character.Star];
         switch (skillId)
@@ -74,6 +76,7 @@ public class SkillManager : MonoBehaviour
 
     public void InvokeEnemySkill(Enemy enemy)
     {
+        Debug.Log($"Enemy {enemy.Id} 스킬 실행");
         value = enemy.Damage;
         skillComponent.DamageSkill(new GameObject[] { Manager.Battle.GetTargetByPositionPriority() }, value);
     }

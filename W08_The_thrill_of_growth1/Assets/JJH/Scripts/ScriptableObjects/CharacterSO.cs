@@ -6,8 +6,8 @@ public class CharacterSO : ScriptableObject
     [Header("기본 정보")]
     public int Id;
     public string Name;
-    public EAlliance Alliance;
-    public EClass Class;
+    public SynergyManager.SynergyType SynergyType;
+    public SynergyManager.CharacterType CharacterType;
     public GameObject Prefabs;
 
     [Header("능력치")]

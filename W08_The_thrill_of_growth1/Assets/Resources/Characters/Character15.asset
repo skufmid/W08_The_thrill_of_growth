@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 15
   Name: "\uC815\uD654\uC758\uC0AC\uC218"
-  Alliance: 3
-  Class: 3
+  SynergyType: 3
+  CharacterType: 3
   Prefabs: {fileID: 662621147306631666, guid: 0eb3943b69402ec4588efd5b5776573c, type: 3}
   BaseHP: 109
   HPPerLevel: 33.83

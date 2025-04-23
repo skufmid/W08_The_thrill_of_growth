@@ -52,12 +52,10 @@ public abstract class Unit : MonoBehaviour
     public virtual void SkillAttack(int skillId)
     {
        SkillManager.Instance.InvokeSkill(this, skillId);
-       Debug.Log("Unit SkillAttack");
     }
 
     public virtual void TakeDamage(float damage)
     {
-        Debug.Log("Unit TakeDamage");
         Hp -= damage;
         if (Hp <= 0)
         {
@@ -67,12 +65,11 @@ public abstract class Unit : MonoBehaviour
 
     public virtual void Die()
     {
-        Debug.Log("Unit Die");
+        Debug.Log($"Unit {Name} Die");
     }
 
     public virtual GameObject SelectTarget()
     {
-        Debug.Log("Unit SelectTarget");
         return null;
     }
     public virtual void LaunchProjectile()//투사체 발사(공격에 붙히는 용도 이벤트)

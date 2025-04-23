@@ -162,7 +162,7 @@ public class SkillComponent: MonoBehaviour
 
             character.BasicAttack(); // Enemy 타입으로 전달
             character.LaunchProjectile();
-            Debug.Log("LaunchProjectile");
+
             yield return new WaitForSeconds(0.3f); // 투사체 발사 후 대기
             character.DamageEnemy(enemy, ratio);
             
