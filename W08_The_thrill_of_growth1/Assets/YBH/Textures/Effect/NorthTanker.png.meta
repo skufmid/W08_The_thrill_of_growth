@@ -1,0 +1,403 @@
+fileFormatVersion: 2
+guid: 29443b280a9e5ae44a4ea754ce0d67b1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4686019427189628758
+    second: NorthTanker_0
+  - first:
+      213: -6172043322984723068
+    second: NorthTanker_1
+  - first:
+      213: -3546698219638485043
+    second: NorthTanker_2
+  - first:
+      213: 1375898159909068503
+    second: NorthTanker_3
+  - first:
+      213: 5161722507669536062
+    second: NorthTanker_4
+  - first:
+      213: 6388818556724591352
+    second: NorthTanker_5
+  - first:
+      213: 43584337880132464
+    second: NorthTanker_6
+  - first:
+      213: -6823182001855805516
+    second: NorthTanker_7
+  - first:
+      213: 5019623136945132585
+    second: NorthTanker_8
+  - first:
+      213: -6639365073063385612
+    second: NorthTanker_9
+  - first:
+      213: 7338219735271984518
+    second: NorthTanker_10
+  - first:
+      213: 5991413968075834440
+    second: NorthTanker_11
+  - first:
+      213: -2963990000427155894
+    second: NorthTanker_12
+  - first:
+      213: 8031812461008268168
+    second: NorthTanker_13
+  - first:
+      213: -6840288050007301919
+    second: NorthTanker_14
+  - first:
+      213: 1907751809260832893
+    second: NorthTanker_15
+  - first:
+      213: 7938263219030691671
+    second: NorthTanker_16
+  - first:
+      213: -20154185248151244
+    second: NorthTanker_17
+  - first:
+      213: -1562654980834401106
+    second: NorthTanker_18
+  - first:
+      213: -5157615328186036277
+    second: NorthTanker_19
+  - first:
+      213: -8750232459975669884
+    second: NorthTanker_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 66
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: NorthTanker_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 4
+        width: 50
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa068c7982ae7feb0800000000000000
+      internalID: -4686019427189628758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NorthTanker_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 4
+        width: 60
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3df7c2d54f12a740800000000000000
+      internalID: 5161722507669536062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NorthTanker_5
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 4
+        width: 60
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fa3effb0a4a9a850800000000000000
+      internalID: 6388818556724591352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NorthTanker_8
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 4
+        width: 59
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92452ffd5a849a540800000000000000
+      internalID: 5019623136945132585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NorthTanker_10
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 3
+        width: 59
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68dc5ac38f796d560800000000000000
+      internalID: 7338219735271984518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NorthTanker_13
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 4
+        width: 56
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88b24f001eab67f60800000000000000
+      internalID: 8031812461008268168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NorthTanker_14
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 3
+        width: 56
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e027f9824a6211a0800000000000000
+      internalID: -6840288050007301919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NorthTanker_19
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 5
+        width: 53
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcf8c5b6f287c68b0800000000000000
+      internalID: -5157615328186036277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      NorthTanker_0: -4686019427189628758
+      NorthTanker_1: -6172043322984723068
+      NorthTanker_10: 7338219735271984518
+      NorthTanker_11: 5991413968075834440
+      NorthTanker_12: -2963990000427155894
+      NorthTanker_13: 8031812461008268168
+      NorthTanker_14: -6840288050007301919
+      NorthTanker_15: 1907751809260832893
+      NorthTanker_16: 7938263219030691671
+      NorthTanker_17: -20154185248151244
+      NorthTanker_18: -1562654980834401106
+      NorthTanker_19: -5157615328186036277
+      NorthTanker_2: -3546698219638485043
+      NorthTanker_20: -8750232459975669884
+      NorthTanker_3: 1375898159909068503
+      NorthTanker_4: 5161722507669536062
+      NorthTanker_5: 6388818556724591352
+      NorthTanker_6: 43584337880132464
+      NorthTanker_7: -6823182001855805516
+      NorthTanker_8: 5019623136945132585
+      NorthTanker_9: -6639365073063385612
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,417 @@
+fileFormatVersion: 2
+guid: ccb6e49810a1a2e4a9ac0d77c200a7dc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7293658005018992896
+    second: KingdomWarrior_0
+  - first:
+      213: -8894834030026514219
+    second: KingdomWarrior_1
+  - first:
+      213: -2190830893761284233
+    second: KingdomWarrior_2
+  - first:
+      213: -667924347266507379
+    second: KingdomWarrior_3
+  - first:
+      213: 3901330788060917648
+    second: KingdomWarrior_4
+  - first:
+      213: -2093741417598457150
+    second: KingdomWarrior_5
+  - first:
+      213: 5995305413534744301
+    second: KingdomWarrior_6
+  - first:
+      213: 350960923427321842
+    second: KingdomWarrior_7
+  - first:
+      213: -2159191312165947473
+    second: KingdomWarrior_8
+  - first:
+      213: 1975521744752732985
+    second: KingdomWarrior_9
+  - first:
+      213: 5658727888597326503
+    second: KingdomWarrior_10
+  - first:
+      213: 8405786343746505544
+    second: KingdomWarrior_11
+  - first:
+      213: -5518338942475502942
+    second: KingdomWarrior_12
+  - first:
+      213: -4236697848032992999
+    second: KingdomWarrior_13
+  - first:
+      213: 2651104044421600586
+    second: KingdomWarrior_14
+  - first:
+      213: -4348823750930922705
+    second: KingdomWarrior_15
+  - first:
+      213: -1711589388778343455
+    second: KingdomWarrior_16
+  - first:
+      213: 780848455212635357
+    second: KingdomWarrior_17
+  - first:
+      213: -8861572990265104450
+    second: KingdomWarrior_18
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 66
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: KingdomWarrior_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 12
+        width: 43
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0016756ef47483560800000000000000
+      internalID: 7293658005018992896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KingdomWarrior_1
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 11
+        width: 52
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d0a63893933f8480800000000000000
+      internalID: -8894834030026514219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KingdomWarrior_8
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 4
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa73d3401f20902e0800000000000000
+      internalID: -2159191312165947473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KingdomWarrior_9
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 35
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93beb026f867a6b10800000000000000
+      internalID: 1975521744752732985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KingdomWarrior_11
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 4
+        width: 62
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84b07d4d42a57a470800000000000000
+      internalID: 8405786343746505544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KingdomWarrior_12
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 7
+        width: 56
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2aafa8f18fbea63b0800000000000000
+      internalID: -5518338942475502942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KingdomWarrior_13
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 4
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 911e45311c93435c0800000000000000
+      internalID: -4236697848032992999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KingdomWarrior_14
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 4
+        width: 58
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a45d95e051d9ac420800000000000000
+      internalID: 2651104044421600586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KingdomWarrior_15
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 20
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f230bfee6dfd5a3c0800000000000000
+      internalID: -4348823750930922705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      KingdomWarrior_0: 7293658005018992896
+      KingdomWarrior_1: -8894834030026514219
+      KingdomWarrior_10: 5658727888597326503
+      KingdomWarrior_11: 8405786343746505544
+      KingdomWarrior_12: -5518338942475502942
+      KingdomWarrior_13: -4236697848032992999
+      KingdomWarrior_14: 2651104044421600586
+      KingdomWarrior_15: -4348823750930922705
+      KingdomWarrior_16: -1711589388778343455
+      KingdomWarrior_17: 780848455212635357
+      KingdomWarrior_18: -8861572990265104450
+      KingdomWarrior_2: -2190830893761284233
+      KingdomWarrior_3: -667924347266507379
+      KingdomWarrior_4: 3901330788060917648
+      KingdomWarrior_5: -2093741417598457150
+      KingdomWarrior_6: 5995305413534744301
+      KingdomWarrior_7: 350960923427321842
+      KingdomWarrior_8: -2159191312165947473
+      KingdomWarrior_9: 1975521744752732985
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

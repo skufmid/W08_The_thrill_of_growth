@@ -1,0 +1,441 @@
+fileFormatVersion: 2
+guid: 4d3bd567f3065d943b42e137ab1dbbf4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -744277956055872934
+    second: KingdomArcherEffect2_0
+  - first:
+      213: 6148753133036358322
+    second: KingdomArcherEffect2_1
+  - first:
+      213: 7484899977419476684
+    second: KingdomArcherEffect2_2
+  - first:
+      213: -7636644708282931280
+    second: KingdomArcherEffect2_3
+  - first:
+      213: 8693055897678177561
+    second: KingdomArcherEffect2_4
+  - first:
+      213: -3275351569315073187
+    second: KingdomArcherEffect2_5
+  - first:
+      213: -8434144261514085244
+    second: KingdomArcherEffect2_6
+  - first:
+      213: 5245263279216656725
+    second: KingdomArcherEffect2_7
+  - first:
+      213: 8774281513706863819
+    second: KingdomArcherEffect2_8
+  - first:
+      213: -6668872879860735726
+    second: KingdomArcherEffect2_9
+  - first:
+      213: 2377909340212568623
+    second: KingdomArcherEffect2_10
+  - first:
+      213: 4143824334132168489
+    second: KingdomArcherEffect2_11
+  - first:
+      213: -2385102742196141364
+    second: KingdomArcherEffect2_12
+  - first:
+      213: 5339165558743809391
+    second: KingdomArcherEffect2_13
+  - first:
+      213: 617096472802489077
+    second: KingdomArcherEffect2_14
+  - first:
+      213: -3324250473359699140
+    second: KingdomArcherEffect2_15
+  - first:
+      213: -2489774232494055857
+    second: KingdomArcherEffect2_16
+  - first:
+      213: 6180266889716373527
+    second: KingdomArcherEffect2_17
+  - first:
+      213: 6280984650708689884
+    second: KingdomArcherEffect2_18
+  - first:
+      213: 422004804515446353
+    second: KingdomArcherEffect2_19
+  - first:
+      213: 3015837539420137789
+    second: KingdomArcherEffect2_20
+  - first:
+      213: 4407482630331092218
+    second: KingdomArcherEffect2_21
+  - first:
+      213: 1068297449179786020
+    second: KingdomArcherEffect2_22
+  - first:
+      213: -6444419693703554003
+    second: KingdomArcherEffect2_23
+  - first:
+      213: -1087731013379906341
+    second: KingdomArcherEffect2_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 66
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: KingdomArcherEffect2_0
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 15
+        width: 36
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5ac22f642bcba5f0800000000000000
+      internalID: -744277956055872934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KingdomArcherEffect2_1
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 14
+        width: 36
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bac332a562c45550800000000000000
+      internalID: 6148753133036358322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KingdomArcherEffect2_2
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 10
+        width: 47
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cceca6d6fd4bfd760800000000000000
+      internalID: 7484899977419476684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KingdomArcherEffect2_6
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 10
+        width: 48
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48cbd0cea76e3fa80800000000000000
+      internalID: -8434144261514085244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KingdomArcherEffect2_8
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 10
+        width: 48
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcc36cf6c8284c970800000000000000
+      internalID: 8774281513706863819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KingdomArcherEffect2_10
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 10
+        width: 41
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f22247b32f7000120800000000000000
+      internalID: 2377909340212568623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KingdomArcherEffect2_12
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 10
+        width: 47
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc2c69a51b966eed0800000000000000
+      internalID: -2385102742196141364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KingdomArcherEffect2_16
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 21
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4e5545e68b827dd0800000000000000
+      internalID: -2489774232494055857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KingdomArcherEffect2_17
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 24
+        width: 26
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71817a2edf7b4c550800000000000000
+      internalID: 6180266889716373527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      KingdomArcherEffect2_0: -744277956055872934
+      KingdomArcherEffect2_1: 6148753133036358322
+      KingdomArcherEffect2_10: 2377909340212568623
+      KingdomArcherEffect2_11: 4143824334132168489
+      KingdomArcherEffect2_12: -2385102742196141364
+      KingdomArcherEffect2_13: 5339165558743809391
+      KingdomArcherEffect2_14: 617096472802489077
+      KingdomArcherEffect2_15: -3324250473359699140
+      KingdomArcherEffect2_16: -2489774232494055857
+      KingdomArcherEffect2_17: 6180266889716373527
+      KingdomArcherEffect2_18: 6280984650708689884
+      KingdomArcherEffect2_19: 422004804515446353
+      KingdomArcherEffect2_2: 7484899977419476684
+      KingdomArcherEffect2_20: 3015837539420137789
+      KingdomArcherEffect2_21: 4407482630331092218
+      KingdomArcherEffect2_22: 1068297449179786020
+      KingdomArcherEffect2_23: -6444419693703554003
+      KingdomArcherEffect2_24: -1087731013379906341
+      KingdomArcherEffect2_3: -7636644708282931280
+      KingdomArcherEffect2_4: 8693055897678177561
+      KingdomArcherEffect2_5: -3275351569315073187
+      KingdomArcherEffect2_6: -8434144261514085244
+      KingdomArcherEffect2_7: 5245263279216656725
+      KingdomArcherEffect2_8: 8774281513706863819
+      KingdomArcherEffect2_9: -6668872879860735726
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

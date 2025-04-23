@@ -1,0 +1,465 @@
+fileFormatVersion: 2
+guid: b57197cb356521546a1a78dcbbaf4f59
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2898224156987684949
+    second: NorthMage_0
+  - first:
+      213: -3987705088656276485
+    second: NorthMage_1
+  - first:
+      213: -7879671199024073091
+    second: NorthMage_2
+  - first:
+      213: -7490331640584934105
+    second: NorthMage_3
+  - first:
+      213: 5567005343156196722
+    second: NorthMage_4
+  - first:
+      213: -6395664624231479395
+    second: NorthMage_5
+  - first:
+      213: 4839380054277671802
+    second: NorthMage_6
+  - first:
+      213: -5691827209791738314
+    second: NorthMage_7
+  - first:
+      213: -9181525719926562302
+    second: NorthMage_8
+  - first:
+      213: 1056615141818501329
+    second: NorthMage_9
+  - first:
+      213: 6452290282394662377
+    second: NorthMage_10
+  - first:
+      213: -5854217409163194967
+    second: NorthMage_11
+  - first:
+      213: -6825112046766391944
+    second: NorthMage_12
+  - first:
+      213: -4523794206793991674
+    second: NorthMage_13
+  - first:
+      213: -1926913877974274094
+    second: NorthMage_14
+  - first:
+      213: -6919771134247820793
+    second: NorthMage_15
+  - first:
+      213: -6706756761609460637
+    second: NorthMage_16
+  - first:
+      213: -1630728333689752005
+    second: NorthMage_17
+  - first:
+      213: -6985922134229396828
+    second: NorthMage_18
+  - first:
+      213: -1654181004870923423
+    second: NorthMage_19
+  - first:
+      213: -2360935849666569654
+    second: NorthMage_20
+  - first:
+      213: -2238341917635632647
+    second: NorthMage_21
+  - first:
+      213: -3135296437958816141
+    second: NorthMage_22
+  - first:
+      213: 3690774253347682628
+    second: NorthMage_23
+  - first:
+      213: 3128150034304347608
+    second: NorthMage_24
+  - first:
+      213: 7301282656568016872
+    second: NorthMage_25
+  - first:
+      213: 4543353211807647373
+    second: NorthMage_26
+  - first:
+      213: 6770487451932829011
+    second: NorthMage_27
+  - first:
+      213: 7763975817192538082
+    second: NorthMage_28
+  - first:
+      213: 8841848066002813378
+    second: NorthMage_29
+  - first:
+      213: -191870258535665202
+    second: NorthMage_30
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 66
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: NorthMage_0
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 20
+        width: 38
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba70b431c7077c7d0800000000000000
+      internalID: -2898224156987684949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NorthMage_1
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 14
+        width: 48
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf300a18953d8a8c0800000000000000
+      internalID: -3987705088656276485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NorthMage_2
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 7
+        width: 65
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d763b43fac8c5a290800000000000000
+      internalID: -7879671199024073091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NorthMage_8
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 1
+        width: 53
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2022aa7e00ba49080800000000000000
+      internalID: -9181525719926562302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NorthMage_17
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 1
+        width: 60
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b36f141783d7e59e0800000000000000
+      internalID: -1630728333689752005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NorthMage_24
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 2
+        width: 59
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8dd26dee1eb696b20800000000000000
+      internalID: 3128150034304347608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NorthMage_25
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 0
+        width: 61
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8eff47d64ed535560800000000000000
+      internalID: 7301282656568016872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NorthMage_26
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 2
+        width: 64
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d86cce6acab3d0f30800000000000000
+      internalID: 4543353211807647373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NorthMage_27
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 2
+        width: 55
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35522b8477a95fd50800000000000000
+      internalID: 6770487451932829011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      NorthMage_0: -2898224156987684949
+      NorthMage_1: -3987705088656276485
+      NorthMage_10: 6452290282394662377
+      NorthMage_11: -5854217409163194967
+      NorthMage_12: -6825112046766391944
+      NorthMage_13: -4523794206793991674
+      NorthMage_14: -1926913877974274094
+      NorthMage_15: -6919771134247820793
+      NorthMage_16: -6706756761609460637
+      NorthMage_17: -1630728333689752005
+      NorthMage_18: -6985922134229396828
+      NorthMage_19: -1654181004870923423
+      NorthMage_2: -7879671199024073091
+      NorthMage_20: -2360935849666569654
+      NorthMage_21: -2238341917635632647
+      NorthMage_22: -3135296437958816141
+      NorthMage_23: 3690774253347682628
+      NorthMage_24: 3128150034304347608
+      NorthMage_25: 7301282656568016872
+      NorthMage_26: 4543353211807647373
+      NorthMage_27: 6770487451932829011
+      NorthMage_28: 7763975817192538082
+      NorthMage_29: 8841848066002813378
+      NorthMage_3: -7490331640584934105
+      NorthMage_30: -191870258535665202
+      NorthMage_4: 5567005343156196722
+      NorthMage_5: -6395664624231479395
+      NorthMage_6: 4839380054277671802
+      NorthMage_7: -5691827209791738314
+      NorthMage_8: -9181525719926562302
+      NorthMage_9: 1056615141818501329
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
