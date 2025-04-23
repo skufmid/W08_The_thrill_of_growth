@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 using System.Linq;
+using System.Collections.Generic;
 
 public class StoreUI : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class StoreUI : MonoBehaviour
     private const int MAX_LEVEL = 30;
     private const int GRID_ROWS = 3;
     private const int GRID_COLS = 3;
+    private const int MAX_CHARACTER_ID = 15; // 최대 캐릭터 ID 범위
 
     private static StoreUI instance;
     public static StoreUI Instance
@@ -219,6 +221,28 @@ public class StoreUI : MonoBehaviour
         if (slotIndex >= 0 && slotIndex < spawnPositions.Length && spawnPositions[slotIndex] != null)
         {
             character = Instantiate(characterPrefab, spawnPositions[slotIndex].position, Quaternion.identity);
+            
+            // 현재 보유한 캐릭터들의 ID 목록 가져오기
+            List<int> existingIds = new List<int>();
+            for (int i = 0; i < GRID_SIZE; i++)
+            {
+                Character existingChar = partyManager.GetCharacterAtSlot(i);
+                if (existingChar != null)
+                {
+                    existingIds.Add(existingChar.Id);
+                }
+            }
+
+            // 중복되지 않는 랜덤 ID 생성
+            int newId;
+            do
+            {
+                newId = Random.Range(1, MAX_CHARACTER_ID + 1);
+            } while (existingIds.Contains(newId));
+
+            // 생성된 캐릭터에 ID 설정
+            character.Id = newId;
+            
             return true;
         }
         return false;
