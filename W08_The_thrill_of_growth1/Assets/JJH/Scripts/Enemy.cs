@@ -4,13 +4,14 @@ public class Enemy:Unit
 {
     private void Start()
     {
+        base.Init();
         animator = GetComponentInChildren<Animator>();
         Manager.Battle.AddEnemy(gameObject);
         Debug.Log(name);
     }
-    public override void SkillAttack()
+    public override void SkillAttack(float damage)
     {
-        base.SkillAttack();
+        base.SkillAttack(Damage);
     }
 
     public override void Die()
@@ -28,5 +29,10 @@ public class Enemy:Unit
     {
         return BattleManager.Instance.GetTargetByPositionPriority();
         
+    }
+    public override void TakeDamage(float damage)
+    {
+        base.TakeDamage(damage);
+        Debug.Log("ouch!" + name);
     }
 }
