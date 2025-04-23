@@ -12,6 +12,7 @@ public class Manager : MonoBehaviour
     public static SkillManager Skill => Instance._skill;
     public static BattleManager Battle => Instance._battle;
     public static SynergyManager Synergy => Instance._synergy;
+    public static TooltipManager Tooltip => Instance._tooltip;
 
     private GameManager _game = new GameManager();
     private DataManager _data = new DataManager();
@@ -20,6 +21,7 @@ public class Manager : MonoBehaviour
     private SkillManager _skill = new SkillManager();
     private BattleManager _battle = new BattleManager();
     private SynergyManager _synergy = new SynergyManager();
+    private TooltipManager _tooltip;
     private void Awake()
     {
         if (_instance == null)
@@ -39,6 +41,15 @@ public class Manager : MonoBehaviour
         UI.Init();
         Skill.Init();
         Battle.Init();
+
+        GameObject tooltipPrefab = Resources.Load<GameObject>("UI/TooltipPanel");
+        GameObject canvas = GameObject.Find("SynergyCanvas"); // 🎯 캔버스 오브젝트 찾기
+
+        GameObject tooltipInstance = Object.Instantiate(tooltipPrefab, canvas.transform);
+        tooltipInstance.transform.localPosition = Vector3.zero; // 또는 필요하면 초기 위치 지정
+
+        _tooltip = tooltipInstance.GetComponent<TooltipManager>();
+
     }
     private void Start()
     {

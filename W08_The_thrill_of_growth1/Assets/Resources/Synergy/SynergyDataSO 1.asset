@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   synergyType: 1
   displayName: Northward
-  icon: {fileID: 6049605792901559095, guid: bb0ca1770f6b8b644b93257dad0c967a, type: 3}
+  icon: {fileID: 21300000, guid: 2ce45ef5fae144b4d82dbab6c7382694, type: 3}
+  description: "2\uC778: 5%\uD655\uB960\uB85C 1\uD68C \uB354 \uACF5\uACA9 \n3\uC778:
+    10% \uD655\uB960\uB85C 1\uD68C \uB354 \uACF5\uACA9 \n4\uC778: 20% \uD655\uB960\uB85C
+    1\uD68C \uB354 \uACF5\uACA9"

@@ -14,4 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   synergyType: 3
   displayName: Holy Light
-  icon: {fileID: 9212275650587600386, guid: e426bd50470be6d49af8113225ed9272, type: 3}
+  icon: {fileID: 21300000, guid: 9dbd36a91a6b8064387bcc93e13de9e2, type: 3}
+  description: "2\uC778: \uC77C\uC815 \uC2DC\uAC04\uB9C8\uB2E4 \uCCB4\uB825\uC774
+    \uB0AE\uC740 \uC720\uB2DB 5% \uD68C\uBCF5 \n3\uC778:  \uC77C\uC815 \uC2DC\uAC04\uB9C8\uB2E4
+    \uCCB4\uB825\uC774 \uB0AE\uC740 \uC720\uB2DB 10% \uD68C\uBCF5 \n4\uC778:\uC77C\uC815
+    \uC2DC\uAC04\uB9C8\uB2E4 \uCCB4\uB825\uC774 \uB0AE\uC740 \uC720\uB2DB 20% \uD68C\uBCF5"

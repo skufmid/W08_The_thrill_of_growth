@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Character;
 using UnityEngine.UI;
+using System.Linq;
+using Unity.VisualScripting;
+using UnityEngine.EventSystems;
 
 public class SynergyManager
 {
@@ -12,20 +15,22 @@ public class SynergyManager
     Image[] _synergySlots; // 슬롯 Image 배열
     int _currentIndex = 0; // 다음 사용될 슬롯 위치
     HashSet<Sprite> _usedIcons = new(); // 중복 방지
-
+    Text _synergyText; // 시너지 텍스트
 
 
     public void CanvasInit()
     {
         _synergyCanvas = GameObject.Find("SynergyCanvas").GetComponent<Canvas>();
         Transform panel = _synergyCanvas.transform.Find("SynergyPanel");
-
         _synergySlots = panel.GetComponentsInChildren<Image>(); // 슬롯 미리 연결
         _currentIndex = 0;
         _usedIcons.Clear();
 
         foreach (var slot in _synergySlots)
-            slot.sprite = null; // 초기화
+        {
+            slot.sprite = null;
+            slot.color = new Color(1, 1, 1, 0); // 알파 0으로 안 보이게
+        }
     }
     public void EvaluateSynergies(List<GameObject> characterList)
     {
@@ -114,8 +119,6 @@ public class SynergyManager
                 activatedTypes.Add(CharacterType.Wizard);
                 ApplyManaBuff(1f);
             }
-            Sprite icon = Manager.Data.characterIcon[CharacterType.Wizard]; 
-             UpdateUI(icon);
         }
         // 궁수 시너지
         if (typeCounts.TryGetValue(CharacterType.Archer, out int archerCount))
@@ -215,16 +218,40 @@ public class SynergyManager
         for (int i = 0; i < activeTypes.Count; i++)
         {
             Sprite icon = Manager.Data.GetCharacterIcon(activeTypes[i]);
-            UpdateUI(icon); // 아이콘 표시
+            string desc = Manager.Data.characterDataList
+            .First(data => data.charactertType == activeTypes[i])
+            .description;
+
+            UpdateUI(icon, desc); // 캐릭터 아이콘 표시
         }
 
         for (int i = 0; i < activeFactions.Count; i++)
         {
             Sprite icon = Manager.Data.GetSynergyIcon(activeFactions[i]);
-            UpdateUI(icon); // 아이콘 표시
+            string desc = Manager.Data.synergyDataList
+            .First(data => data.synergyType == activeFactions[i])
+            .description;
+
+            UpdateUI(icon, desc); // 세력 아이콘 표시
         }
     }
+    void UpdateUI(Sprite icon, string description)
+    {
+        if (_usedIcons.Contains(icon)) return;               // 중복 아이콘 표시 방지
+        if (_currentIndex >= _synergySlots.Length) return;   // 슬롯 넘치면 무시
 
+        Image slot = _synergySlots[_currentIndex];
+        slot.sprite = icon;
+        slot.color = Color.white;                            // 표시되도록 설정
+        slot.preserveAspect = true;
+
+        SynergySlotHover hover = slot.GetComponent<SynergySlotHover>();
+        if (hover != null)
+            hover.description = description;
+
+        _usedIcons.Add(icon);
+        _currentIndex++;
+    }
     //------------------ 시너지 효과 적용 -----------------
     private void ApplyHpBuff(float ratio)
     {
@@ -289,10 +316,5 @@ public class SynergyManager
             ch.Hp += ch.MaxHp * healPercent + flat;
             Debug.Log("🛡️ 성광 시너지 발동!");
         }
-    }
-    void UpdateUI(Sprite spriteSynergy)
-    {
-        // UI 업데이트 로직
-        // 예: synergyCanvas.enabled = true; // 시너지 UI 활성화
     }
 }

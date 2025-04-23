@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charactertType: 3
   displayName: Archer
-  icon: {fileID: -7132172409892320828, guid: bda5919cce2f6c942ba757ed3e9df5db, type: 3}
+  icon: {fileID: 21300000, guid: 463cf96cd43fc514484fb0ad69b3c80a, type: 3}
+  description: "2\uC778: \uC77C\uBC18 \uACF5\uACA9 \uC18D\uB3C4 +10%  \n3\uC778:
+    \uC77C\uBC18 \uACF5\uACA9 \uC18D\uB3C4 +20%  \n4\uC778: \uC77C\uBC18 \uACF5\uACA9
+    \uC18D\uB3C4 +40%"

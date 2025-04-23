@@ -6,5 +6,5 @@ public class SynergyDataSO : ScriptableObject
     public SynergyManager.SynergyType synergyType;
     public string displayName;
     public Sprite icon;
-    public string description;
+    [TextArea] public string description;
 }
