@@ -18,17 +18,26 @@ public class Character:Unit
     protected virtual void Awake()
     {
         animator = GetComponentInChildren<Animator>();
-        Debug.Log(name);
     }
     protected override void Init()
     {
+        CharacterSO character = Manager.Data.Charaters[Id];
+
+        Name = character.Name;
+        DefaultMaxHp = character.BaseHP + (Level - 1) * character.HPPerLevel;
+        MaxHp = DefaultMaxHp;
+        MaxMp = character.MP;
+        DefaultDamage = character.BaseDamage + (Level - 1) * character.DamagePerLevel;
+        DefaultAttackSpeed = character.AttackSpeed;
+
         base.Init();
         Debug.Log("Character Init");
     }
     protected void Start()
     {
+        Init();
+
         Manager.Battle.AddCharacter(gameObject);
-        base.Init();
         Invoke("StartAutoAttack", 1f);
 
     }
@@ -89,7 +98,7 @@ public class Character:Unit
             yield return new WaitForSeconds(interval);
             attackTarget = Manager.Battle.enemyList[0];
             Debug.Log("AttackLoopStart!"); // 추가 효과
-            if (attackTarget != null && !isUsingSkill)
+            if (attackTarget != null)
             {
                 Enemy enemy = attackTarget.GetComponent<Enemy>(); 
                 if (enemy != null)

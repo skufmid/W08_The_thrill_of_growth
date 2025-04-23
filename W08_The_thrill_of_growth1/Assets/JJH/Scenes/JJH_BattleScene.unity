@@ -559,14 +559,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d352d28081792664ca04113cbae79472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Id: 0
-  MaxHp: 100
-  Hp: 100
-  MaxMp: 100
+  Id: 1
+  Name: 
+  DefaultMaxHp: 0
+  MaxHp: 0
+  Hp: 0
+  MaxMp: 0
   Mp: 0
-  DefaultAttackSpeed: 0.5
+  DefaultAttackSpeed: 0
   AttackSpeed: 0
-  DefaultDamage: 2
+  DefaultDamage: 0
   Damage: 0
   Vampiric: 0
   animator: {fileID: 0}
@@ -3340,6 +3342,18 @@ PrefabInstance:
     - target: {fileID: 3673355310998118771, guid: 7ef36e4e7b73ac04b9c4d4e55402cc33, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 9068000311328323852, guid: 7ef36e4e7b73ac04b9c4d4e55402cc33, type: 3}
+      propertyPath: Id
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9068000311328323852, guid: 7ef36e4e7b73ac04b9c4d4e55402cc33, type: 3}
+      propertyPath: Mp
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 9068000311328323852, guid: 7ef36e4e7b73ac04b9c4d4e55402cc33, type: 3}
+      propertyPath: MaxMp
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
