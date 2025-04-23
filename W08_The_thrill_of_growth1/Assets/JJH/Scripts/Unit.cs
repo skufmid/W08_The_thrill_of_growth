@@ -11,11 +11,25 @@ public abstract class Unit : MonoBehaviour
     public float DefaultDamage;
     public float Damage;
 
-    public virtual void MeleeAttack()
+    private Animator animator;
+
+    private void Awake()
     {
-        Debug.Log("Unit MeleeAttack");
+        //animator = GetComponent<Animator>();
     }
-    
+    private void Start()
+    {
+        Init();
+    }
+
+    private void Init()
+    {
+        Hp = MaxHp;
+        Mp = 0;
+        AttackSpeed = DefaultAttackSpeed;
+        Damage = DefaultDamage;
+    }
+
     public virtual void SkillAttack()
     {
         Debug.Log("Unit SkillAttack");
@@ -24,6 +38,10 @@ public abstract class Unit : MonoBehaviour
     public virtual void TakeDamage()
     {
         Debug.Log("Unit TakeDamage");
+        if (Hp <= 0)
+        {
+            Die();
+        }
     }
     
     public virtual void Die()
