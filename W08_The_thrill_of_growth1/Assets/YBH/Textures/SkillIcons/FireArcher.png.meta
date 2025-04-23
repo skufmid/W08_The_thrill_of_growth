@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      FireArcher_0: 3432608960565325850
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public abstract class Unit : MonoBehaviour
 {
+    //기본스텟
     public float MaxHp;
     public float Hp;
     public float MaxMp;
@@ -10,16 +11,18 @@ public abstract class Unit : MonoBehaviour
     public float AttackSpeed;
     public float DefaultDamage;
     public float Damage;
+    //애니메이션
+    public Animator animator;
 
-    private Animator animator;
-
+    //전투관련
+    public GameObject attackTarget;         //적 타겟
     private void Awake()
     {
         //animator = GetComponent<Animator>();
     }
     private void Start()
     {
-        Init();
+            Init();
     }
 
     private void Init()
