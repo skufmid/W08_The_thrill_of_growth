@@ -53,7 +53,8 @@ public class StoreUI : MonoBehaviour
     [SerializeField] private Character characterPrefab;
     [SerializeField] private Transform[] spawnPositions;
     [SerializeField] private int sellPrice = 50;
-    [SerializeField] private int levelUpPrice = 100;
+    [SerializeField] private int baseLevelUpPrice = 100;  // 기본 레벨업 가격
+    [SerializeField] private int levelUpPriceIncrease = 50;  // 레벨당 증가하는 가격
 
     private Button[] characterSlots;
     private Button[] sellButtons;
@@ -220,7 +221,7 @@ public class StoreUI : MonoBehaviour
         character = null;
         if (slotIndex >= 0 && slotIndex < spawnPositions.Length && spawnPositions[slotIndex] != null)
         {
-            character = Instantiate(characterPrefab, spawnPositions[slotIndex].position, Quaternion.identity);
+            character = Instantiate(characterPrefab, spawnPositions[slotIndex].position, Quaternion.Euler(0, 180, 0));
             
             // 현재 보유한 캐릭터들의 ID 목록 가져오기
             List<int> existingIds = new List<int>();
@@ -251,12 +252,21 @@ public class StoreUI : MonoBehaviour
     private void OnLevelUpClicked(int slotIndex)
     {
         Character character = partyManager.GetCharacterAtSlot(slotIndex);
-        if (character != null && character.Level < MAX_LEVEL && playerData.HasEnoughGold(levelUpPrice))
+        if (character != null && character.Level < MAX_LEVEL)
         {
-            if (playerData.SpendGold(levelUpPrice))
+            int currentLevelUpPrice = baseLevelUpPrice + (character.Level - 1) * levelUpPriceIncrease;
+            
+            if (playerData.HasEnoughGold(currentLevelUpPrice))
             {
-                character.LevelUp();
-                Debug.Log($"슬롯 {slotIndex}의 캐릭터가 레벨업 했습니다. 현재 레벨: {character.Level}");
+                if (playerData.SpendGold(currentLevelUpPrice))
+                {
+                    character.LevelUp();
+                    Debug.Log($"슬롯 {slotIndex}의 캐릭터가 레벨업 했습니다. 현재 레벨: {character.Level}, 소모 골드: {currentLevelUpPrice}");
+                }
+            }
+            else
+            {
+                Debug.Log($"레벨업에 필요한 골드가 부족합니다. 필요 골드: {currentLevelUpPrice}");
             }
         }
     }
@@ -468,7 +478,16 @@ public class StoreUI : MonoBehaviour
         isStoreOpen = false;  // 상점 상태를 닫힘으로 설정
         UpdateAllSlotsUI();  // 모든 버튼 상태 업데이트
         
-        Debug.Log("준비 완료!");
+        Manager.Game.StartStage(); // 스테이지 시작
+        Debug.Log("준비 완료! 스테이지 시작!");
+    }
+
+    // 상점 UI 활성화
+    public void ShowStore()
+    {
+        storeButton.gameObject.SetActive(true);
+        isStoreOpen = false; // 상점은 닫힌 상태로 시작
+        UpdateAllSlotsUI();
     }
 
     // 게임 재시작이나 새 라운드 시작 시 호출할 메서드

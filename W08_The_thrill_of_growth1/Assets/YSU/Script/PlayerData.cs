@@ -31,9 +31,14 @@ public class PlayerData : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(gameObject);
+        
+        // 게임 매니저의 스테이지 승리 이벤트 구독
+        Manager.Game.OnEndStage += OnStageCleared;
     }
 
     [SerializeField] private int gold = 1000; // 시작 골드
+    [SerializeField] private int baseStageReward = 100; // 기본 스테이지 보상
+    [SerializeField] private int stageRewardIncrease = 50; // 스테이지당 증가하는 보상량
     
     public int Gold
     {
@@ -47,6 +52,15 @@ public class PlayerData : MonoBehaviour
     // 골드 변경 이벤트
     public delegate void GoldChangedHandler(int newGold);
     public event GoldChangedHandler OnGoldChanged;
+
+    // 스테이지 클리어 보상
+    private void OnStageCleared()
+    {
+        int currentStage = Manager.Game.stageNum;
+        int reward = baseStageReward + (currentStage - 1) * stageRewardIncrease;
+        AddGold(reward);
+        Debug.Log($"Stage {currentStage} Cleared! Reward: {reward} Gold");
+    }
 
     // 골드 획득
     public void AddGold(int amount)
@@ -74,5 +88,14 @@ public class PlayerData : MonoBehaviour
     public bool HasEnoughGold(int amount)
     {
         return Gold >= amount;
+    }
+
+    private void OnDestroy()
+    {
+        // 이벤트 구독 해제
+        if (Manager.Game != null)
+        {
+            Manager.Game.OnEndStage -= OnStageCleared;
+        }
     }
 } 
