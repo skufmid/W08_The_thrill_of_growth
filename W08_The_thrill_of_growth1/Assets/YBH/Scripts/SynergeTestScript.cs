@@ -20,11 +20,11 @@ public class SynergeTestScript : MonoBehaviour
         {
             Debug.LogError("❗ Manager.Synergy가 null입니다.");
         }
-        else if (BattleManager.Instance.characterList == null)
+        else if (Manager.Battle.characterList == null)
         {
             Debug.LogError("❗ characterList가 null입니다.");
         }
-        else if (BattleManager.Instance.characterList.Count == 0)
+        else if (Manager.Battle.characterList.Count == 0)
         {
             Debug.LogWarning("⚠️ characterList에 캐릭터가 없음.");
         }

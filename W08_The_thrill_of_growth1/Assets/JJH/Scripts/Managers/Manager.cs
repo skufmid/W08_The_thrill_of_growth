@@ -28,6 +28,7 @@ public class Manager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             Init();
         }
+        _data.ShowAll();
     }
 
     private void Init()
@@ -38,5 +39,9 @@ public class Manager : MonoBehaviour
         UI.Init();
         Skill.Init();
         Battle.Init();
+    }
+    private void Start()
+    {
+        _synergy.CanvasInit();
     }
 }
