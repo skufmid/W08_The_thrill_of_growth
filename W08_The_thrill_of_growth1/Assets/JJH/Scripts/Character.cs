@@ -10,7 +10,20 @@ public class Character:Unit
     public CombatLine.linePosition position = CombatLine.linePosition.None;
     public Action basicAttack;
     protected Coroutine _attackRoutine;
-
+    public enum SynergeyType
+    {
+        Kingdom,
+        Northward,
+        Dark,
+        HolyLight,
+    }
+    public enum CharacterType
+    {
+        Tanker,
+        Warrior,
+        Wizard,
+        Archer,
+    }
     protected virtual void Awake()
     {
         animator = GetComponentInChildren<Animator>();
@@ -71,7 +84,7 @@ public class Character:Unit
             Debug.Log("AttackLoopStart!"); // 추가 효과
             if (attackTarget != null && !isUsingSkill)
             {
-                Enemy enemy = attackTarget.GetComponent<Enemy>(); // 여기!
+                Enemy enemy = attackTarget.GetComponent<Enemy>(); 
                 if (enemy != null)
                 {
                     BasicAttack(); // Enemy 타입으로 전달

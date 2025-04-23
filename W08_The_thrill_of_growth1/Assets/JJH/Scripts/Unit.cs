@@ -18,11 +18,10 @@ public abstract class Unit : MonoBehaviour
     //애니메이션
     public Animator animator;
     public bool isUsingSkill;
-
     //전투관련
     public GameObject attackTarget;         //적 타겟
     public GameObject projectilePrefab;     //투사체 프리팹
-
+    public bool beginCombat;                //전투시작관련
     //내부 상태
     protected bool isAttacking = false;
     private void Awake()
@@ -33,7 +32,13 @@ public abstract class Unit : MonoBehaviour
     {
         Init();
     }
-
+    protected virtual void Update()
+    {
+        if (beginCombat)
+        {
+            StartManaCharge();
+        }
+    }
     protected virtual void Init()
     {
         Hp = MaxHp;
@@ -96,4 +101,26 @@ public abstract class Unit : MonoBehaviour
         Destroy(proj);
     }
 
+
+    //전투시작하면 마나차는 마나시스템 관련
+    public virtual void StartManaCharge() // 마나 회복 시작
+    {
+        if (Mp < MaxMp)
+        {
+            StartCoroutine(ManaGain(10f));
+        }
+    }
+    public virtual IEnumerator ManaGain(float manaGain) // 마나 회복
+    {
+        yield return new WaitForSeconds(1f);
+        Mp += manaGain;
+        if (Mp > MaxMp)
+            Mp = MaxMp;
+        if(Mp == MaxMp)
+        {
+            isUsingSkill = true;
+            SkillAttack(Damage);
+            Mp = 0;
+        }
+    }
 }
