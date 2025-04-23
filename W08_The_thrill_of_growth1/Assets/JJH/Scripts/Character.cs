@@ -13,8 +13,8 @@ public class Character:Unit
     public CombatLine.linePosition position = CombatLine.linePosition.None;
     public Action basicAttack;
     protected Coroutine _attackRoutine;
-    //public SynergyManager.SynergyType synergyType;
-    //public SynergyManager.CharacterType characterType;
+    public SynergyManager.SynergyType synergyType;
+    public SynergyManager.CharacterType characterType;
     protected virtual void Awake()
     {
         animator = GetComponentInChildren<Animator>();
