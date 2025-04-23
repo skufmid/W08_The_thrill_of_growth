@@ -53,7 +53,8 @@ public class StoreUI : MonoBehaviour
     [SerializeField] private Character characterPrefab;
     [SerializeField] private Transform[] spawnPositions;
     [SerializeField] private int sellPrice = 50;
-    [SerializeField] private int levelUpPrice = 100;
+    [SerializeField] private int baseLevelUpPrice = 100;  // 기본 레벨업 가격
+    [SerializeField] private int levelUpPriceIncrease = 50;  // 레벨당 증가하는 가격
 
     private Button[] characterSlots;
     private Button[] sellButtons;
@@ -251,12 +252,21 @@ public class StoreUI : MonoBehaviour
     private void OnLevelUpClicked(int slotIndex)
     {
         Character character = partyManager.GetCharacterAtSlot(slotIndex);
-        if (character != null && character.Level < MAX_LEVEL && playerData.HasEnoughGold(levelUpPrice))
+        if (character != null && character.Level < MAX_LEVEL)
         {
-            if (playerData.SpendGold(levelUpPrice))
+            int currentLevelUpPrice = baseLevelUpPrice + (character.Level - 1) * levelUpPriceIncrease;
+            
+            if (playerData.HasEnoughGold(currentLevelUpPrice))
             {
-                character.LevelUp();
-                Debug.Log($"슬롯 {slotIndex}의 캐릭터가 레벨업 했습니다. 현재 레벨: {character.Level}");
+                if (playerData.SpendGold(currentLevelUpPrice))
+                {
+                    character.LevelUp();
+                    Debug.Log($"슬롯 {slotIndex}의 캐릭터가 레벨업 했습니다. 현재 레벨: {character.Level}, 소모 골드: {currentLevelUpPrice}");
+                }
+            }
+            else
+            {
+                Debug.Log($"레벨업에 필요한 골드가 부족합니다. 필요 골드: {currentLevelUpPrice}");
             }
         }
     }
