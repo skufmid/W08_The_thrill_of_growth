@@ -16,7 +16,7 @@ public class Manager : MonoBehaviour
     private GameManager _game = new GameManager();
     private DataManager _data = new DataManager();
     private GameSceneManager _scene = new GameSceneManager();
-    private UIManager _ui = new UIManager();
+    private UIManager _ui;
     private BattleManager _battle = new BattleManager();
     private SynergyManager _synergy = new SynergyManager();
     private TooltipManager _tooltip;
@@ -36,7 +36,6 @@ public class Manager : MonoBehaviour
         Game.Init();
         Data.Init();
         Scene.Init();
-        UI.Init();
         Battle.Init();
 
         Manager.Synergy.CanvasInit(); // 반드시 먼저!

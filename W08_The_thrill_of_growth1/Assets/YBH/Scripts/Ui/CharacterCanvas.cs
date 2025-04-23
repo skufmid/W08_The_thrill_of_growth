@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class CharacterCanvas : MonoBehaviour
 {
@@ -18,30 +19,29 @@ public class CharacterCanvas : MonoBehaviour
     [Header("레벨 표시")]
     public TMP_Text levelText;
 
+    Character _character = null;
     private void Start()
     {
-        //Invoke("Aevent", 1f);
+        StartCoroutine(CoSetCharacterUI());
     }
-    private void Update()
+
+
+    IEnumerator CoSetCharacterUI()
     {
-        Aevent();
-    }
-    void Aevent()
-    {
-        Character character = Manager.Battle.characterList[0].GetComponent<Character>();
-        if (character != null)
+        while (true)
         {
-            SetCharacter(character);
+            yield return new WaitForSeconds(0.5f);
+            SetCharacterUI(_character);
         }
     }
     [Header("UI 이미지")]
     public Image skillIcon;
 
-    public void SetCharacter(Character character)
+    public void SetCharacterUI(Character character)
     {
+        _character = character;
         if (character == null)
         {
-            Debug.LogWarning("⚠️ 캐릭터 정보가 null입니다.");
             return;
         }
 
