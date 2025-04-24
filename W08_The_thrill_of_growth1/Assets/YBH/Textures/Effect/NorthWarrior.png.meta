@@ -192,7 +192,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NorthWarrior_0
+      name: NorthWarrior_3
       rect:
         serializedVersion: 2
         x: 195
@@ -214,10 +214,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NorthWarrior_2
+      name: NorthWarrior_4
       rect:
         serializedVersion: 2
-        x: 259
+        x: 260
         y: 4
         width: 55
         height: 49
@@ -236,7 +236,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NorthWarrior_3
+      name: NorthWarrior_5
       rect:
         serializedVersion: 2
         x: 323
@@ -280,7 +280,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NorthWarrior_10
+      name: NorthWarrior_2
       rect:
         serializedVersion: 2
         x: 131
@@ -302,7 +302,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NorthWarrior_13
+      name: NorthWarrior_6
       rect:
         serializedVersion: 2
         x: 386
@@ -324,7 +324,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NorthWarrior_15
+      name: NorthWarrior_1
       rect:
         serializedVersion: 2
         x: 67
@@ -346,7 +346,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NorthWarrior_20
+      name: NorthWarrior_0
       rect:
         serializedVersion: 2
         x: 2
@@ -367,6 +367,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: NorthWarrior_8
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 4
+        width: 68
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a375b81065710e4d98e27476b6e627a
+      internalID: -6322338888601030602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -381,28 +403,22 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      NorthWarrior_0: -9036100162280851705
-      NorthWarrior_1: -6322338888601030602
-      NorthWarrior_10: 329375848891861775
-      NorthWarrior_11: -8595787549964503538
-      NorthWarrior_12: -6384361554594555881
-      NorthWarrior_13: 2483727700603956815
+      NorthWarrior_0: 1090607559342666801
+      NorthWarrior_1: -31535715277017811
       NorthWarrior_14: -9191481166868144480
-      NorthWarrior_15: -31535715277017811
       NorthWarrior_16: -8219898598994173130
       NorthWarrior_17: -1729245114097579820
       NorthWarrior_18: 6285531136698423982
       NorthWarrior_19: 4924113575003557238
-      NorthWarrior_2: -8418701960161253057
-      NorthWarrior_20: 1090607559342666801
+      NorthWarrior_2: 329375848891861775
       NorthWarrior_21: -5615655737441237713
       NorthWarrior_22: 4007586159033743139
-      NorthWarrior_3: -5636257660182459363
-      NorthWarrior_4: -4793877670228014167
-      NorthWarrior_5: -3739681670931043034
-      NorthWarrior_6: 8896271343501178735
+      NorthWarrior_3: -9036100162280851705
+      NorthWarrior_4: -8418701960161253057
+      NorthWarrior_5: -5636257660182459363
+      NorthWarrior_6: 2483727700603956815
       NorthWarrior_7: -1344097721349875770
-      NorthWarrior_8: 3329075556502922385
+      NorthWarrior_8: -6322338888601030602
       NorthWarrior_9: 7355852574996613651
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0

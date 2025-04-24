@@ -300,6 +300,7 @@ public class StoreUI : MonoBehaviour
         isStoreOpen = !isStoreOpen;
         storeButton.gameObject.SetActive(!isStoreOpen);
         readyButton.gameObject.SetActive(isStoreOpen);  // 상점이 열리면 준비완료 버튼 활성화
+        isReady = false;  // 상점을 열 때마다 준비 상태 초기화
         UpdateAllSlotsUI();
     }
 
@@ -514,7 +515,9 @@ public class StoreUI : MonoBehaviour
     public void ShowStore()
     {
         storeButton.gameObject.SetActive(true);
+        isReady = false;  // 준비 상태 초기화
         isStoreOpen = false; // 상점은 닫힌 상태로 시작
+        readyButton.gameObject.SetActive(false);  // 준비완료 버튼 초기 비활성화
         UpdateAllSlotsUI();
     }
 
