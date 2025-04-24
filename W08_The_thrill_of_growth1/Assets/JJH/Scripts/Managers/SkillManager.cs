@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
@@ -101,9 +102,31 @@ public class SkillManager : MonoBehaviour
                 skillComponent.ApplySelfDamage(unit.gameObject, 5f / 100); // 자해
                 break;
 
+            case 11:
+                break;
 
+            case 12:
+                value = unit.Damage;
+                skillComponent.DamageSkill(Manager.Battle.GetRandomEnemy(1), value * coefficient / 100);
+                break;
 
+            case 13:
+                Targets = Manager.Battle.characterList.ToArray();
+                skillComponent.ApplyEffectEnemyPercentSkill(Targets, EStat.Damage, null, EStat.Damage, coefficient);
+                break;
 
+            case 14:
+                Targets = Manager.Battle.characterList.ToArray();
+                value = unit.Damage;
+                skillComponent.ApplyEffectAmountSkill(Targets, EStat.Hp, null, value * coefficient / 100);
+                break;
+
+            case 15:
+                Targets = new GameObject[1];
+                Targets[0] = unit.gameObject;
+                value = unit.Damage;
+                skillComponent.ApplyEffectAmountSkill(Targets, EStat.AttackSpeed, null, value * coefficient / 100);
+                break;
 
         }
     }
