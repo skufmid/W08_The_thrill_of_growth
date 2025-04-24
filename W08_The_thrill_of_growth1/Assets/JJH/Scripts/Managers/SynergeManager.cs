@@ -13,7 +13,7 @@ public class SynergyManager
     int _currentIndex = 0; // 다음 사용될 슬롯 위치
     HashSet<Sprite> _usedIcons = new(); // 중복 방지
     Text _synergyText; // 시너지 텍스트
-
+    public float northWard; // 북부시너지 카운트
     public void Init()
     {
         Manager.Game.OnStartStage += () => EvaluateSynergies(Manager.Battle.characterList); // 스테이지 시작 시 시너지 평가
@@ -170,16 +170,19 @@ public class SynergyManager
         {
             if (northCount >= 4)
             {
+                northWard = 4f;
                 activatedFactions.Add(SynergyType.Northward);
                 ApplyAttackBuff(0.40f);
             }
             else if (northCount >= 3)
             {
+                northWard = 3f;
                 activatedFactions.Add(SynergyType.Northward);
                 ApplyAttackBuff(0.20f);
             }
             else if (northCount >= 2)
             {
+                northWard = 2f;
                 activatedFactions.Add(SynergyType.Northward);
                 ApplyAttackBuff(0.10f);
             }
@@ -348,6 +351,7 @@ public class SynergyManager
             ch.AttackSpeed = ch.DefaultAttackSpeed;
             ch.Vampiric = 0f;
             ch.manaGain = ch.defaultManaGain;
+            northWard = 0f;
             SynergyHelper.Instance.StopHeal();
 
         }

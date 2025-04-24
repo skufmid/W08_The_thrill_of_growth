@@ -74,18 +74,17 @@ public abstract class Unit : MonoBehaviour
     {
         return null;
     }
-    public virtual void LaunchProjectile()//투사체 발사(공격에 붙히는 용도 이벤트)
+    public virtual void LaunchProjectile(float duration)//투사체 발사(공격에 붙히는 용도 이벤트)
     {
         if (projectilePrefab == null || attackTarget == null) return;
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-        StartCoroutine(MoveProjectile(projectile, attackTarget.transform));
+        StartCoroutine(MoveProjectile(projectile, attackTarget.transform, duration));
         
     }
-    private IEnumerator MoveProjectile(GameObject proj, Transform target) // 투사체 이동
+    private IEnumerator MoveProjectile(GameObject proj, Transform target, float duration) // 투사체 이동
     {
         Vector3 startPos = proj.transform.position;
         Vector3 endPos = target.position;
-        float duration = 0.6f;
         float elapsed = 0f;
 
         while (elapsed < duration)

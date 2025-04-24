@@ -22,6 +22,7 @@ public class Character:Unit
     public SynergyManager.CharacterType characterType;
     public float MaxAttackspeed = 4f; // 최대 공격 속도
     private CharacterCanvas characterCanvas;
+    bool hasPassive = false;
 
     protected virtual void Awake()
     {
@@ -33,7 +34,11 @@ public class Character:Unit
         Manager.Game.OnStartStage += StartBattle;
 
         Init();
-
+        if(Id == 7)
+        {
+            hasPassive = true;
+            Debug.Log("Passive Skill");
+        }
         Manager.Battle.AddCharacter(gameObject);
     }
     void OnDisable()
@@ -87,8 +92,8 @@ public class Character:Unit
             DefaultAttackSpeed = MaxAttackspeed;
         Damage = DefaultDamage;
         manaGain = defaultManaGain;
-
         Invoke("StartAutoAttack", 0.5f);
+
     }
 
     private void EndBattle()
@@ -124,10 +129,10 @@ public class Character:Unit
 
     public void StartAutoAttack()
     {
-        if (_attackRoutine != null)
-            StopCoroutine(_attackRoutine);
-
-        _attackRoutine = StartCoroutine(AutoAttackLoop());
+        if (_attackRoutine != null) StopCoroutine(_attackRoutine);
+            { 
+                _attackRoutine = StartCoroutine(AutoAttackLoop());
+            }
     }
     #region 플레이어 기본 공격
     public virtual void BasicAttack()   //기본 공격 모션출력
@@ -157,6 +162,7 @@ public class Character:Unit
     #endregion 플레이어 기본공격
     public override void SkillAttack(int skillId)
     {
+        if (hasPassive) return;
         if (!Manager.Battle.isInBattle) return;
         animator.SetTrigger("Attack");
         animator.SetFloat("SkillState", 1.0f);
@@ -185,15 +191,65 @@ public class Character:Unit
                 if (enemy != null)
                 {
                     BasicAttack(); // Enemy 타입으로 전달
-                    LaunchProjectile();
+                    LaunchProjectile(0.6f);
                     yield return new WaitForSeconds(0.6f); // 투사체 발사 후 대기
+                    DamageEnemy(enemy);
+                }
+            }
+            // 패시브: 야성 연사
+            if (hasPassive && characterType == SynergyManager.CharacterType.Archer)
+            {
+                float chance = 0.2f + (Mathf.Max(Star - 1, 0) * 0.05f);
+
+                // To resolve the ambiguity between 'UnityEngine.Random' and 'System.Random', explicitly specify the namespace for 'Random' usage.
+
+                if (UnityEngine.Random.Range(0f, 1f) <= 1.01f)
+                {
+                    Enemy enemy = attackTarget.GetComponent<Enemy>();
+
+                    BasicAttack();
+                    LaunchProjectile(0.2f);
+                    yield return new WaitForSeconds(0.2f);
+                    DamageEnemy(enemy);
+                }
+                if (UnityEngine.Random.Range(0f, 1f) <= chance)
+                {
+                    Enemy enemy = attackTarget.GetComponent<Enemy>();
+
+                    BasicAttack();
+                    LaunchProjectile(0.2f);
+                    yield return new WaitForSeconds(0.2f);
+                    DamageEnemy(enemy);
+                }
+            }
+            if(synergyType == SynergyManager.SynergyType.Northward)
+            {
+                float count = Manager.Synergy.northWard;
+                float chance = 0f;
+
+                if (count >= 4) chance = 0.2f;
+                else if (count == 3) chance = 0.1f;
+                else if (count == 2) chance = 0.05f;
+
+                if (UnityEngine.Random.Range(0f, 1f) <= chance)
+                {
+                    Enemy enemy = attackTarget.GetComponent<Enemy>();
+
+                    BasicAttack();
+                    LaunchProjectile(0.2f);
+                    yield return new WaitForSeconds(0.2f);
+                    DamageEnemy(enemy);
+                }
+                if (UnityEngine.Random.Range(0f, 1f) <= chance)
+                {
+                    Enemy enemy = attackTarget.GetComponent<Enemy>();
+
+                    BasicAttack();
+                    LaunchProjectile(0.2f);
+                    yield return new WaitForSeconds(0.2f);
                     DamageEnemy(enemy);
                 }
             }
         }
     }
-
-
-
-
 }
