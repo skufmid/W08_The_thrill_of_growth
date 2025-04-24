@@ -16,7 +16,7 @@ public class SynergyManager
     public float northWard; // 북부시너지 카운트
     public void Init()
     {
-        Manager.Game.OnStartStage += () => EvaluateSynergies(Manager.Battle.characterList); // 스테이지 시작 시 시너지 평가
+        Manager.Game.OnLateStartStage += () => EvaluateSynergies(Manager.Battle.characterList); // 스테이지 시작 시 시너지 평가
     }
     public void CanvasInit()
     {

@@ -6,6 +6,7 @@ public class GameManager
 {
     public int stageNum;
     public Action OnStartStage;
+    public Action OnLateStartStage;
     public Action OnEndStage;
     public void Init()
     {
@@ -16,6 +17,7 @@ public class GameManager
     {
         Debug.Log("스타트 스테이지");
         OnStartStage?.Invoke();
+        OnLateStartStage?.Invoke();
         Manager.Battle.isInBattle = true;
     }
 
