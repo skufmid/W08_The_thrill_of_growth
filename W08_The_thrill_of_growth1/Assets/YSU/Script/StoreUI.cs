@@ -234,15 +234,16 @@ public class StoreUI : MonoBehaviour
                 }
             }
 
-            // 중복되지 않는 랜덤 ID 생성
+            // 중복되지 않는 랜덤 ID 생성 (0부터 시작)
             int newId;
             do
             {
-                newId = Random.Range(1, MAX_CHARACTER_ID + 1);
+                newId = Random.Range(0, MAX_CHARACTER_ID + 1);  // 0부터 시작하도록 수정
             } while (existingIds.Contains(newId));
 
             // 생성된 캐릭터에 ID 설정
             character.Id = newId;
+            Debug.Log($"새로운 캐릭터 생성: ID {newId}");  // 디버그 로그 추가
 
             return true;
         }
