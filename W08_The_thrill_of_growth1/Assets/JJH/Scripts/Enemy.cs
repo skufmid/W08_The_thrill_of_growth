@@ -35,7 +35,10 @@ public class Enemy:Unit
 
     public override void SkillAttack(int skillId)
     {
+        attackTarget = Manager.Battle.GetTargetByPositionPriority();
         SkillManager.Instance.InvokeEnemySkill(this);
+        animator.SetTrigger("Attack");
+        LaunchProjectile(0.6f);
     }
 
     public override void Die()

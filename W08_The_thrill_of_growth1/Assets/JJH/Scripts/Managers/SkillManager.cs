@@ -135,5 +135,6 @@ public class SkillManager : MonoBehaviour
         Debug.Log($"Enemy {enemy.Id} 스킬 실행");
         value = enemy.Damage;
         skillComponent.DamageSkill(new GameObject[] { Manager.Battle.GetTargetByPositionPriority() }, value);
+        
     }
 }
