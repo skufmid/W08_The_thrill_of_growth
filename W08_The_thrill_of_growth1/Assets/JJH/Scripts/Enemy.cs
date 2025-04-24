@@ -26,7 +26,7 @@ public class Enemy:Unit
         DefaultMaxHp = 30 + (level - 1) * 5f + Random.Range(-5, 5);
         MaxHp = DefaultMaxHp;
         MaxMp = Random.Range(25, 65);
-        DefaultDamage = 5 + (level - 1) * 4f + Random.Range(-2, 2);
+        DefaultDamage = 4 + (level - 1) * 4f + Random.Range(-1, 1);
         DefaultAttackSpeed = 0;
 
         base.Init();

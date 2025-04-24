@@ -21,7 +21,6 @@ public class GameManager
 
     public void WinStage()
     {
-        OnEndStage?.Invoke();
         Manager.Battle.isInBattle = false;
         Debug.Log($"Stage Win! stageNum:{stageNum}");
         stageNum++;

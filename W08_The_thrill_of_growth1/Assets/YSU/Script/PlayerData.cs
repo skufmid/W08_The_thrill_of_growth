@@ -3,6 +3,10 @@ using System.Collections.Generic;
 
 public class PlayerData : MonoBehaviour
 {
+    [SerializeField] private int gold = 1000; // 시작 골드
+    [SerializeField] private int baseStageReward = 100; // 기본 스테이지 보상
+    [SerializeField] private int stageRewardIncrease = 50; // 스테이지당 증가하는 보상량
+
     private static PlayerData instance;
     public static PlayerData Instance
     {
@@ -33,12 +37,11 @@ public class PlayerData : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         
         // 게임 매니저의 스테이지 승리 이벤트 구독
+    }
+    private void Start()
+    {
         Manager.Game.OnEndStage += OnStageCleared;
     }
-
-    [SerializeField] private int gold = 1000; // 시작 골드
-    [SerializeField] private int baseStageReward = 100; // 기본 스테이지 보상
-    [SerializeField] private int stageRewardIncrease = 50; // 스테이지당 증가하는 보상량
     
     public int Gold
     {
