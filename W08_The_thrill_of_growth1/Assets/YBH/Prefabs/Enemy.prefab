@@ -132,7 +132,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1136476107
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: ee879a1a19a191c4cbe9d9ed4b276b38, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -220,7 +220,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1136476107
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 3
   m_Sprite: {fileID: -3847943250117979209, guid: 9189bcb3f2effdd478b975cbc0997dd5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -301,7 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed2d12704fc40d419da817a88e4a5a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Id: 0
+  Id: 100
   Name: "\uD574\uACE8 \uC804\uC0AC"
   DefaultMaxHp: 0
   MaxHp: 1000
@@ -315,7 +315,7 @@ MonoBehaviour:
   Vampiric: 0
   animator: {fileID: 0}
   attackTarget: {fileID: 0}
-  projectilePrefab: {fileID: 194663217440693921, guid: e1dcfcef335e3d045b2ea383509a9f06, type: 3}
+  projectilePrefab: {fileID: 6775720746841511637, guid: acc1b03e9ca76b946a534965220975eb, type: 3}
   beginCombat: 0
   defaultManaGain: 10
   manaGain: 10
@@ -440,7 +440,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1136476107
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 2
   m_Sprite: {fileID: -2857231490776680268, guid: f21e4f95127afa446a125067de0fa9aa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -550,7 +550,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1136476107
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 7928858964255100155, guid: f7066017e34032947a3c80e5cac470c7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

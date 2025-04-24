@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
@@ -27,6 +28,7 @@ public abstract class Unit : MonoBehaviour
     public bool beginCombat = true;                //전투시작관련
     public float defaultManaGain = 10f;     //공격중인지
     public float manaGain;                  //마나 회복량
+    List<GameObject> projectileList = new List<GameObject>(); //타겟 리스트
     //내부 상태
     protected bool isAttacking = false;
     private void Awake()
@@ -79,6 +81,7 @@ public abstract class Unit : MonoBehaviour
         if (projectilePrefab == null || attackTarget == null) return;
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         StartCoroutine(MoveProjectile(projectile, attackTarget.transform, duration));
+        Debug.Log("Enemy?");
         
     }
     private IEnumerator MoveProjectile(GameObject proj, Transform target, float duration) // 투사체 이동

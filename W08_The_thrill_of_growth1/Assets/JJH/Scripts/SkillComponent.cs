@@ -15,6 +15,7 @@ public class SkillComponent: MonoBehaviour
             if (unit != null)
             {
                 unit.TakeDamage(amount); // TakeDamage 수정해야함
+                
             }
         }
     }
@@ -155,24 +156,6 @@ public class SkillComponent: MonoBehaviour
     {
         StartCoroutine(CoBasicAttack(character, attackTarget, repeatNum, ratio));
     }
-
-    public IEnumerator BasicAdditionalAttack(Character character, GameObject attackTarget, int repeatNum, float ratio)
-    {
-        Enemy enemy = attackTarget.GetComponent<Enemy>();
-        character.BasicAttack(); // Enemy 타입으로 전달
-        character.LaunchProjectile(0.6f);
-        yield return new WaitForSeconds(0.6f); // 투사체 발사 후 대기
-        character.DamageEnemy(enemy, ratio);
-        if(Random.Range(0f, 1f) > 0.5f)
-        {
-            yield return new WaitForSeconds(0.6f);
-            character.BasicAttack(); // Enemy 타입으로 전달
-            character.LaunchProjectile(0.6f);
-            yield return new WaitForSeconds(0.6f); // 투사체 발사 후 대기
-            character.DamageEnemy(enemy, ratio);
-        }
-    }
-
     private IEnumerator CoBasicAttack(Character character, GameObject attackTarget, int repeatNum, float ratio)
     {
         float interval = 0.2f;

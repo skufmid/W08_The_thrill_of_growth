@@ -12,5 +12,5 @@ public class SkillSO : ScriptableObject
     public float[] Coefficients;
 
     [TextArea] public string SkillDescription;
-
+    public GameObject skillPrefab;
 }

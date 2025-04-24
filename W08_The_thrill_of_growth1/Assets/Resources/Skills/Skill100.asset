@@ -23,3 +23,4 @@ MonoBehaviour:
   - 100
   - 100
   SkillDescription: "\uC801\uC758 \uAC15\uB825\uD55C \uACF5\uACA9\uC774\uB2E4."
+  skillPrefab: {fileID: 6775720746841511637, guid: acc1b03e9ca76b946a534965220975eb, type: 3}

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2719947677608050521}
   - component: {fileID: 1908676837811388797}
   - component: {fileID: 8120141685809685423}
+  - component: {fileID: -8073290055850090539}
   m_Layer: 0
   m_Name: ShieldProjectile
   m_TagString: Untagged
@@ -110,3 +111,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-8073290055850090539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746866508722380858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1da226fce50df74887b9fafd16a3ca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Lifetime: 5
