@@ -111,7 +111,7 @@ public class SkillManager : MonoBehaviour
 
             case 13:
                 Targets = Manager.Battle.characterList.ToArray();
-                skillComponent.ApplyEffectEnemyPercentSkill(Targets, EStat.Damage, null, EStat.Damage, coefficient);
+                skillComponent.ApplyEffectEnemyPercentSkill(Targets, EStat.Damage, null, EStat.Damage, coefficient / 100);
                 break;
 
             case 14:

@@ -26,7 +26,7 @@ public class Enemy:Unit
         DefaultMaxHp = 30 + (level - 1) * 5f + Random.Range(-5, 5);
         MaxHp = DefaultMaxHp;
         MaxMp = Random.Range(25, 65);
-        DefaultDamage = 5 + (level - 1) * 3f + Random.Range(-2, 2);
+        DefaultDamage = 5 + (level - 1) * 4f + Random.Range(-2, 2);
         DefaultAttackSpeed = 0;
 
         base.Init();
@@ -48,7 +48,7 @@ public class Enemy:Unit
     public void GiveAward()
     {
         if(_dieOnce) return;
-        if (Random.Range(0f, 1f) < 0.5f)
+        if (Random.Range(0f, 1f) < 0.1f)
         {
             OrbSpawner.Instance.SpawnRandomOrb(transform.position);
             _dieOnce = true;
