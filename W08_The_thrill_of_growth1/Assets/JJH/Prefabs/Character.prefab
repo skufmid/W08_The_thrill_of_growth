@@ -262,6 +262,7 @@ MonoBehaviour:
   synergyType: 0
   characterType: 0
   MaxAttackspeed: 4
+  statusUIPrefab: {fileID: 2225854314058785308, guid: e1a4879e202c5674aaed624980c2489e, type: 3}
 --- !u!61 &962781822359900846
 BoxCollider2D:
   m_ObjectHideFlags: 0

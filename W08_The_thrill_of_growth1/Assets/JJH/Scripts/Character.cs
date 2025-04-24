@@ -22,6 +22,8 @@ public class Character:Unit
     public SynergyManager.CharacterType characterType;
     public float MaxAttackspeed = 4f; // 최대 공격 속도
     private CharacterCanvas characterCanvas;
+    [SerializeField] private GameObject statusUIPrefab;  // Inspector에서 할당할 UI 프리팹
+    private UnitStatusUI statusUI;  // 캐릭터의 상태 UI
     bool hasPassive = false;
 
     protected virtual void Awake()
@@ -40,11 +42,28 @@ public class Character:Unit
             Debug.Log("Passive Skill");
         }
         Manager.Battle.AddCharacter(gameObject);
+
+        // 상태 UI 생성
+        if (statusUIPrefab != null)
+        {
+            GameObject uiObj = Instantiate(statusUIPrefab, GameObject.Find("UICanvas").transform);
+            statusUI = uiObj.GetComponent<UnitStatusUI>();
+            if (statusUI != null)
+            {
+                statusUI.SetTarget(this);
+            }
+        }
     }
     void OnDisable()
     {
         Manager.Game.OnEndStage -= EndBattle;
         Manager.Game.OnStartStage -= StartBattle;
+
+        // UI 제거
+        if (statusUI != null)
+        {
+            Destroy(statusUI.gameObject);
+        }
     }
 
     protected override void Init()
@@ -123,6 +142,11 @@ public class Character:Unit
     }
     public override void Die()
     {
+        // UI 제거
+        if (statusUI != null)
+        {
+            Destroy(statusUI.gameObject);
+        }
         base.Die();
         Manager.Battle.RemoveCharacter(gameObject);
     }
