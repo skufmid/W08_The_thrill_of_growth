@@ -25,16 +25,15 @@ public class GameManager
         Manager.Battle.isInBattle = false;
         Debug.Log($"Stage Win! stageNum:{stageNum}");
         stageNum++;
+        OnEndStage?.Invoke();
         StartStore();
     }
-
     public void DefeatStage()
     {
         Manager.Battle.isInBattle = false;
         Debug.Log($"Stage Lose! stageNum:{stageNum}");
         // 게임 오버
     }
-
     public void StartStore()
     {
         StoreUI.Instance.ShowStore();

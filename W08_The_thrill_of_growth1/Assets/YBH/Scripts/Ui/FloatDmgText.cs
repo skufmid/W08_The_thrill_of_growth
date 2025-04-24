@@ -14,7 +14,7 @@ public class FloatDmgText : MonoBehaviour
 
         // 텍스트 세팅
         text.text = Mathf.FloorToInt(damage).ToString();
-        text.fontSize = Mathf.Lerp(20f, 50f, Mathf.Clamp01(damage / 1000f));
+        text.fontSize = Mathf.Lerp(20f, 50f, Mathf.Clamp01(damage / 100f));
         text.color = GetColorByDamage(damage);
 
 
@@ -32,9 +32,9 @@ public class FloatDmgText : MonoBehaviour
 
     private Color GetColorByDamage(float dmg)
     {
-        if (dmg < 1000) return Color.white;
-        else if (dmg < 10000) return Color.yellow;
-        else if (dmg < 100000) return new Color(0.8f, 0.2f, 1f); // 보라
+        if (dmg < 100) return Color.white;
+        else if (dmg < 400) return Color.yellow;
+        else if (dmg < 1000) return new Color(0.8f, 0.2f, 1f); // 보라
         else return Color.red;
     }
 }
