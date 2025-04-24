@@ -95,7 +95,11 @@ public class SkillManager : MonoBehaviour
                 break;
 
             case 10:
-
+                value = unit.Damage;
+                Targets = Manager.Battle.enemyList.ToArray();
+                skillComponent.DamageSkill(Targets, value * coefficient / 100);
+                skillComponent.ApplySelfDamage(unit.gameObject, 5f / 100); // 자해
+                break;
 
 
 
