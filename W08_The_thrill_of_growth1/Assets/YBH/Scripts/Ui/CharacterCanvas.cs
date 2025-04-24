@@ -6,18 +6,24 @@ using System.Collections;
 public class CharacterCanvas : MonoBehaviour
 {
     [Header("UI 텍스트")]
+    public TMP_Text levelText;
     public TMP_Text nameText;
     public TMP_Text hpText;
     public TMP_Text mpText;
     public TMP_Text damageText;
+    public TMP_Text damageUIText;
     public TMP_Text attackSpeedText;
+    public TMP_Text attackSpeedUIText;
     public TMP_Text allianceText;
     public TMP_Text classText;
     public TMP_Text skillDescText;
     public TMP_Text skillNameText; // 스킬 이름을 표시할 텍스트 필드
     public SkillSO skillData; // 캐릭터에 ScriptableObject로 연결된 스킬
     [Header("레벨 표시")]
-    public TMP_Text levelText;
+
+    [Header("UI 이미지")]
+    public Image skillIcon;
+    public Sprite defaultSkillIcon;
 
     Character _character = null;
     private void Start()
@@ -34,17 +40,33 @@ public class CharacterCanvas : MonoBehaviour
             SetCharacterUI(_character);
         }
     }
-    [Header("UI 이미지")]
-    public Image skillIcon;
-
     public void SetCharacterUI(Character character)
     {
         _character = character;
         if (character == null)
         {
+            levelText.text = "";
+            nameText.text = "";
+            hpText.text = "";
+            mpText.text = "";
+            damageText.text = "";
+            damageUIText.text = "";
+            attackSpeedText.text = "";
+            attackSpeedUIText.text = "";
+            allianceText.text = "";
+            classText.text = "";
+            skillDescText.text = "";
+            skillNameText.text = "";
+
+            skillIcon.sprite = defaultSkillIcon; // 스킬 아이콘 초기화
             return;
         }
 
+
+        damageUIText.text = "데미지";
+        attackSpeedUIText.text = "공격 속도";
+           
+        levelText.text = $"Lv.{character.Level}";
         nameText.text = character.Name;
         hpText.text = $"{character.Hp} / {character.MaxHp}";
         mpText.text = $"{character.Mp} / {character.MaxMp}";

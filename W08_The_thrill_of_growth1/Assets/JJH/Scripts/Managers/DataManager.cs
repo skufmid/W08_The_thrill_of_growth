@@ -51,7 +51,6 @@ public class DataManager
                     if (!projectileMap.ContainsKey(type))
                     {
                         projectileMap.Add(type, prefab);
-                        Debug.Log($"✅ {type}용 프리팹 등록됨: {prefab.name}");
                     }
                 }
             }
