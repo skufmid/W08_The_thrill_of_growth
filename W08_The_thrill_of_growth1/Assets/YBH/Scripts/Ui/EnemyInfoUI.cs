@@ -9,6 +9,7 @@ public class EnemyInfoUI : MonoBehaviour
     public TMP_Text nameText;
     public TMP_Text hpText;
     public TMP_Text mpText;
+    public TMP_Text damageUIText;
     public TMP_Text damageText;
 
     private void Start()
@@ -29,14 +30,20 @@ public class EnemyInfoUI : MonoBehaviour
     public void SetEnemyUI(Enemy enemy)
     {
         _enemy = enemy;
-        if (enemy == null)
+        if (enemy == null || enemy.enabled == false)
         {
+            nameText.text = "";
+            hpText.text = "";
+            mpText.text = "";
+            damageUIText.text = "";
+            damageText.text = "";
             return;
         }
 
         nameText.text = enemy.Name;
         hpText.text = $"{enemy.Hp} / {enemy.MaxHp}";
         mpText.text = $"{enemy.Mp} / {enemy.MaxMp}";
+        damageUIText.text = "데미지";
         damageText.text = $"{enemy.Damage:F1}";
     }
 }
