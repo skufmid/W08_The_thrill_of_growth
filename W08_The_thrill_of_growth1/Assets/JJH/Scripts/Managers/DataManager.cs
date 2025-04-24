@@ -12,6 +12,8 @@ public class DataManager
     public CharacterDataSO[] characterDataList;
     public Dictionary<SynergyType, Sprite> synergyIcon;
     public Dictionary<CharacterType, Sprite> characterIcon;
+    public Dictionary<SynergyManager.CharacterType, GameObject> projectileMap;
+    public GameObject[] projectilePrefabs; // 인덱스: CharacterType 순서
     public void Init()
     {
         Charaters = Resources.LoadAll<CharacterSO>("Characters");
@@ -36,6 +38,31 @@ public class DataManager
                 characterIcon.Add(character.charactertType, character.icon);
         }
         //ShowAll();
+        // Projectile Map 초기화
+        projectileMap = new Dictionary<SynergyManager.CharacterType, GameObject>();
+        GameObject[] projectilePrefabs = Resources.LoadAll<GameObject>("Projectiles");
+
+        foreach (GameObject prefab in projectilePrefabs)
+        {
+            foreach (SynergyManager.CharacterType type in System.Enum.GetValues(typeof(SynergyManager.CharacterType)))
+            {
+                if (prefab.name.ToLower().Contains(type.ToString().ToLower()))
+                {
+                    if (!projectileMap.ContainsKey(type))
+                    {
+                        projectileMap.Add(type, prefab);
+                        Debug.Log($"✅ {type}용 프리팹 등록됨: {prefab.name}");
+                    }
+                }
+            }
+        }
+        foreach (SynergyManager.CharacterType type in System.Enum.GetValues(typeof(SynergyManager.CharacterType)))
+        {
+            if (!projectileMap.ContainsKey(type))
+            {
+                Debug.LogWarning($"⚠️ {type}용 프리팹이 등록되지 않았습니다.");
+            }
+        }
     }
 
     public void ShowAll()

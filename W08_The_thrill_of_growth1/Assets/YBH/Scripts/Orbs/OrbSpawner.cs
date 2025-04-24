@@ -22,16 +22,31 @@ public class OrbSpawner : MonoBehaviour
         }
 
         float value = selected.useFixedValue
-            ? selected.fixedValue
-            : Random.Range(selected.minRandomValue, selected.maxRandomValue);
+        ? selected.fixedValue
+        : Random.Range(selected.minRandomValue, selected.maxRandomValue);
 
-        Vector2 screenPos = Camera.main.WorldToScreenPoint(worldPosition);
+        // 프리팹 생성
         GameObject orbGO = Instantiate(selected.prefab);
-        orbGO.transform.position = screenPos;
 
-        Orb orb = orbGO.GetComponent<Orb>();
-        orb.orbType = selected.type;
-        orb.value = value;
+        // 월드 공간 캔버스에 직접 위치 지정
+        orbGO.transform.position = worldPosition;
+
+        // 캔버스에 넣기
+        Canvas canvas = GameObject.FindObjectOfType<Canvas>();
+        orbGO.transform.SetParent(canvas.transform, true); // true: worldPosition 유지
+
+        // Orb 컴포넌트 설정
+        Orb orb = orbGO.GetComponentInChildren<Orb>();
+        if (orb != null)
+        {
+            orb.orbType = selected.type;
+            orb.value = value;
+        }
+        else
+        {
+            Debug.LogError("❗ Orb 컴포넌트를 찾을 수 없습니다.");
+        }
+
     }
 
     private OrbDropEntry GetRandomOrbEntry()
@@ -45,6 +60,11 @@ public class OrbSpawner : MonoBehaviour
 
         foreach (var entry in orbDropEntries)
         {
+            if(orbDropEntries.Length == 0)
+            {
+                Debug.LogError("❗ 오브 드랍 엔트리가 비어있습니다.");
+                return entry;
+            }
             current += entry.spawnRate;
             if (roll <= current)
                 return entry;

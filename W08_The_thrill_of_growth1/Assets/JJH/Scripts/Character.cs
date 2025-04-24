@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
@@ -18,7 +19,7 @@ public class Character:Unit
     protected Coroutine _attackRoutine;
     public SynergyManager.SynergyType synergyType;
     public SynergyManager.CharacterType characterType;
-
+    public float MaxAttackspeed = 4f; // 최대 공격 속도
     private CharacterCanvas characterCanvas;
 
     protected virtual void Awake()
@@ -52,20 +53,36 @@ public class Character:Unit
         DefaultAttackSpeed = character.AttackSpeed;
         synergyType = character.SynergyType;
         characterType = character.CharacterType;
-
         Instantiate(character.Prefabs, transform);
         animator = GetComponentInChildren<Animator>();
 
         base.Init();
+        ProjectileSetting();
         Debug.Log("Character Init");
     }
-
+    void ProjectileSetting()
+    {
+        if (projectilePrefab != null)
+        {
+        }
+        if (Manager.Data.projectileMap.TryGetValue(characterType, out GameObject prefab))
+        {
+            projectilePrefab = prefab;
+            Debug.Log($"✅ {name}의 Projectile 설정됨: {prefab.name}");
+        }
+        else
+        {
+            Debug.LogWarning($"⚠️ {characterType} 타입의 Projectile을 찾을 수 없습니다!");
+        }
+    }
     private void StartBattle()
     {
         MaxHp = DefaultMaxHp;
         Hp = MaxHp;
         Mp = 0;
         AttackSpeed = DefaultAttackSpeed;
+        if(DefaultAttackSpeed > MaxAttackspeed)
+            DefaultAttackSpeed = MaxAttackspeed;
         Damage = DefaultDamage;
         manaGain = defaultManaGain;
 
@@ -156,7 +173,7 @@ public class Character:Unit
                 {
                     BasicAttack(); // Enemy 타입으로 전달
                     LaunchProjectile();
-                    yield return new WaitForSeconds(0.3f); // 투사체 발사 후 대기
+                    yield return new WaitForSeconds(0.6f); // 투사체 발사 후 대기
                     DamageEnemy(enemy);
                 }
             }

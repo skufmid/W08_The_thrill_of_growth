@@ -17,9 +17,17 @@ public class CharacterDropZone : MonoBehaviour, IDropHandler
                 character.Damage += orb.value;
                 break;
             case OrbType.AttackSpeed:
-                character.DefaultAttackSpeed += orb.value;
-                character.AttackSpeed += orb.value;
-                break;
+                if (character.DefaultAttackSpeed < character.MaxAttackspeed)
+                {
+                    character.DefaultAttackSpeed += orb.value;
+                    character.AttackSpeed += orb.value;
+                }
+                else
+                {
+                    character.DefaultAttackSpeed = character.MaxAttackspeed;
+                    character.AttackSpeed = character.MaxAttackspeed;
+                }
+                    break;
             case OrbType.MaxHP:
                 character.DefaultMaxHp += orb.value;
                 character.MaxHp += orb.value;
