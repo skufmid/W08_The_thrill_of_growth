@@ -23,7 +23,7 @@ public class Enemy:Unit
         int level = Manager.Game.stageNum;
         Debug.Log($"{level} level 해골병사 소환");
         Name = "해골 병사";
-        DefaultMaxHp = 30 + (level - 1) * 5f + Random.Range(-5, 5);
+        DefaultMaxHp = 30 + (level - 1) * 40f + Random.Range(-5, 5);
         MaxHp = DefaultMaxHp;
         MaxMp = Random.Range(25, 65);
         DefaultDamage = 4 + (level - 1) * 4f + Random.Range(-1, 1);
