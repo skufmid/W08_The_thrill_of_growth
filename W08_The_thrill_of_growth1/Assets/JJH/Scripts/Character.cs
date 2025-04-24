@@ -20,6 +20,8 @@ public class Character:Unit
     public SynergyManager.CharacterType characterType;
 
     private CharacterCanvas characterCanvas;
+    [SerializeField] private GameObject statusUIPrefab;  // Inspector에서 할당할 UI 프리팹
+    private UnitStatusUI statusUI;  // 캐릭터의 상태 UI
 
     protected virtual void Awake()
     {
@@ -33,11 +35,29 @@ public class Character:Unit
         Init();
 
         Manager.Battle.AddCharacter(gameObject);
+        
+        // 상태 UI 생성
+        if (statusUIPrefab != null)
+        {
+            GameObject uiObj = Instantiate(statusUIPrefab, GameObject.Find("UICanvas").transform);
+            statusUI = uiObj.GetComponent<UnitStatusUI>();
+            if (statusUI != null)
+            {
+                statusUI.SetTarget(this);
+            }
+        }
     }
+
     void OnDisable()
     {
         Manager.Game.OnEndStage -= EndBattle;
         Manager.Game.OnStartStage -= StartBattle;
+
+        // UI 제거
+        if (statusUI != null)
+        {
+            Destroy(statusUI.gameObject);
+        }
     }
 
     protected override void Init()
@@ -90,7 +110,10 @@ public class Character:Unit
 
         DefaultMaxHp = character.BaseHP + (Level - 1) * character.HPPerLevel;
         DefaultDamage = character.BaseDamage + (Level - 1) * character.DamagePerLevel;
-
+        
+        // 레벨업 시 체력 갱신
+        MaxHp = DefaultMaxHp;
+        Hp = MaxHp;
     }
 
     public void StarUP()
@@ -99,6 +122,11 @@ public class Character:Unit
     }
     public override void Die()
     {
+        // UI 제거
+        if (statusUI != null)
+        {
+            Destroy(statusUI.gameObject);
+        }
         base.Die();
         Manager.Battle.RemoveCharacter(gameObject);
     }
