@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &4150504287766344339
@@ -261,7 +261,7 @@ MonoBehaviour:
   position: 0
   synergyType: 0
   characterType: 0
-  MaxAttackspeed: 4
+  statusUIPrefab: {fileID: 2225854314058785308, guid: e1a4879e202c5674aaed624980c2489e, type: 3}
 --- !u!61 &962781822359900846
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -296,7 +296,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.5}
+  m_Offset: {x: 0, y: 0.2}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}

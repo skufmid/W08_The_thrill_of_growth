@@ -21,10 +21,10 @@ public class GameManager
 
     public void WinStage()
     {
-        OnEndStage?.Invoke();
         Manager.Battle.isInBattle = false;
+        OnEndStage?.Invoke();  // 현재 스테이지에 대한 보상 지급
         Debug.Log($"Stage Win! stageNum:{stageNum}");
-        stageNum++;
+        stageNum++;  // 다음 스테이지를 위해 번호 증가
         StartStore();
     }
 
