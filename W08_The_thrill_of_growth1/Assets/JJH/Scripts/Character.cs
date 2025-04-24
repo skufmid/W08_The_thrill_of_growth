@@ -76,6 +76,7 @@ public class Character:Unit
             Debug.LogWarning($"⚠️ {characterType} 타입의 Projectile을 찾을 수 없습니다!");
         }
     }
+
     private void StartBattle()
     {
         MaxHp = DefaultMaxHp;
@@ -134,6 +135,18 @@ public class Character:Unit
         if (!Manager.Battle.isInBattle) return;
 
         animator.SetTrigger("Attack");
+        switch (characterType)
+        {
+            case SynergyManager.CharacterType.Wizard:
+                animator.SetFloat("NormalState", 1f);
+                break;
+            case SynergyManager.CharacterType.Archer:
+                animator.SetFloat("NormalState", 0.5f);
+                break;
+            default:
+                animator.SetFloat("NormalState", 0f);
+                break;
+        }
         animator.SetFloat("SkillState", 0f);
     }
     public virtual void DamageEnemy(Enemy Target, float ratio=1f)   //적에게 기본 공격 피해
