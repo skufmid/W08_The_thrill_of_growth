@@ -208,7 +208,11 @@ public class Character:Unit
 
             if (!Manager.Battle.isInBattle) yield break;
 
-            attackTarget = Manager.Battle.enemyList[0];
+            if (Manager.Battle.enemyList.Count > 0)
+            {
+                int randomIndex = UnityEngine.Random.Range(0, Manager.Battle.enemyList.Count);
+                attackTarget = Manager.Battle.enemyList[randomIndex];
+            }
             if (attackTarget != null)
             {
                 Enemy enemy = attackTarget.GetComponent<Enemy>(); 
