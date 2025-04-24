@@ -16,7 +16,7 @@ public class Manager : MonoBehaviour
     private GameManager _game = new GameManager();
     private DataManager _data = new DataManager();
     private GameSceneManager _scene = new GameSceneManager();
-    private UIManager _ui;
+    private UIManager _ui = new UIManager();
     private BattleManager _battle = new BattleManager();
     private SynergyManager _synergy = new SynergyManager();
     private TooltipManager _tooltip;
@@ -37,7 +37,7 @@ public class Manager : MonoBehaviour
         Data.Init();
         Scene.Init();
         Battle.Init();
-
+        UI.Init();
         Manager.Synergy.CanvasInit(); // 반드시 먼저!
         Synergy.Init();
         GameObject tooltipPrefab = Resources.Load<GameObject>("UI/TooltipPanel");

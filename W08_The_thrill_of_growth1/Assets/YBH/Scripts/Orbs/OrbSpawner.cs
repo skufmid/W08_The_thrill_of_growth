@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class OrbSpawner : MonoBehaviour
 {
     public static OrbSpawner Instance;
@@ -23,7 +24,7 @@ public class OrbSpawner : MonoBehaviour
 
         float value = selected.useFixedValue
         ? selected.fixedValue
-        : Random.Range(selected.minRandomValue, selected.maxRandomValue);
+    :   Mathf.Floor(Random.Range(selected.minRandomValue, selected.maxRandomValue) * 10f) / 10f;
 
         // 프리팹 생성
         GameObject orbGO = Instantiate(selected.prefab);
