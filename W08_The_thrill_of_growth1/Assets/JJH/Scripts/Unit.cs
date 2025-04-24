@@ -84,7 +84,7 @@ public abstract class Unit : MonoBehaviour
     {
         Vector3 startPos = proj.transform.position;
         Vector3 endPos = target.position;
-        float duration = 0.3f;
+        float duration = 0.6f;
         float elapsed = 0f;
 
         while (elapsed < duration)

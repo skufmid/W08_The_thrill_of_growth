@@ -4,6 +4,7 @@ using UnityEngine.TextCore.Text;
 public class Enemy:Unit
 {
     EnemyInfoUI enemyInfoUI;
+    bool _dieOnce;
     public void Awake()
     {
         enemyInfoUI = FindAnyObjectByType<EnemyInfoUI>();
@@ -46,6 +47,18 @@ public class Enemy:Unit
 
     public void GiveAward()
     {
+        if(_dieOnce) return;
+        if (Random.Range(0f, 1f) < 0.5f)
+        {
+            OrbSpawner.Instance.SpawnRandomOrb(transform.position);
+            _dieOnce = true;
+        }
+        else
+        {
+            _dieOnce = true;
+            //Manager.Game.GetAward...
+        }
+
         //Manager.Game.GetAward...
     }
 
