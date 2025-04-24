@@ -31,7 +31,6 @@ public class EnemyInfoUI : MonoBehaviour
         _enemy = enemy;
         if (enemy == null)
         {
-            Debug.LogWarning("⚠️ Enemy is null");
             return;
         }
 

@@ -57,6 +57,7 @@ public abstract class Unit : MonoBehaviour
     public virtual void TakeDamage(float damage)
     {
         Hp -= damage;
+        Manager.UI.floatingTextManager.ShowDamage(damage, transform.position);
         if (Hp <= 0)
         {
             Die();

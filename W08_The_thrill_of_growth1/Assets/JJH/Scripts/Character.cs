@@ -139,8 +139,6 @@ public class Character:Unit
     public virtual void DamageEnemy(Enemy Target, float ratio=1f)   //적에게 기본 공격 피해
     {
         Target.TakeDamage(Damage * ratio);
-        Manager.UI.floatingTextManager.ShowDamage(Damage, Target.transform.position);
-
     }
 
     #endregion 플레이어 기본공격
