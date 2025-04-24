@@ -78,6 +78,7 @@ public class SkillManager : MonoBehaviour
                 break;
 
             case 7:
+                Debug.Log("스킬 7로 효과 없음");
                 break;
 
             case 8:
@@ -88,6 +89,7 @@ public class SkillManager : MonoBehaviour
                 break;
 
             case 9:
+            case 11:
                 value = unit.MaxHp - unit.Hp;
                 Targets = new GameObject[1];
                 Targets[0] = unit.gameObject;
@@ -100,9 +102,6 @@ public class SkillManager : MonoBehaviour
                 Targets = Manager.Battle.enemyList.ToArray();
                 skillComponent.DamageSkill(Targets, value * coefficient / 100);
                 skillComponent.ApplySelfDamage(unit.gameObject, 5f / 100); // 자해
-                break;
-
-            case 11:
                 break;
 
             case 12:
