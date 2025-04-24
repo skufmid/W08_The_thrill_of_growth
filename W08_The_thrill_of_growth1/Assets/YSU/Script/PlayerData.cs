@@ -31,9 +31,20 @@ public class PlayerData : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(gameObject);
-        
-        // 게임 매니저의 스테이지 승리 이벤트 구독
-        Manager.Game.OnEndStage += OnStageCleared;
+    }
+
+    private void Start()
+    {
+        // Start에서 이벤트 구독
+        if (Manager.Game != null)
+        {
+            Manager.Game.OnEndStage += OnStageCleared;
+            Debug.Log("PlayerData: 스테이지 클리어 이벤트 구독 완료");
+        }
+        else
+        {
+            Debug.LogError("PlayerData: Manager.Game이 null입니다!");
+        }
     }
 
     [SerializeField] private int gold = 1000; // 시작 골드
@@ -56,10 +67,35 @@ public class PlayerData : MonoBehaviour
     // 스테이지 클리어 보상
     private void OnStageCleared()
     {
+        if (Manager.Game == null)
+        {
+            Debug.LogError("PlayerData: Manager.Game이 null입니다! (OnStageCleared)");
+            return;
+        }
+
         int currentStage = Manager.Game.stageNum;
-        int reward = baseStageReward + (currentStage - 1) * stageRewardIncrease;
+        int reward = baseStageReward + ((currentStage - 1) * stageRewardIncrease);
+        int previousGold = Gold;
         AddGold(reward);
-        Debug.Log($"Stage {currentStage} Cleared! Reward: {reward} Gold");
+        Debug.Log($"스테이지 {currentStage} 클리어! 보상: {reward} 골드 (이전: {previousGold} -> 현재: {Gold})");
+    }
+
+    private void OnEnable()
+    {
+        // 씬 전환 후에도 이벤트 재구독
+        if (Manager.Game != null)
+        {
+            Manager.Game.OnEndStage += OnStageCleared;
+            Debug.Log("PlayerData: OnEnable에서 이벤트 재구독");
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (Manager.Game != null)
+        {
+            Manager.Game.OnEndStage -= OnStageCleared;
+        }
     }
 
     // 골드 획득
@@ -88,14 +124,5 @@ public class PlayerData : MonoBehaviour
     public bool HasEnoughGold(int amount)
     {
         return Gold >= amount;
-    }
-
-    private void OnDestroy()
-    {
-        // 이벤트 구독 해제
-        if (Manager.Game != null)
-        {
-            Manager.Game.OnEndStage -= OnStageCleared;
-        }
     }
 } 
