@@ -19,6 +19,16 @@ public class SkillComponent: MonoBehaviour
         }
     }
 
+    public void ApplySelfDamage(GameObject _object, float ratio)
+    {
+        var unit = _object.GetComponent<Unit>();
+        if (unit != null)
+        {
+            float value = unit.MaxHp * ratio;
+            unit.TakeDamage(value); // TakeDamage 수정해야함
+        }
+    }
+
     // 고정된 값 혹은 시전자의 스탯에 따라 효과를 주는 매서드
     public void ApplyEffectAmountSkill(GameObject[] objects, EStat stat, float? duration, float amount) // duration이 null이면 계속 지속되는 효과 
     {
@@ -98,8 +108,6 @@ public class SkillComponent: MonoBehaviour
         }
     }
 
-
-
     private IEnumerator CoApplyAndRevert(Unit unit, EStat stat, float amount, float duration)
     {
         // 1) 적용
@@ -168,4 +176,6 @@ public class SkillComponent: MonoBehaviour
             
         }
     }
+
+
 }

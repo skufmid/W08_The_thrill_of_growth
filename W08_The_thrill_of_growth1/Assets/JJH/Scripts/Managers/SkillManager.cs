@@ -71,6 +71,36 @@ public class SkillManager : MonoBehaviour
             case 5:
                 skillComponent.RepeatBasicAttack(character, Manager.Battle.GetRandomEnemy(1)[0], 3, coefficient / 100);
                 break;
+
+            case 6:
+                skillComponent.DamageSkill(Manager.Battle.GetRandomEnemy(1), unit.Damage * coefficient / 100);
+                break;
+
+            case 7:
+                break;
+
+            case 8:
+                value = unit.Damage;
+                Targets = Manager.Battle.characterList.ToArray();
+                skillComponent.ApplyEffectAmountSkill(Targets, EStat.Damage, null, value * coefficient / 100);
+                skillComponent.ApplySelfDamage(unit.gameObject, 5f / 100); // 자해
+                break;
+
+            case 9:
+                value = unit.MaxHp - unit.Hp;
+                Targets = new GameObject[1];
+                Targets[0] = unit.gameObject;
+                skillComponent.ApplyEffectAmountSkill(Targets, EStat.Damage, null, value * coefficient / 100);
+                skillComponent.ApplySelfDamage(unit.gameObject, 5f / 100); // 자해
+                break;
+
+            case 10:
+
+
+
+
+
+
         }
     }
 
