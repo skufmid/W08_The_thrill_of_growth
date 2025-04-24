@@ -353,6 +353,8 @@ public class SynergyManager
             ch.manaGain = ch.defaultManaGain;
             northWard = 0f;
             SynergyHelper.Instance.StopHeal();
+            Debug.LogError("시너지클리어.");
+
 
         }
     }
@@ -365,6 +367,5 @@ public class SynergyManager
         }
 
         _usedIcons.Clear();
-        _currentIndex = 0;
-    }
+        _currentIndex = 0;    }
 }
