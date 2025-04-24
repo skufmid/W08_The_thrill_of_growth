@@ -10,7 +10,7 @@ public class PlayerData : MonoBehaviour
         {
             if (instance == null)
             {
-                instance = FindObjectOfType<PlayerData>();
+                instance = FindAnyObjectByType<PlayerData>();
                 if (instance == null)
                 {
                     GameObject go = new GameObject("PlayerData");
