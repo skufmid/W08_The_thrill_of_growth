@@ -14,7 +14,7 @@ public class UnitStatusUI : MonoBehaviour
     [SerializeField] private Transform starContainer;    // 별들을 담을 컨테이너
     [SerializeField] private float starSpacing = 15f;   // 별 사이의 간격
     
-    private Image[] starIcons = new Image[3];  // 최대 3성까지 표시
+    private Image[] starIcons = new Image[4];  // 최대 4성까지 표시 (3에서 4로 변경)
     private Unit targetUnit;
     private Character targetCharacter;
     private RectTransform rectTransform;
@@ -83,11 +83,14 @@ public class UnitStatusUI : MonoBehaviour
         }
 
         // 새로운 별 아이콘들 생성
+        float totalWidth = (starIcons.Length - 1) * starSpacing;  // 전체 너비 계산
+        float startX = -totalWidth / 2f;  // 시작 위치를 중앙 기준으로 계산
+
         for (int i = 0; i < starIcons.Length; i++)
         {
             GameObject starObj = Instantiate(starIconPrefab, starContainer);
             RectTransform starRect = starObj.GetComponent<RectTransform>();
-            starRect.anchoredPosition = new Vector2(i * starSpacing, 0);
+            starRect.anchoredPosition = new Vector2(startX + (i * starSpacing), 0);
             starIcons[i] = starObj.GetComponent<Image>();
             starObj.SetActive(false);
         }
@@ -156,12 +159,27 @@ public class UnitStatusUI : MonoBehaviour
     {
         if (starIcons == null) return;
 
-        // 현재 스타 수에 맞게 별 아이콘 표시/숨김
-        for (int i = 0; i < starIcons.Length; i++)
+        // 모든 별 비활성화
+        foreach (var star in starIcons)
+        {
+            if (star != null)
+            {
+                star.gameObject.SetActive(false);
+            }
+        }
+
+        // 활성화할 별의 중앙 정렬 위치 계산
+        float totalWidth = (starCount - 1) * starSpacing;
+        float startX = -totalWidth / 2f;
+
+        // 필요한 만큼의 별만 활성화하고 위치 조정
+        for (int i = 0; i < starCount && i < starIcons.Length; i++)
         {
             if (starIcons[i] != null)
             {
-                starIcons[i].gameObject.SetActive(i < starCount);
+                starIcons[i].gameObject.SetActive(true);
+                RectTransform starRect = starIcons[i].GetComponent<RectTransform>();
+                starRect.anchoredPosition = new Vector2(startX + (i * starSpacing), 0);
             }
         }
     }
