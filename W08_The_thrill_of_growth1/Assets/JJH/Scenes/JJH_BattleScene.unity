@@ -6243,6 +6243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa58404cdd1725845ab0e8b165e30bd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SelfDamageFX: {fileID: 0}
 --- !u!4 &1650216148
 Transform:
   m_ObjectHideFlags: 0

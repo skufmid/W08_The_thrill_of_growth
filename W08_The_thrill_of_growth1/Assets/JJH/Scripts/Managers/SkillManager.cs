@@ -1,5 +1,6 @@
 using System;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
@@ -10,6 +11,8 @@ public class SkillManager : MonoBehaviour
     public static SkillManager Instance => _instance;
 
     SkillComponent skillComponent;
+
+    public GameObject SelfDamageFX;
 
     float value;
     float coefficient;
@@ -28,11 +31,23 @@ public class SkillManager : MonoBehaviour
         skillComponent = GetComponent<SkillComponent>();
     }
 
+    private void SpawnSkillFX(GameObject SkillFX, GameObject[] Targets)
+    {
+        if (Targets.Length == 0)
+        {
+            Debug.LogError($"⚠️ {SkillFX.name}의 타겟이 없습니다!");
+        }
+        foreach (GameObject Target in Targets)
+        {
+            Instantiate(SkillFX, Target.transform);
+        }
+    }
+
     public void InvokeSkill(Unit unit, int skillId)
     {
         SkillSO skill = Array.Find(Manager.Data.Skills, s => s.Id == skillId);
         if (skillId >= 100) return;
-
+        GameObject[] Targets = new GameObject[0];
 
         Debug.Log($"Character {unit.Id} 스킬 실행");
         Character character = unit.GetComponent<Character>();
@@ -41,7 +56,9 @@ public class SkillManager : MonoBehaviour
         {
             case 0:
                 value = unit.MaxHp;
-                skillComponent.DamageSkill(Manager.Battle.GetRandomEnemy(1), unit, value * coefficient / 100);
+                Targets = Manager.Battle.GetRandomEnemy(1);
+                skillComponent.DamageSkill(Targets, unit, value * coefficient / 100);
+                SpawnSkillFX(skill.skillPrefab, Targets);
                 break;
 
             case 1:
@@ -50,31 +67,40 @@ public class SkillManager : MonoBehaviour
                 {
                     coefficient = 1.00f;
                 }
-                skillComponent.DamageSkill(Manager.Battle.GetRandomEnemy(1), unit, unit.Damage * coefficient / 100);
+                Targets = Manager.Battle.GetRandomEnemy(1);
+                skillComponent.DamageSkill(Targets, unit, unit.Damage * coefficient / 100);
+                SpawnSkillFX(skill.skillPrefab, Targets);
                 break;
 
             case 2:
-                skillComponent.DamageSkill(Manager.Battle.GetRandomEnemy(3), unit, unit.Damage * coefficient / 100);
+                Targets = Manager.Battle.GetRandomEnemy(3);
+                skillComponent.DamageSkill(Targets, unit, unit.Damage * coefficient / 100);
+                SpawnSkillFX(skill.skillPrefab, Targets);
                 break;
 
             case 3:
-                GameObject[] Targets = Manager.Battle.characterList.ToArray();
+                Targets = Manager.Battle.characterList.ToArray();
                 skillComponent.ApplyEffectEnemyPercentSkill(Targets, EStat.AttackSpeed, null, EStat.AttackSpeed, coefficient);
+                SpawnSkillFX(skill.skillPrefab, Targets);
                 break;
 
             case 4:
-                Targets = new GameObject[1];
-                Targets[0] = unit.gameObject;
+                Targets = new GameObject[] { unit.gameObject };
                 value = unit.MaxHp;
                 skillComponent.ApplyEffectAmountSkill(Targets, EStat.Hp, null, value * coefficient / 100);
+                SpawnSkillFX(skill.skillPrefab, Targets);
                 break;
 
             case 5:
-                skillComponent.RepeatBasicAttack(character, Manager.Battle.GetRandomEnemy(1)[0], 3, coefficient / 100);
+                Targets = Manager.Battle.GetRandomEnemy(1);
+                skillComponent.RepeatBasicAttack(character, Targets[0], 3, coefficient / 100);
+                SpawnSkillFX(skill.skillPrefab, Targets);
                 break;
 
             case 6:
-                skillComponent.DamageSkill(Manager.Battle.GetRandomEnemy(1), unit, unit.Damage * coefficient / 100);
+                Targets = Manager.Battle.GetRandomEnemy(1);
+                skillComponent.DamageSkill(Targets, unit, unit.Damage * coefficient / 100);
+                SpawnSkillFX(skill.skillPrefab, Targets);
                 break;
 
             case 7:
@@ -86,6 +112,8 @@ public class SkillManager : MonoBehaviour
                 Targets = Manager.Battle.characterList.ToArray();
                 skillComponent.ApplyEffectAmountSkill(Targets, EStat.Damage, null, value * coefficient / 100);
                 skillComponent.ApplySelfDamage(unit.gameObject, 5f / 100); // 자해
+                SpawnSkillFX(skill.skillPrefab, Targets);
+                SpawnSkillFX(SelfDamageFX, new[] { unit.gameObject });
                 break;
 
             case 9:
@@ -95,6 +123,8 @@ public class SkillManager : MonoBehaviour
                 Targets[0] = unit.gameObject;
                 skillComponent.ApplyEffectAmountSkill(Targets, EStat.Damage, null, value * coefficient / 100);
                 skillComponent.ApplySelfDamage(unit.gameObject, 5f / 100); // 자해
+                SpawnSkillFX(skill.skillPrefab, Targets);
+                SpawnSkillFX(SelfDamageFX, new[] { unit.gameObject });
                 break;
 
             case 10:
@@ -102,22 +132,27 @@ public class SkillManager : MonoBehaviour
                 Targets = Manager.Battle.enemyList.ToArray();
                 skillComponent.DamageSkill(Targets, unit, value * coefficient / 100);
                 skillComponent.ApplySelfDamage(unit.gameObject, 5f / 100); // 자해
+                SpawnSkillFX(skill.skillPrefab, Targets);
+                SpawnSkillFX(SelfDamageFX, new[] { unit.gameObject });
                 break;
 
             case 12:
                 value = unit.Damage;
                 skillComponent.DamageSkill(Manager.Battle.GetRandomEnemy(1), unit, value * coefficient / 100);
+                SpawnSkillFX(skill.skillPrefab, new[] { unit.gameObject });
                 break;
 
             case 13:
                 Targets = Manager.Battle.characterList.ToArray();
                 skillComponent.ApplyEffectEnemyPercentSkill(Targets, EStat.Damage, null, EStat.Damage, coefficient / 100);
+                SpawnSkillFX(skill.skillPrefab, Targets);
                 break;
 
             case 14:
                 Targets = Manager.Battle.characterList.ToArray();
                 value = unit.Damage;
                 skillComponent.ApplyEffectAmountSkill(Targets, EStat.Hp, null, value * coefficient / 100);
+                SpawnSkillFX(skill.skillPrefab, Targets);
                 break;
 
             case 15:
@@ -125,6 +160,7 @@ public class SkillManager : MonoBehaviour
                 Targets[0] = unit.gameObject;
                 value = unit.Damage;
                 skillComponent.ApplyEffectAmountSkill(Targets, EStat.AttackSpeed, null, value * coefficient / 100);
+                SpawnSkillFX(skill.skillPrefab, Targets);
                 break;
 
         }
