@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 
-public class EnemyInfoUI : MonoBehaviour
+public class EnemyStatusUI : MonoBehaviour
 {
     Enemy _enemy = null;
     [Header("UI 텍스트")]
@@ -30,7 +30,7 @@ public class EnemyInfoUI : MonoBehaviour
     public void SetEnemyUI(Enemy enemy)
     {
         _enemy = enemy;
-        if (enemy == null || enemy.enabled == false)
+        if (enemy == null || enemy.isActiveAndEnabled == false)
         {
             nameText.text = "";
             hpText.text = "";

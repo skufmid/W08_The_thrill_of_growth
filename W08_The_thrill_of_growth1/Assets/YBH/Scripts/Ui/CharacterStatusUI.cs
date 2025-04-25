@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 
-public class CharacterCanvas : MonoBehaviour
+public class CharacterStatusUI : MonoBehaviour
 {
     [Header("UI 텍스트")]
     public TMP_Text levelText;
@@ -43,7 +43,7 @@ public class CharacterCanvas : MonoBehaviour
     public void SetCharacterUI(Character character)
     {
         _character = character;
-        if (character == null)
+        if (character == null || character.isActiveAndEnabled == false)
         {
             levelText.text = "";
             nameText.text = "";

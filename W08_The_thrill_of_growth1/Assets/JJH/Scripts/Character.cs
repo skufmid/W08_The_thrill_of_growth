@@ -21,14 +21,14 @@ public class Character:Unit
     public SynergyManager.SynergyType synergyType;
     public SynergyManager.CharacterType characterType;
     public float MaxAttackspeed = 4f; // 최대 공격 속도
-    private CharacterCanvas characterCanvas;
+    private CharacterStatusUI characterCanvas;
     [SerializeField] private GameObject statusUIPrefab;  // Inspector에서 할당할 UI 프리팹
     private UnitStatusUI statusUI;  // 캐릭터의 상태 UI
     bool hasPassive = false;
 
     protected virtual void Awake()
     {
-        characterCanvas = FindAnyObjectByType<CharacterCanvas>();
+        characterCanvas = FindAnyObjectByType<CharacterStatusUI>();
     }
     protected void Start()
     {

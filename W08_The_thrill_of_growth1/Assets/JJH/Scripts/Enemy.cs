@@ -3,11 +3,11 @@ using UnityEngine.TextCore.Text;
 
 public class Enemy:Unit
 {
-    EnemyInfoUI enemyInfoUI;
+    EnemyStatusUI enemyInfoUI;
     bool _dieOnce;
     public void Awake()
     {
-        enemyInfoUI = FindAnyObjectByType<EnemyInfoUI>();
+        enemyInfoUI = FindAnyObjectByType<EnemyStatusUI>();
     }
     private void Start()
     {
