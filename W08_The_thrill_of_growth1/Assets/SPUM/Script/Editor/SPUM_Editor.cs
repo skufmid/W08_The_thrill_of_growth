@@ -2,68 +2,58 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.ShortcutManagement;
 using System.IO;
+using System.Linq;
+using UnityEngine.XR;
 
-[CustomEditor(typeof(SPUM_Manager))]
-[CanEditMultipleObjects]
+//[CustomEditor(typeof(SPUM_Manager))]
+//[CanEditMultipleObjects]
 public class SPUM_Editor : Editor
 {
     // Start is called before the first frame update
     public override void OnInspectorGUI()
     {
-        
         SPUM_Manager SPB = (SPUM_Manager)target;
 
-        bool dirUnitChk = Directory.Exists("Assets/Resources/SPUM/SPUM_Units");
-        if(dirUnitChk)
-        {
-            DirectoryInfo dirInfo = new DirectoryInfo(SPB.unitPath);
-            FileInfo[] fileInfo = dirInfo.GetFiles("*.prefab");
+        SPB.CheckVesionFile();
+        // SPB.AnimContCheck();
 
-            SPB._unitNumber.text = fileInfo.Length + " / 100";
-            
-        }
-
-        if(SPB._mainBody==null)
+        bool dirChk = Directory.Exists("Assets/Resources/SPUM/SPUM_Sprites/Items");
+        if(!dirChk)
         {
-            string texPath = "Assets/SPUM/SPUM_Sprites/BodySource/Species/0_Human/Human_1.png";
-            Texture2D t = AssetDatabase.LoadAssetAtPath<Texture2D>(texPath);
-            if(t != null)
+            EditorGUILayout.HelpBox("You need to install SPUM Sprite Data by below install buttons",MessageType.Error);
+            if (GUILayout.Button("Install Resources Data",GUILayout.Height(50))) 
             {
-                Debug.Log(t);
-                SPB._mainBody = (Texture2D)(EditorGUILayout.ObjectField(t,typeof(Texture2D), true));
-                SPB.SetBodySprite();
-            }
-            else
-            {
-                EditorGUILayout.HelpBox("There is no basic Body Sprite texutre. Please check your SPUM folder",MessageType.Error);
+                //SPB.InstallSpriteData();
             }
         }
         else
         {
-            bool dirChk = Directory.Exists("Assets/Resources/SPUM/SPUM_Sprites/Items");
-            if(!dirChk)
+            if (GUILayout.Button("Sync BodyData",GUILayout.Height(50))) 
             {
-                EditorGUILayout.HelpBox("You need to install SPUM Sprite Data by below install buttons",MessageType.Error);
-                if (GUILayout.Button("Install Resources Data",GUILayout.Height(50))) 
-                {
-                    SPB.InstallSpriteData();
-                }
+                //SPB.SetBodySprite();
             }
-            else
-            {
-                if (GUILayout.Button("Sync BodyData",GUILayout.Height(50))) 
-                {
-                    SPB.SetBodySprite();
-                }
 
-                base.OnInspectorGUI();
-                if (GUILayout.Button("Reinstall Resources Data",GUILayout.Height(50))) 
-                {
-                    SPB.InstallSpriteData();
-                }
+            base.OnInspectorGUI();
+            // if (GUILayout.Button("Reset Added Sprite",GUILayout.Height(50))) 
+            // {
+            //     SPB.SetInit();
+            // }
+
+            if (GUILayout.Button("Check All Prefab version",GUILayout.Height(50))) 
+            {
+                //SPB.CheckPrefabVersionData();
+            }
+
+            if (GUILayout.Button("Reinstall Resources Data",GUILayout.Height(50))) 
+            {
+                //SPB.InstallSpriteData();
+            }
+
+            if( SPB!=null)
+            {
             }
         }
-       
     }
 }
