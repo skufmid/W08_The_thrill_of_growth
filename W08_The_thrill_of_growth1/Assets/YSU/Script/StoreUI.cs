@@ -69,6 +69,7 @@ public class StoreUI : MonoBehaviour
     private Character draggedCharacter = null;
     private int dragStartSlot = -1;
     private Vector3 originalPosition;
+    private Vector3 mouseOffset;    // 마우스와 캐릭터 간의 오프셋
 
     private void Start()
     {
@@ -383,6 +384,11 @@ public class StoreUI : MonoBehaviour
                     dragStartSlot = GetSlotIndexFromPosition(character.transform.position);
                     originalPosition = character.transform.position;
 
+                    // 마우스와 캐릭터 위치의 차이를 저장
+                    Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    mousePos.z = character.transform.position.z;
+                    mouseOffset = character.transform.position - mousePos;
+
                     // 캐릭터를 약간 위로 띄움
                     character.transform.position += Vector3.forward * dragOffset;
                 }
@@ -392,9 +398,9 @@ public class StoreUI : MonoBehaviour
         // 드래그 중
         if (draggedCharacter != null)
         {
-            Vector3 mousePosition = Input.mousePosition;
-            mousePosition.z = Camera.main.transform.position.z * -1; // 카메라와의 거리 설정
-            draggedCharacter.transform.position = Camera.main.ScreenToWorldPoint(mousePosition);
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePos.z = draggedCharacter.transform.position.z;
+            draggedCharacter.transform.position = mousePos + mouseOffset;
         }
 
         // 드래그 종료
