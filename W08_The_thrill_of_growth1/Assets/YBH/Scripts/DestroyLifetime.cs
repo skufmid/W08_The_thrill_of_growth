@@ -5,13 +5,28 @@ public class DestroyLifetime : MonoBehaviour
 {
     public float Lifetime;
 
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Invoke("Destroy", Lifetime);
+        Invoke("DestroySelf",Lifetime);
     }
 
-    void Destroy()
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+    void DestroySelf()
     {
         Destroy(gameObject);
+    }
+    IEnumerator DestroyCoroutine()
+    {
+        yield return new WaitForSeconds(Lifetime);
+        Destroy(gameObject);
+        if(gameObject == null)
+        {
+            yield break;
+        }
     }
 }

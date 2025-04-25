@@ -315,7 +315,7 @@ public class SynergyManager
         {
             Character ch = obj.GetComponent<Character>();
             if (ch == null) continue;
-            ch.manaGain = 10 + ratio;
+            ch.manaGain = ch.defaultManaGain + ratio;
         }
     }
 
