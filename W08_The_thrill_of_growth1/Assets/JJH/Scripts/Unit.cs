@@ -105,7 +105,7 @@ public abstract class Unit : MonoBehaviour
         Destroy(proj);
     }
 
-    public virtual IEnumerator CoManaGain(float manaGain) // 마나 회복
+    public virtual IEnumerator CoManaGain(float Manas) // 마나 회복
     {
         while (true)
         {
