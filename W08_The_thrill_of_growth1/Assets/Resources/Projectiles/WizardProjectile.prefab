@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 444617574863199711}
   - component: {fileID: 4133931740945789561}
   - component: {fileID: 5364605250945529785}
+  - component: {fileID: -2437822024976072563}
   m_Layer: 0
   m_Name: WizardProjectile
   m_TagString: Untagged
@@ -74,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1156411503
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b1c6b014ee8384bde8873e80c5b3784c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -98,7 +99,7 @@ Animator:
   m_GameObject: {fileID: 8303807190289463008}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bb57b88159da34549bc0eb1d9a0342c3, type: 2}
+  m_Controller: {fileID: 9100000, guid: c438cc496dbe68c43b8c3ffd7b622160, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -110,3 +111,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-2437822024976072563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8303807190289463008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1da226fce50df74887b9fafd16a3ca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Lifetime: 1.5

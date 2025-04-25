@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5568988194775917649}
   - component: {fileID: 4048714966455357212}
   - component: {fileID: 1803536468384373057}
+  - component: {fileID: 4644926942590890336}
   m_Layer: 0
   m_Name: ArcherProjectile
   m_TagString: Untagged
@@ -110,3 +111,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4644926942590890336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5922557274334482136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1da226fce50df74887b9fafd16a3ca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Lifetime: 1.5

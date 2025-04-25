@@ -49,7 +49,7 @@ public class SynergyHelper : MonoBehaviour
                 float amount = lowestHpChar.MaxHp * healPercent;
                 lowestHpChar.Hp = Mathf.Min(lowestHpChar.Hp + amount, lowestHpChar.MaxHp);
                 Debug.Log($"💉 가장 약한 {lowestHpChar.name} 힐됨: +{amount} HP");
-                Instantiate(healEffectPrefab, lowestHpChar.transform.position, Quaternion.identity);
+                if(healEffectPrefab != null)Instantiate(healEffectPrefab, lowestHpChar.transform.position, Quaternion.identity);
             }
         }
     }
