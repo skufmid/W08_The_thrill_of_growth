@@ -150,6 +150,9 @@ public class Character:Unit
         // PartyManager에서 제거
         PartyManager.Instance.RemoveCharacterByReference(this);
         
+        // StoreUI의 파티 텍스트 업데이트
+        StoreUI.Instance.UpdatePartyTextExternal();
+        
         base.Die();
         Manager.Battle.RemoveCharacter(gameObject);
     }

@@ -46,6 +46,7 @@ public class StoreUI : MonoBehaviour
     [SerializeField] private Button storeButton;
     [SerializeField] private Button readyButton;  // 준비완료 버튼
     [SerializeField] private TextMeshProUGUI goldText;
+    [SerializeField] private TextMeshProUGUI partyText;  // 파티 인원 텍스트
     [SerializeField] private Button[] levelButtons = new Button[GRID_SIZE];
     [SerializeField] private float dragOffset = 1f;  // 드래그 시 캐릭터가 띄워질 높이
 
@@ -198,6 +199,7 @@ public class StoreUI : MonoBehaviour
             if (partyManager.PurchaseAndAddCharacter(newCharacter, slotIndex))
             {
                 UpdateAllSlotsUI();
+                UpdatePartyText();  // 파티 텍스트 업데이트 추가
                 Debug.Log($"슬롯 {slotIndex}에 캐릭터를 구매했습니다.");
             }
             else
@@ -291,6 +293,7 @@ public class StoreUI : MonoBehaviour
             {
                 playerData.AddGold(sellPrice);
                 UpdateSlotUI(slotIndex);
+                UpdatePartyText();  // 파티 텍스트 업데이트 추가
                 Debug.Log($"슬롯 {slotIndex}의 캐릭터가 판매되었습니다. 획득한 골드: {sellPrice}");
             }
         }
@@ -319,6 +322,7 @@ public class StoreUI : MonoBehaviour
         {
             UpdateSlotUI(i);
         }
+        UpdatePartyText();  // 파티 텍스트 업데이트 추가
     }
 
     private void UpdateSlotUI(int slotIndex)
@@ -543,5 +547,20 @@ public class StoreUI : MonoBehaviour
         storeButton.gameObject.SetActive(true);
         readyButton.gameObject.SetActive(false);  // 초기 상태에서는 준비완료 버튼 비활성화
         UpdateAllSlotsUI();
+    }
+
+    // 외부에서 호출 가능한 파티 텍스트 업데이트 메서드
+    public void UpdatePartyTextExternal()
+    {
+        UpdatePartyText();
+    }
+
+    private void UpdatePartyText()
+    {
+        if (partyText != null)
+        {
+            int currentParty = partyManager.GetCurrentPartySize();
+            partyText.text = $"파티 : {currentParty}/{PartyManager.MAX_PARTY_SIZE}";
+        }
     }
 }
