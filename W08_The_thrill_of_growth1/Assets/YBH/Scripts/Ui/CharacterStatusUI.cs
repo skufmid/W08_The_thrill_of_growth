@@ -87,8 +87,8 @@ public class CharacterStatusUI : MonoBehaviour
         damageText.text = $"{totalDamage:F1} (+{character.DefaultDamage:F1} + {character.Damage - character.DefaultDamage:F1})";
         attackSpeedText.text = $"{totalAttackSpeed:F2}(+{character.DefaultAttackSpeed:F1} + {character.AttackSpeed - character.DefaultAttackSpeed:F1})";
 
-        allianceText.text = character.synergyType.ToString();
-        classText.text = character.characterType.ToString();
+        allianceText.text = SynergyManager.SynergyTypeToKorean[character.synergyType];
+        classText.text = SynergyManager.CharacterTypeToKorean[character.characterType];
 
         // 스킬 정보
         SkillSO skill = System.Array.Find(Manager.Data.Skills, s => s.Id == character.Id);

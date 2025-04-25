@@ -19,6 +19,8 @@ public class BattleManager
     {
         characterList.Add(character);
         Debug.Log($"Add {Manager.Battle.characterList.Count}");
+
+        Manager.Synergy.ResetAndReevaluateSynergies(Manager.Battle.characterList);
     }
     public void AddEnemy(GameObject enemy)      //리스트에 적 추가
     {
@@ -38,6 +40,8 @@ public class BattleManager
         {
             Manager.Game.DefeatStage();
         }
+
+        Manager.Synergy.ResetAndReevaluateSynergies(Manager.Battle.characterList);
     }
     public void RemoveEnemy(GameObject enemy) // 리스트에서 적 제거
     {

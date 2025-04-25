@@ -1,4 +1,7 @@
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using UnityEngine;
+using static SynergyManager;
 
 public enum EAlliance
 {
