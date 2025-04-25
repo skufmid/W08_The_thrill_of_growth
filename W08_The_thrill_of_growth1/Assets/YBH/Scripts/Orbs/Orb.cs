@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public enum OrbType { Damage, AttackSpeed, MaxHP, ManaGain, Potion, ManaPotion }
 
-public class Orb : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class Orb : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public OrbType orbType;
     public float value;
@@ -17,8 +17,17 @@ private void Awake()
     rectTransform = GetComponent<RectTransform>();
     canvasGroup = GetComponent<CanvasGroup>();
 }
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        TooltipManager.Instance.Show(GetTooltipDescription(), eventData.position);
+    }
 
-public void OnBeginDrag(PointerEventData eventData)
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        TooltipManager.Instance.Hide();
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
 {
     canvasGroup.blocksRaycasts = false;
         string desc = GetTooltipDescription();
@@ -37,7 +46,6 @@ public void OnBeginDrag(PointerEventData eventData)
         );
 
         rectTransform.anchoredPosition = localPoint;
-        TooltipManager.Instance.Show(GetTooltipDescription(), eventData.position);
     }
     public void OnEndDrag(PointerEventData eventData)
     {

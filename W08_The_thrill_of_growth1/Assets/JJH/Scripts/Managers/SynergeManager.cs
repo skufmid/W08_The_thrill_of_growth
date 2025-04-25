@@ -16,7 +16,7 @@ public class SynergyManager
     public float northWard; // 북부시너지 카운트
     public void Init()
     {
-        Manager.Game.OnLateStartStage += () => EvaluateSynergies(Manager.Battle.characterList); // 스테이지 시작 시 시너지 평가
+        Manager.Game.OnLateStartStage += () => SynergyUpdate(); // 스테이지 시작 시 시너지 평가
     }
     public void CanvasInit()
     {
@@ -353,8 +353,6 @@ public class SynergyManager
             ch.manaGain = ch.defaultManaGain;
             northWard = 0f;
             SynergyHelper.Instance.StopHeal();
-            Debug.LogError("시너지클리어.");
-
 
         }
     }
@@ -367,5 +365,16 @@ public class SynergyManager
         }
 
         _usedIcons.Clear();
-        _currentIndex = 0;    }
+        _currentIndex = 0;
+    }
+    void SynergyUpdate()
+    {
+        if (Manager.Battle.characterList == null || Manager.Battle.characterList.Count == 0)
+        {
+            Debug.LogError("❗ characterList가 비어 있거나 null입니다.");
+            return;
+        }
+        Manager.Synergy.ResetAndReevaluateSynergies(Manager.Battle.characterList);
+    }
+
 }
