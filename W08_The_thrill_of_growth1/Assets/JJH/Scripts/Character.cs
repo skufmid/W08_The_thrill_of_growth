@@ -80,7 +80,7 @@ public class Character:Unit
         characterType = character.CharacterType;
         Instantiate(character.Prefabs, transform);
         animator = GetComponentInChildren<Animator>();
-
+        Debug.LogError(animator);
         base.Init();
         ProjectileSetting();
         Debug.Log("Character Init");
@@ -105,7 +105,7 @@ public class Character:Unit
     {
         MaxHp = DefaultMaxHp;
         Hp = MaxHp;
-        //Mp = 0;
+        Mp = 0;
         AttackSpeed = DefaultAttackSpeed;
         if(DefaultAttackSpeed > MaxAttackspeed)
             DefaultAttackSpeed = MaxAttackspeed;
@@ -205,7 +205,7 @@ public class Character:Unit
         {
             float interval = 1f / AttackSpeed;
             float basespeed = 0.5f;             //기본 투사체 속도
-            float projectileSpeed = basespeed / AttackSpeed;
+            float projectileSpeed = basespeed / AttackSpeed - 0.05f;
  
             yield return new WaitForSeconds(interval);
             
@@ -223,6 +223,7 @@ public class Character:Unit
                 if (enemy != null)
                 {
                     BasicAttack(); // Enemy 타입으로 전달
+                    yield return new WaitForSeconds(0.1f); // 투사체 발사 후 대기
                     LaunchProjectile(projectileSpeed);
                     yield return new WaitForSeconds(projectileSpeed); // 투사체 발사 후 대기
                     DamageEnemy(enemy);

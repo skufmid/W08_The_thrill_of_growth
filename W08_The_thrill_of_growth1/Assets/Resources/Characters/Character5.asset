@@ -16,7 +16,7 @@ MonoBehaviour:
   Name: "\uAD11\uC804\uC0AC"
   SynergyType: 1
   CharacterType: 1
-  Prefabs: {fileID: 3301064558140579338, guid: 546f3c78402c1d84e80bbf57abe76c0a, type: 3}
+  Prefabs: {fileID: 2928631217558981370, guid: 817c138f51866494a9fd0d878c18a5ee, type: 3}
   BaseHP: 125
   HPPerLevel: 38.79
   MP: 110

@@ -15,6 +15,6 @@ MonoBehaviour:
   synergyType: 1
   displayName: Northward
   icon: {fileID: 21300000, guid: 2ce45ef5fae144b4d82dbab6c7382694, type: 3}
-  description: "2\uC778: 5%\uD655\uB960\uB85C 1\uD68C \uB354 \uACF5\uACA9 \n3\uC778:
-    10% \uD655\uB960\uB85C 1\uD68C \uB354 \uACF5\uACA9 \n4\uC778: 20% \uD655\uB960\uB85C
-    1\uD68C \uB354 \uACF5\uACA9"
+  description: "\uBD81\uBC29\n\n2\uC778: 5%\uD655\uB960\uB85C 1\uD68C \uB354 \uACF5\uACA9
+    \n3\uC778: 10% \uD655\uB960\uB85C 1\uD68C \uB354 \uACF5\uACA9 \n4\uC778: 20%
+    \uD655\uB960\uB85C 1\uD68C \uB354 \uACF5\uACA9"
