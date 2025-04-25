@@ -200,23 +200,27 @@ public class Character:Unit
 
     protected IEnumerator AutoAttackLoop()//캐릭터 기본 공격 시스템
     {
-        float interval = 1f / AttackSpeed;
-
         while (true)
         {
+            float interval = 1f / AttackSpeed;
+            float basespeed = 0.5f;             //기본 투사체 속도
+            float projectileSpeed = basespeed / AttackSpeed;
+            Debug.LogError(interval);
+            Debug.LogError(projectileSpeed);
             yield return new WaitForSeconds(interval);
-
+            
             if (!Manager.Battle.isInBattle) yield break;
 
             attackTarget = Manager.Battle.enemyList[0];
             if (attackTarget != null)
             {
+
                 Enemy enemy = attackTarget.GetComponent<Enemy>(); 
                 if (enemy != null)
                 {
                     BasicAttack(); // Enemy 타입으로 전달
-                    LaunchProjectile(0.6f);
-                    yield return new WaitForSeconds(0.6f); // 투사체 발사 후 대기
+                    LaunchProjectile(projectileSpeed);
+                    yield return new WaitForSeconds(projectileSpeed); // 투사체 발사 후 대기
                     DamageEnemy(enemy);
                 }
             }
