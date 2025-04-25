@@ -28,4 +28,4 @@ MonoBehaviour:
     \uB2E4\uC218\uC758 \uC801\uC744 \uBE60\uB974\uAC8C \uCC98\uCE58\uD560 \uC218
     \uC788\uC9C0\uB9CC, \uC0DD\uC874\uC5D0 \uC8FC\uC758\uAC00 \uD544\uC694\uD55C
     \uC2A4\uD0AC\uC785\uB2C8\uB2E4."
-  skillPrefab: {fileID: 0}
+  skillPrefab: {fileID: 7523920101688614065, guid: 2bbd5cb457f341243aa75ec6ce739420, type: 3}

@@ -27,4 +27,4 @@ MonoBehaviour:
     \uB0AE\uC744\uC218\uB85D \uB354 \uAC15\uD574\uC9C0\uBA70, \uC790\uD574 \uC2A4\uD0AC\uC774\uB098
     \uB9AC\uC2A4\uD06C-\uB51C \uAD6C\uC870\uC640 \uB192\uC740 \uC2DC\uB108\uC9C0\uB97C
     \uD615\uC131\uD569\uB2C8\uB2E4."
-  skillPrefab: {fileID: 0}
+  skillPrefab: {fileID: 1953153633041975899, guid: abd10d958dcf3b042b42f704a0415be2, type: 3}

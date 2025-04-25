@@ -39,7 +39,7 @@ public class SkillManager : MonoBehaviour
         }
         foreach (GameObject Target in Targets)
         {
-            Instantiate(SkillFX, Target.transform);
+            Instantiate(SkillFX, Target.transform.position + SkillFX.transform.position, Quaternion.identity);
         }
     }
 
