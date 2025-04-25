@@ -112,12 +112,11 @@ public abstract class Unit : MonoBehaviour
             yield return new WaitForSeconds(1f);
             if (Manager.Battle.isInBattle == false) continue;
             Mp += manaGain;
-            if (Mp > MaxMp)
-                Mp = MaxMp;
-            if(Mp == MaxMp)
+
+            if(Mp >= MaxMp)
             {
                 SkillAttack(Id < 100 ? Id : 100); // 캐릭터는 똑같은 스킬 ID 실행, 적은 스킬 100 실행
-                Mp = 0;
+                Mp = Mp - MaxMp;
             }
         }
     }
@@ -125,5 +124,6 @@ public abstract class Unit : MonoBehaviour
     {
         float amount = Damage * Vampiric;
         Hp += amount;
+        if(Hp > MaxHp)Hp = MaxHp;
     }
 }

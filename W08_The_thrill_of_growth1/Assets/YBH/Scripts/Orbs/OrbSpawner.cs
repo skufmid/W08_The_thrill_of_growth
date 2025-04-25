@@ -32,9 +32,9 @@ public class OrbSpawner : MonoBehaviour
         // 월드 공간 캔버스에 직접 위치 지정
         orbGO.transform.position = worldPosition;
 
-        // 캔버스에 넣기
-        Canvas canvas = GameObject.FindObjectOfType<Canvas>();
-        orbGO.transform.SetParent(canvas.transform, true); // true: worldPosition 유지
+        //// 캔버스에 넣기
+        //Canvas canvas = GameObject.FindObjectOfType<Canvas>();
+        //orbGO.transform.SetParent(canvas.transform, true); // true: worldPosition 유지
 
         // Orb 컴포넌트 설정
         Orb orb = orbGO.GetComponentInChildren<Orb>();

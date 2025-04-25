@@ -105,7 +105,7 @@ public class Character:Unit
     {
         MaxHp = DefaultMaxHp;
         Hp = MaxHp;
-        Mp = 0;
+        //Mp = 0;
         AttackSpeed = DefaultAttackSpeed;
         if(DefaultAttackSpeed > MaxAttackspeed)
             DefaultAttackSpeed = MaxAttackspeed;
