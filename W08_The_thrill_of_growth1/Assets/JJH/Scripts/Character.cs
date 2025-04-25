@@ -205,8 +205,7 @@ public class Character:Unit
             float interval = 1f / AttackSpeed;
             float basespeed = 0.5f;             //기본 투사체 속도
             float projectileSpeed = basespeed / AttackSpeed;
-            Debug.LogError(interval);
-            Debug.LogError(projectileSpeed);
+ 
             yield return new WaitForSeconds(interval);
             
             if (!Manager.Battle.isInBattle) yield break;
