@@ -41,7 +41,7 @@ public class SkillManager : MonoBehaviour
         {
             case 0:
                 value = unit.MaxHp;
-                skillComponent.DamageSkill(Manager.Battle.GetRandomEnemy(1), value * coefficient / 100);
+                skillComponent.DamageSkill(Manager.Battle.GetRandomEnemy(1), unit, value * coefficient / 100);
                 break;
 
             case 1:
@@ -50,11 +50,11 @@ public class SkillManager : MonoBehaviour
                 {
                     coefficient = 1.00f;
                 }
-                skillComponent.DamageSkill(Manager.Battle.GetRandomEnemy(1), unit.Damage * coefficient / 100);
+                skillComponent.DamageSkill(Manager.Battle.GetRandomEnemy(1), unit, unit.Damage * coefficient / 100);
                 break;
 
             case 2:
-                skillComponent.DamageSkill(Manager.Battle.GetRandomEnemy(3), unit.Damage * coefficient / 100);
+                skillComponent.DamageSkill(Manager.Battle.GetRandomEnemy(3), unit, unit.Damage * coefficient / 100);
                 break;
 
             case 3:
@@ -74,7 +74,7 @@ public class SkillManager : MonoBehaviour
                 break;
 
             case 6:
-                skillComponent.DamageSkill(Manager.Battle.GetRandomEnemy(1), unit.Damage * coefficient / 100);
+                skillComponent.DamageSkill(Manager.Battle.GetRandomEnemy(1), unit, unit.Damage * coefficient / 100);
                 break;
 
             case 7:
@@ -100,13 +100,13 @@ public class SkillManager : MonoBehaviour
             case 10:
                 value = unit.Damage;
                 Targets = Manager.Battle.enemyList.ToArray();
-                skillComponent.DamageSkill(Targets, value * coefficient / 100);
+                skillComponent.DamageSkill(Targets, unit, value * coefficient / 100);
                 skillComponent.ApplySelfDamage(unit.gameObject, 5f / 100); // 자해
                 break;
 
             case 12:
                 value = unit.Damage;
-                skillComponent.DamageSkill(Manager.Battle.GetRandomEnemy(1), value * coefficient / 100);
+                skillComponent.DamageSkill(Manager.Battle.GetRandomEnemy(1), unit, value * coefficient / 100);
                 break;
 
             case 13:
@@ -134,7 +134,7 @@ public class SkillManager : MonoBehaviour
     {
         Debug.Log($"Enemy {enemy.Id} 스킬 실행");
         value = enemy.Damage;
-        skillComponent.DamageSkill(new GameObject[] { Manager.Battle.GetTargetByPositionPriority() }, value);
+        skillComponent.DamageSkill(new GameObject[] { Manager.Battle.GetTargetByPositionPriority() }, enemy, value);
         
     }
 }

@@ -121,4 +121,9 @@ public abstract class Unit : MonoBehaviour
             }
         }
     }
+    public void Bloodlust(float Damage)
+    {
+        float amount = Damage * Vampiric;
+        Hp += amount;
+    }
 }
