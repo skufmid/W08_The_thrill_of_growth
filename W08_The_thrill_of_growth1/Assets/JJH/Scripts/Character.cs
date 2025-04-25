@@ -146,6 +146,10 @@ public class Character:Unit
         {
             Destroy(statusUI.gameObject);
         }
+        
+        // PartyManager에서 제거
+        PartyManager.Instance.RemoveCharacterByReference(this);
+        
         base.Die();
         Manager.Battle.RemoveCharacter(gameObject);
     }

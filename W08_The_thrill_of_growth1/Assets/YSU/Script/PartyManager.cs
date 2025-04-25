@@ -201,6 +201,19 @@ public class PartyManager : MonoBehaviour
         return true;
     }
 
+    // 캐릭터로 슬롯 찾아서 제거
+    public bool RemoveCharacterByReference(Character character)
+    {
+        for (int i = 0; i < TOTAL_SLOTS; i++)
+        {
+            if (partySlots[i].character == character)
+            {
+                return RemoveCharacter(i);
+            }
+        }
+        return false;
+    }
+
     // 특정 포지션의 캐릭터들 가져오기
     public List<Character> GetCharactersByPosition(CombatLine.linePosition position)
     {
