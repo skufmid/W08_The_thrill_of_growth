@@ -1945,7 +1945,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1521071272}
-  - {fileID: 1211558495}
   - {fileID: 1545129663}
   - {fileID: 1964831270}
   - {fileID: 1710703368}
@@ -3248,7 +3247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9078b5ded8a09842821bb0aa89a90c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gold: 1000000
+  gold: 100
   baseStageReward: 100
   stageRewardIncrease: 50
 --- !u!4 &657107223
@@ -4601,7 +4600,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 424460822}
+  m_Father: {fileID: 1521071272}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5643,7 +5642,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1211558495}
   m_Father: {fileID: 424460822}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}

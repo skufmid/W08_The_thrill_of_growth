@@ -8,6 +8,23 @@ public class SynergyManager
 {
     public enum SynergyType { Kingdom, Northward, Dark, HolyLight }
     public enum CharacterType { Tanker, Warrior, Wizard, Archer }
+
+    public static readonly Dictionary<SynergyType, string> SynergyTypeToKorean = new Dictionary<SynergyType, string>
+{
+    { SynergyType.Kingdom, "왕국" },
+    { SynergyType.Northward, "북방" },
+    { SynergyType.Dark, "어둠" },
+    { SynergyType.HolyLight, "빛" }
+};
+
+public static readonly Dictionary<CharacterType, string> CharacterTypeToKorean = new Dictionary<CharacterType, string>
+{
+    { CharacterType.Tanker, "탱커" },
+    { CharacterType.Warrior, "전사" },
+    { CharacterType.Wizard, "마법사" },
+    { CharacterType.Archer, "궁수" }
+};
+
     Canvas _synergyCanvas;
     Image[] _synergySlots; // 슬롯 Image 배열
     int _currentIndex = 0; // 다음 사용될 슬롯 위치
