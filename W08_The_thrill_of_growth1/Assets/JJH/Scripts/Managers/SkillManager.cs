@@ -138,8 +138,9 @@ public class SkillManager : MonoBehaviour
 
             case 12:
                 value = unit.Damage;
-                skillComponent.DamageSkill(Manager.Battle.GetRandomEnemy(1), unit, value * coefficient / 100);
-                SpawnSkillFX(skill.skillPrefab, new[] { unit.gameObject });
+                Targets = Manager.Battle.GetRandomEnemy(1);
+                skillComponent.DamageSkill(Targets, unit, value * coefficient / 100);
+                SpawnSkillFX(skill.skillPrefab, Targets);
                 break;
 
             case 13:
