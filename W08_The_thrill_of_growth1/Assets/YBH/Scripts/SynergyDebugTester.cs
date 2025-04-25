@@ -20,6 +20,7 @@ public class SynergyDebugTester : MonoBehaviour
                 Debug.LogError("❗ characterList가 비어 있거나 null입니다.");
                 return;
             }
+
             Manager.Synergy.ResetAndReevaluateSynergies(Manager.Battle.characterList);
         }
     }

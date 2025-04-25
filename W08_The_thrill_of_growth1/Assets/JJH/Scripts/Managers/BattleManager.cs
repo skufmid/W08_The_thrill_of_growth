@@ -56,7 +56,7 @@ public class BattleManager
     {
         synergyManager.EvaluateSynergies(characterList);
     }
-    public GameObject GetTargetByPositionPriority() //적 우선순위 시스템
+    public GameObject GetTargetByPositionPriority()
     {
         CombatLine.linePosition[] priority = new CombatLine.linePosition[]
         {
@@ -66,12 +66,13 @@ public class BattleManager
         CombatLine.linePosition.Back
         };
 
-        // 라인 우선순위 순회
         for (int i = 0; i < priority.Length; i++)
         {
             CombatLine.linePosition currentLine = priority[i];
 
-            // 캐릭터 리스트 순회
+            // 해당 라인의 캐릭터들을 모은다
+            List<GameObject> candidates = new List<GameObject>();
+
             for (int j = 0; j < characterList.Count; j++)
             {
                 GameObject character = characterList[j];
@@ -79,8 +80,15 @@ public class BattleManager
 
                 if (ch != null && ch.position == currentLine)
                 {
-                    return character; // 첫 타겟 찾으면 바로 반환
+                    candidates.Add(character);
                 }
+            }
+
+            // 후보가 있으면 랜덤하게 선택해서 반환
+            if (candidates.Count > 0)
+            {
+                int randIndex = Random.Range(0, candidates.Count);
+                return candidates[randIndex];
             }
         }
 

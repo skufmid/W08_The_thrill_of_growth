@@ -7,7 +7,7 @@ public class SkillComponent: MonoBehaviour
 {
     // 인풋으로 들어가야 하는 것
     // 대상, 데미지, 
-    public void DamageSkill(GameObject[] objects, float amount)
+    public void DamageSkill(GameObject[] objects, Unit Caster, float amount)
     {
         foreach (GameObject _object in objects)
         {
@@ -15,7 +15,7 @@ public class SkillComponent: MonoBehaviour
             if (unit != null)
             {
                 unit.TakeDamage(amount); // TakeDamage 수정해야함
-                
+                Caster.Bloodlust(amount); // 흡혈
             }
         }
     }

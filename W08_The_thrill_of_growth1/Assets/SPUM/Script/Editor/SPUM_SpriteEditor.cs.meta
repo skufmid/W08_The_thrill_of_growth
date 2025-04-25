@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 76fd74ce2e11744e588837bc5edc4d1c
+guid: d0987ae89950d394091fa78f348489ae
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
@@ -9,3 +9,10 @@ MonoImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 188715
+  packageName: 2D Pixel Unit Maker - SPUM
+  packageVersion: 1.7.7
+  assetPath: Assets/SPUM/Script/Editor/SPUM_SpriteEditor.cs
+  uploadId: 713980

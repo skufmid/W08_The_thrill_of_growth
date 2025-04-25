@@ -94,19 +94,26 @@ public class StoreUI : MonoBehaviour
     private void InitializeUI()
     {
         Transform slotCanvas = GameObject.Find("SlotCanvas")?.transform;
+        Transform Buybuttons = GameObject.Find("BuyButton")?.transform;
         if (slotCanvas == null)
         {
             Debug.LogError("SlotCanvas를 찾을 수 없습니다!");
             enabled = false;
             return;
         }
+        if(Buybuttons == null)
+        {
+            Debug.LogError("BuyButton을 찾을 수 없습니다!");
+            enabled = false;
+            return;
+        }
 
-        InitializeButtons(slotCanvas);
+        InitializeButtons(slotCanvas, Buybuttons);
         SetupButtonListeners();
         UpdateGoldUI(playerData.Gold);
     }
 
-    private void InitializeButtons(Transform canvas)
+    private void InitializeButtons(Transform canvas, Transform Buybutton)
     {
         characterSlots = new Button[GRID_SIZE];
         sellButtons = new Button[GRID_SIZE];
@@ -118,12 +125,12 @@ public class StoreUI : MonoBehaviour
 
             // 구매 버튼 초기화
             string buyButtonName = $"{row}_{col} Buy";
-            characterSlots[i] = canvas.Find(buyButtonName)?.GetComponent<Button>();
+            characterSlots[i] = Buybutton.Find(buyButtonName)?.GetComponent<Button>();
             if (characterSlots[i] == null) Debug.LogError($"{buyButtonName}을 찾을 수 없습니다!");
 
             // 판매 버튼 초기화
             string sellButtonName = $"{row}_{col} Sell";
-            sellButtons[i] = canvas.Find(sellButtonName)?.GetComponent<Button>();
+            sellButtons[i] = Buybutton.Find(sellButtonName)?.GetComponent<Button>();
             if (sellButtons[i] == null) Debug.LogError($"{sellButtonName}을 찾을 수 없습니다!");
 
             // 레벨업 버튼 검증

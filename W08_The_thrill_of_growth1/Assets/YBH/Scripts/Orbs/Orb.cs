@@ -5,9 +5,12 @@ public enum OrbType { Damage, AttackSpeed, MaxHP, ManaGain, Potion, ManaPotion }
 
 public class Orb : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    public OrbType orbType;
-    public float value;
+    public OrbType orbType;                             //오브의 타입( 공격력, 공격속도, 최대체력, 마나회복, 포션, 마나포션 등등)
+    public float value;                                 //오브의 직접적인 수치( 퍼센트적용이나 마나재생이나 이런것들 들어가있음)
+    public static bool IsDraggingOrb = false;           //오브 드래그시 다른 UI들 다 막아버리려고만든거
 
+
+    [Header("오브에 엮이는 UI들")]
     private Canvas canvas;
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
@@ -28,8 +31,10 @@ private void Awake()
     }
 
     public void OnBeginDrag(PointerEventData eventData)
-{
-    canvasGroup.blocksRaycasts = false;
+    {
+        IsDraggingOrb = true;
+        canvasGroup.blocksRaycasts = false;
+
         string desc = GetTooltipDescription();
         TooltipManager.Instance.Show(desc, eventData.position);
     }
@@ -49,7 +54,9 @@ private void Awake()
     }
     public void OnEndDrag(PointerEventData eventData)
     {
-    canvasGroup.blocksRaycasts = true;
+        IsDraggingOrb = false;
+        canvasGroup.blocksRaycasts = true;
+
         TooltipManager.Instance.Hide();
 
     }
@@ -77,5 +84,11 @@ private void Awake()
     {
         if (TooltipManager.Instance != null)
             TooltipManager.Instance.Hide();
+        IsDraggingOrb = false; // 드래그 종료 강제 보장
+
+    }
+    private void OnDisable()
+    {
+        IsDraggingOrb = false;
     }
 }
