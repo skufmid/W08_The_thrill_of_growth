@@ -16,7 +16,7 @@ MonoBehaviour:
   Name: "\uC815\uD654\uC758\uC0AC\uC218"
   SynergyType: 3
   CharacterType: 3
-  Prefabs: {fileID: 662621147306631666, guid: 0eb3943b69402ec4588efd5b5776573c, type: 3}
+  Prefabs: {fileID: 908250807609656061, guid: 9607d35c356830940ad89845f554c8e7, type: 3}
   BaseHP: 109
   HPPerLevel: 33.83
   MP: 100
