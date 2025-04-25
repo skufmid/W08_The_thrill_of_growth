@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 
+
 public class CharacterStatusUI : MonoBehaviour
 {
     [Header("UI 텍스트")]
@@ -18,6 +19,9 @@ public class CharacterStatusUI : MonoBehaviour
     public TMP_Text classText;
     public TMP_Text skillDescText;
     public TMP_Text skillNameText; // 스킬 이름을 표시할 텍스트 필드
+    public Slider hpSlider;
+    public Slider mpSlider;
+
     public SkillSO skillData; // 캐릭터에 ScriptableObject로 연결된 스킬
     [Header("레벨 표시")]
 
@@ -57,6 +61,8 @@ public class CharacterStatusUI : MonoBehaviour
             classText.text = "";
             skillDescText.text = "";
             skillNameText.text = "";
+            hpSlider.value = 0;
+            mpSlider.value = 0;
 
             skillIcon.sprite = defaultSkillIcon; // 스킬 아이콘 초기화
             return;
@@ -70,6 +76,9 @@ public class CharacterStatusUI : MonoBehaviour
         nameText.text = character.Name;
         hpText.text = $"{character.Hp} / {character.MaxHp}";
         mpText.text = $"{character.Mp} / {character.MaxMp}";
+        
+        hpSlider.value = (float)character.Hp / character.MaxHp;
+        mpSlider.value = (float)character.Mp / character.MaxMp;
 
         float totalDamage = character.Damage;
         float totalAttackSpeed = character.AttackSpeed;

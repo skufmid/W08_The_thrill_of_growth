@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.UI;
 
 public class EnemyStatusUI : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class EnemyStatusUI : MonoBehaviour
     public TMP_Text mpText;
     public TMP_Text damageUIText;
     public TMP_Text damageText;
+    public Slider hpSlider;
+    public Slider mpSlider;
 
     private void Start()
     {
@@ -37,12 +40,19 @@ public class EnemyStatusUI : MonoBehaviour
             mpText.text = "";
             damageUIText.text = "";
             damageText.text = "";
+
+            hpSlider.value = 0;
+            mpSlider.value = 0;
             return;
         }
 
         nameText.text = enemy.Name;
         hpText.text = $"{enemy.Hp} / {enemy.MaxHp}";
         mpText.text = $"{enemy.Mp} / {enemy.MaxMp}";
+
+        hpSlider.value = (float)enemy.Hp / enemy.MaxHp;
+        mpSlider.value = (float)enemy.Mp / enemy.MaxMp;
+
         damageUIText.text = "데미지";
         damageText.text = $"{enemy.Damage:F1}";
     }
