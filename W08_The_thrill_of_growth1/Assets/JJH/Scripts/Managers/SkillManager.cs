@@ -1,8 +1,5 @@
 using System;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 
 public class SkillManager : MonoBehaviour
 {
@@ -80,7 +77,7 @@ public class SkillManager : MonoBehaviour
 
             case 3:
                 Targets = Manager.Battle.characterList.ToArray();
-                skillComponent.ApplyEffectEnemyPercentSkill(Targets, EStat.AttackSpeed, null, EStat.AttackSpeed, coefficient);
+                skillComponent.ApplyEffectEnemyPercentSkill(Targets, EStat.AttackSpeed, null, EStat.AttackSpeed, coefficient / 100);
                 SpawnSkillFX(skill.skillPrefab, Targets);
                 break;
 
