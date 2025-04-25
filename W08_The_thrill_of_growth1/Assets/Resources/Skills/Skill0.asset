@@ -18,9 +18,9 @@ MonoBehaviour:
   animation: {fileID: 0}
   Coefficients:
   - 0
+  - 30
   - 35
   - 40
-  - 45
   - 45
   SkillDescription: "\uC124\uBA85:\n\uC790\uC2E0\uC758 \uD604\uC7AC \uCCB4\uB825\uC758
     \uC77C\uC815 \uBE44\uC728\uB9CC\uD07C \uB2E8\uC77C \uC801\uC5D0\uAC8C \uD53C\uD574\uB97C
