@@ -88,13 +88,13 @@ public class SynergyManager
         {
             if (warriorCount >= 4)
             {
-                ApplyVampiricBuff(0.20f);
+                ApplyVampiricBuff(0.2f);
                 activatedTypes.Add(CharacterType.Warrior);
             }
             else if (warriorCount >= 3)
             {
                 activatedTypes.Add(CharacterType.Warrior);
-                ApplyVampiricBuff(0.10f);
+                ApplyVampiricBuff(0.1f);
             }
             else if (warriorCount >= 2)
             {
@@ -305,7 +305,8 @@ public class SynergyManager
         {
             Character ch = obj.GetComponent<Character>();
             if (ch == null || ch.characterType != CharacterType.Warrior) continue;
-            ch.Vampiric *= 1 + ratio;
+            ch.Vampiric += ratio;
+            Debug.Log("🛡️ 전사 시너지 발동!" + ch.name + ratio);
         }
     }
     private void ApplyManaBuff(float ratio)
