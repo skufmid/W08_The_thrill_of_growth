@@ -14,7 +14,10 @@ public class Orb : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandl
     private Canvas canvas;
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
-private void Awake()
+    //-------- 오브 화면밖으로 못나가게하는거-------
+    float padding = 50f; // 자유롭게 조정 가능
+
+    private void Awake()
 {
     canvas = GetComponentInParent<Canvas>();
     rectTransform = GetComponent<RectTransform>();
@@ -41,17 +44,33 @@ private void Awake()
 
     public void OnDrag(PointerEventData eventData)
     {
+        Vector2 screenPos = eventData.position;
 
+        float screenWidth = Screen.width;
+        float screenHeight = Screen.height;
+
+        // 화면 크기 안에 + 패딩 고려해서 Clamp
+        float clampedX = Mathf.Clamp(screenPos.x, padding, screenWidth - padding);
+        float clampedY = Mathf.Clamp(screenPos.y, padding, screenHeight - padding);
+
+        Vector2 clampedScreenPos = new Vector2(clampedX, clampedY);
+
+        // 스크린 좌표를 캔버스 로컬 포인트로 변환
         Vector2 localPoint;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             canvas.transform as RectTransform,
-            eventData.position,
+            clampedScreenPos,
             eventData.pressEventCamera,
             out localPoint
         );
 
         rectTransform.anchoredPosition = localPoint;
+
+        TooltipManager.Instance.Show(GetTooltipDescription(), eventData.position);
+
+     
     }
+    
     public void OnEndDrag(PointerEventData eventData)
     {
         IsDraggingOrb = false;
@@ -65,17 +84,17 @@ private void Awake()
         switch (orbType)
         {
             case OrbType.Damage:
-                return $"공격력 +{value}";
+                return $"공격력 +{value}+ 영구적 증가";
             case OrbType.AttackSpeed:
-                return $"공격속도 +{value:F2}";
+                return $"공격속도 +{value:F2}+ 영구적 증가";
             case OrbType.MaxHP:
-                return $"최대 체력 +{value}";
+                return $"최대 체력 +{value}+ 영구적 증가";
             case OrbType.ManaGain:
-                return $"마나 회복량 +{value}";
+                return $"마나재생 +{value} + 영구적 증가";
             case OrbType.Potion:
-                return $"HP 회복 +{value}%";
+                return $"일회용 체력 회복 +{value}%";
             case OrbType.ManaPotion:
-                return $"MP 회복 +{value}%";
+                return $"일회용 마나 회복 +{value}%";
             default:
                 return "알 수 없는 오브";
         }
