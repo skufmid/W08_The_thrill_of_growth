@@ -49,7 +49,15 @@ public class CharacterDropZone : MonoBehaviour, IDropHandler
                 break;
         }
 
-        Destroy(orb.gameObject);
+        if (orb.transform.parent != null)
+        {
+            Destroy(orb.transform.parent.gameObject); // 부모 오브젝트 삭제
+        }
+        else
+        {
+            Destroy(orb.gameObject); // 혹시 부모가 없으면 그냥 자신만 삭제
+        }
+
         Debug.Log($"🌟 {character.name} 성장! {orb.orbType} +{orb.value}");
     }
 }

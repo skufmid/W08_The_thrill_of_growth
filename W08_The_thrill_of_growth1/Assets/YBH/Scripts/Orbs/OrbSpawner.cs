@@ -4,7 +4,7 @@ using UnityEngine;
 public class OrbSpawner : MonoBehaviour
 {
     public static OrbSpawner Instance;
-
+    public RectTransform forbiddenArea; // 금지구역
     [SerializeField] private OrbDropEntry[] orbDropEntries;
 
     private void Awake()
@@ -46,6 +46,10 @@ public class OrbSpawner : MonoBehaviour
         else
         {
             Debug.LogError("❗ Orb 컴포넌트를 찾을 수 없습니다.");
+        }
+        if (forbiddenArea != null)
+        {
+            //orb.forbiddenArea = forbiddenArea; // 스포너에서 오브로 넘겨줌
         }
 
     }

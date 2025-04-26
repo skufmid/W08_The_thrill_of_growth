@@ -313,10 +313,11 @@ public static readonly Dictionary<CharacterType, string> CharacterTypeToKorean =
             Character ch = obj.GetComponent<Character>();
             if (ch == null || ch.synergyType != SynergyType.Kingdom) continue;
             ch.MaxHp *= 1 + ratio;
+            ch.Hp = ch.MaxHp;
             ch.Damage *= 1 + ratio;
             ch.AttackSpeed *= 1 + ratio;
             ch.Vampiric += ch.Vampiric * ratio;
-            ch.manaGain = ch.defaultManaGain * ratio;
+            ch.manaGain += ch.defaultManaGain * ratio;
         }
     }
     private void ApplyAttackSpeedBuff(float ratio)
