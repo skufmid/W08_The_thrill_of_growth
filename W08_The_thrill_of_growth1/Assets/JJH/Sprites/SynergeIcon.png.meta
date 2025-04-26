@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SynergeIcon_0: 5822510734192433094
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
