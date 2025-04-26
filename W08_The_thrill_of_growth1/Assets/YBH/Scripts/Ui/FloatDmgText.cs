@@ -33,8 +33,9 @@ public class FloatDmgText : MonoBehaviour
     private Color GetColorByDamage(float dmg)
     {
         if (dmg < 100) return Color.white;
-        else if (dmg < 400) return Color.yellow;
-        else if (dmg < 1000) return new Color(0.8f, 0.2f, 1f); // 보라
-        else return Color.red;
+        else if (dmg < 300) return Color.yellow;
+        else if (dmg < 600) return new Color (1.0f, 0.5f, 0f); // 주황
+        else if (dmg < 1000) return Color.red;
+        else return new Color(0.8f, 0.2f, 1f); // 보라
     }
 }
