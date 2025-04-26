@@ -14,7 +14,7 @@ public class FloatDmgText : MonoBehaviour
 
         // 텍스트 세팅
         text.text = Mathf.FloorToInt(damage).ToString();
-        text.fontSize = Mathf.Lerp(20f, 50f, Mathf.Clamp01(damage / 100f));
+        text.fontSize = Mathf.Lerp(20f, 50f, Mathf.Clamp01(damage / 1000f));
         text.color = GetColorByDamage(damage);
 
 
