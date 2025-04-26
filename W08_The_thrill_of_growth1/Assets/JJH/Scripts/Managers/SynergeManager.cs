@@ -167,17 +167,17 @@ public static readonly Dictionary<CharacterType, string> CharacterTypeToKorean =
             if (kingdomCount >= 4)
             {
                 activatedFactions.Add(SynergyType.Kingdom);
-                ApplyAttackBuff(0.40f);
+                ApplyAllStatsBuff(0.30f);
             }
             else if (kingdomCount >= 3)
                 {
                 activatedFactions.Add(SynergyType.Kingdom);
-                ApplyAttackBuff(0.20f);
+                ApplyAllStatsBuff(0.20f);
             }
             else if (kingdomCount >= 2)
             {
                 activatedFactions.Add(SynergyType.Kingdom);
-                ApplyAttackBuff(0.10f);
+                ApplyAllStatsBuff(0.10f);
             }
         }
         //북방 부족
@@ -300,9 +300,23 @@ public static readonly Dictionary<CharacterType, string> CharacterTypeToKorean =
         foreach (GameObject obj in Manager.Battle.characterList)
         {
             Character ch = obj.GetComponent<Character>();
-            if (ch == null|| ch.synergyType != SynergyType.Kingdom) continue;
+            if (ch == null|| ch.synergyType != SynergyType.Dark) continue;
 
             ch.Damage *= 1 + ratio;
+        }
+    }
+
+    private void ApplyAllStatsBuff(float ratio)
+    {
+        foreach (GameObject obj in Manager.Battle.characterList)
+        {
+            Character ch = obj.GetComponent<Character>();
+            if (ch == null || ch.synergyType != SynergyType.Kingdom) continue;
+            ch.MaxHp *= 1 + ratio;
+            ch.Damage *= 1 + ratio;
+            ch.AttackSpeed *= 1 + ratio;
+            ch.Vampiric += ch.Vampiric * ratio;
+            ch.manaGain = ch.defaultManaGain * ratio;
         }
     }
     private void ApplyAttackSpeedBuff(float ratio)
