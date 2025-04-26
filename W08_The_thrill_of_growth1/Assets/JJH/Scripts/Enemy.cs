@@ -5,10 +5,25 @@ public class Enemy:Unit
 {
     EnemyStatusUI enemyInfoUI;
     bool _dieOnce;
+    [SerializeField] private GameObject hpBarPrefab;  // HP바 프리팹
+    private EnemyHPBar enemyHPBar;
+
     public void Awake()
     {
         enemyInfoUI = FindAnyObjectByType<EnemyStatusUI>();
+        // HP바 생성 (UICanvas의 자식으로)
+        if (hpBarPrefab != null)
+        {
+            Canvas uiCanvas = GameObject.Find("UICanvas").GetComponent<Canvas>();
+            if (uiCanvas != null)
+            {
+                GameObject hpBar = Instantiate(hpBarPrefab, uiCanvas.transform);
+                enemyHPBar = hpBar.GetComponent<EnemyHPBar>();
+                enemyHPBar.GetComponent<EnemyHPBar>().enemy = this;
+            }
+        }
     }
+
     private void Start()
     {
         Init();
@@ -44,6 +59,10 @@ public class Enemy:Unit
     public override void Die()
     {
         base.Die();
+        if (enemyHPBar != null)
+        {
+            Destroy(enemyHPBar.gameObject);
+        }
         Manager.Battle.RemoveEnemy(gameObject);
         GiveAward();
     }
@@ -81,9 +100,7 @@ public class Enemy:Unit
     }
     public virtual void DamagePlayer()   //플레이어에게 기본 공격 피해
     {
-        
         Character player = attackTarget.GetComponent<Character>();
         player.TakeDamage(Damage);
-
     }
 }
