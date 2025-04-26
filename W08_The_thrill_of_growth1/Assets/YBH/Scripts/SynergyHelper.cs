@@ -24,7 +24,7 @@ public class SynergyHelper : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(2f);
             List<GameObject> characters = Manager.Battle.characterList;
             Character lowestHpChar = null;
             float minHpRatio = float.MaxValue;
