@@ -198,12 +198,12 @@ public static readonly Dictionary<CharacterType, string> CharacterTypeToKorean =
             if (kingdomCount >= 4)
             {
                 activatedFactions.Add(SynergyType.Kingdom);
-                ApplyAllStatsBuff(0.30f);
+                ApplyAllStatsBuff(0.20f);
             }
             else if (kingdomCount >= 3)
                 {
                 activatedFactions.Add(SynergyType.Kingdom);
-                ApplyAllStatsBuff(0.20f);
+                ApplyAllStatsBuff(0.15f);
             }
             else if (kingdomCount >= 2)
             {
