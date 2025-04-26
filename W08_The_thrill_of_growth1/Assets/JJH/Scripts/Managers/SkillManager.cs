@@ -156,7 +156,7 @@ public class SkillManager : MonoBehaviour
             case 15:
                 Targets = new GameObject[1];
                 Targets[0] = unit.gameObject;
-                value = unit.Damage;
+                value = unit.AttackSpeed;
                 skillComponent.ApplyEffectAmountSkill(Targets, EStat.AttackSpeed, null, value * coefficient / 100);
                 SpawnSkillFX(skill.skillPrefab, Targets);
                 break;

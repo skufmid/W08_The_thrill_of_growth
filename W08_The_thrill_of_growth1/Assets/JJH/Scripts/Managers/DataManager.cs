@@ -16,6 +16,7 @@ public class DataManager
     public GameObject[] projectilePrefabs; // 인덱스: CharacterType 순서
     public void Init()
     {
+        Resources.UnloadUnusedAssets();        // 데이터 초기화
         Charaters = Resources.LoadAll<CharacterSO>("Characters");
         Skills = Resources.LoadAll<SkillSO>("Skills");
         Enemies = Resources.LoadAll<EnemySO>("Enemies");
