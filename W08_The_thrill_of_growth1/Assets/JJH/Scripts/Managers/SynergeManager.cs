@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using Unity.VisualScripting;
+using TMPro;
 
 public class SynergyManager
 {
@@ -34,6 +35,7 @@ public static readonly Dictionary<CharacterType, string> CharacterTypeToKorean =
     public void Init()
     {
         Manager.Game.OnLateStartStage += () => SynergyUpdate(); // 스테이지 시작 시 시너지 평가
+        ClearSynergyUI();
     }
     public void CanvasInit()
     {
@@ -52,6 +54,13 @@ public static readonly Dictionary<CharacterType, string> CharacterTypeToKorean =
 
     public void EvaluateSynergies(List<GameObject> characterList)
     {
+        //시너지카운트
+        List<SynergyType> activeFactions = new List<SynergyType>();
+        List<int> activeFactionCounts = new List<int>();
+        //캐릭터카운트
+        List<CharacterType> activeClasses = new List<CharacterType>();
+        List<int> activeClassCounts = new List<int>();
+
         Dictionary<SynergyType, int> synergyCounts = new Dictionary<SynergyType, int>();
         Dictionary<CharacterType, int> typeCounts = new Dictionary<CharacterType, int>();
         List<CharacterType> activatedTypes = new();     // 직업 시너지 발동 목록
@@ -72,13 +81,35 @@ public static readonly Dictionary<CharacterType, string> CharacterTypeToKorean =
                 typeCounts[character.characterType] = 0;
             typeCounts[character.characterType]++;
 
-            //// 라인 포지션 카운트 (지금 사용 안함)
-            //if (!lineCounts.ContainsKey(character.position))
-            //    lineCounts[character.position] = 0;
-            //lineCounts[character.position]++;
         }
-
-
+        // (2) 조건에 맞으면 활성화 리스트에 추가
+        foreach (var pair in synergyCounts)
+        {
+            if (pair.Key == SynergyType.Dark)
+            {
+                if (pair.Value >= 4)
+                {
+                    activeFactions.Add(pair.Key);
+                    activeFactionCounts.Add(pair.Value);
+                }
+            }
+            else
+            {
+                if (pair.Value >= 2)
+                {
+                    activeFactions.Add(pair.Key);
+                    activeFactionCounts.Add(pair.Value);
+                }
+            }
+        }
+        foreach (var pair in typeCounts)
+        {
+            if (pair.Value >= 2)
+            {
+                activeClasses.Add(pair.Key);
+                activeClassCounts.Add(pair.Value);
+            }
+        }
 
         //-------- 직업 시너지 ------------------
         // 탱커 시너지
@@ -167,12 +198,12 @@ public static readonly Dictionary<CharacterType, string> CharacterTypeToKorean =
             if (kingdomCount >= 4)
             {
                 activatedFactions.Add(SynergyType.Kingdom);
-                ApplyAllStatsBuff(0.30f);
+                ApplyAllStatsBuff(0.20f);
             }
             else if (kingdomCount >= 3)
                 {
                 activatedFactions.Add(SynergyType.Kingdom);
-                ApplyAllStatsBuff(0.20f);
+                ApplyAllStatsBuff(0.15f);
             }
             else if (kingdomCount >= 2)
             {
@@ -232,33 +263,39 @@ public static readonly Dictionary<CharacterType, string> CharacterTypeToKorean =
                 SynergyHelper.Instance.RunCoroutine(0.05f);
             }
         }
-        DisplayActiveSynergies(activatedTypes, activatedFactions);
+
+        DisplayActiveSynergies(activeClasses, activeClassCounts, activeFactions, activeFactionCounts);
     }
 
 
-    private void DisplayActiveSynergies(List<CharacterType> activeTypes, List<SynergyType> activeFactions)// 팩션 Ui
+    void DisplayActiveSynergies(List<CharacterType> activeTypes, List<int> activeClassCounts, List<SynergyType> activeFactions, List<int> activeFactionCounts)// 팩션 Ui
     {
         for (int i = 0; i < activeTypes.Count; i++)
         {
+            CharacterType type = activeTypes[i];
+            int count = activeClassCounts[i];
             Sprite icon = Manager.Data.GetCharacterIcon(activeTypes[i]);
             string desc = Manager.Data.characterDataList
             .First(data => data.charactertType == activeTypes[i])
             .description;
 
-            UpdateUI(icon, desc); // 캐릭터 아이콘 표시
+            UpdateUI(icon, desc, count, 4f); // 캐릭터 아이콘 표시
         }
 
         for (int i = 0; i < activeFactions.Count; i++)
         {
+            SynergyType type = activeFactions[i];
+            int count = activeFactionCounts[i];
             Sprite icon = Manager.Data.GetSynergyIcon(activeFactions[i]);
             string desc = Manager.Data.synergyDataList
             .First(data => data.synergyType == activeFactions[i])
             .description;
+            int maxRequired = 4; // 최대 4명 기준
 
-            UpdateUI(icon, desc); // 세력 아이콘 표시
+            UpdateUI(icon, desc, count, maxRequired); // 세력 아이콘 표시
         }
     }
-    void UpdateUI(Sprite icon, string description) // UI 업데이트
+    void UpdateUI(Sprite icon, string description, float count, float maxCount) // UI 업데이트
     {
         if (_synergySlots == null)
         {
@@ -269,18 +306,42 @@ public static readonly Dictionary<CharacterType, string> CharacterTypeToKorean =
         if (_currentIndex >= _synergySlots.Length) return;   // 슬롯 넘치면 무시
 
         Image slot = _synergySlots[_currentIndex];
+
         slot.sprite = icon;
         slot.color = Color.white;                            // 표시되도록 설정
         slot.preserveAspect = true;
-
+        Image iconImage = slot.GetComponent<Image>();
+        if (iconImage != null)
+            iconImage.sprite = icon;
+        TMP_Text countText = slot.GetComponentInChildren<TMP_Text>();
+        if (countText != null)
+            countText.text = $"{count}/{maxCount}";
+        if (iconImage != null)
+        {
+            countText.color = GetSynergyColor((int)count, (int)maxCount);
+        }
         SynergySlotHover hover = slot.GetComponent<SynergySlotHover>();
         if (hover != null)
             hover.description = description;
 
-        _usedIcons.Add(icon);
+        slot.gameObject.SetActive(true);
         _currentIndex++;
     }
+    private Color GetSynergyColor(int current, int max)
+    {
+        if (max == 4) // 일반적인 경우 (2/3/4단계)
+        {
+            if (current >= 4) return Color.cyan; // 플래티넘
+            if (current >= 3) return Color.yellow; // 골드
+            if (current >= 2) return Color.gray; // 실버
+        }
+        else // 4명 고정 시너지 (ex: 어둠 시너지)
+        {
+            if (current >= max) return Color.cyan; // 4명 딱 되면 플래티넘
+        }
 
+        return Color.white; // 그 외 기본색
+    }
     //------------------ 시너지 효과 적용 -----------------
     private void ApplyHpBuff(float ratio)
     {
@@ -393,6 +454,7 @@ public static readonly Dictionary<CharacterType, string> CharacterTypeToKorean =
     {
         foreach (var slot in _synergySlots)
         {
+            slot.gameObject.SetActive(false); // 'SetActive'는 GameObject에 정의되어 있으므로 gameObject를 사용해야 합니다.
             slot.sprite = null;
             slot.color = new Color(1, 1, 1, 0); // 안 보이게 처리
         }

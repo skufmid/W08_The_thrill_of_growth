@@ -49,6 +49,7 @@ public class StoreUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI partyText;  // 파티 인원 텍스트
     [SerializeField] private Button[] levelButtons = new Button[GRID_SIZE];
     [SerializeField] private float dragOffset = 1f;  // 드래그 시 캐릭터가 띄워질 높이
+    [SerializeField] private Button sellModeButton; // 판매 모드 버튼
 
     [Header("Character Settings")]
     [SerializeField] private Character characterPrefab;
@@ -66,16 +67,23 @@ public class StoreUI : MonoBehaviour
     private int selectedSlotIndex = -1;
     private bool isStoreOpen = false;
     private bool isReady = false;  // 준비완료 상태
+    private bool isSellMode = false; // 판매 모드 여부
 
     private Character draggedCharacter = null;
     private int dragStartSlot = -1;
     private Vector3 originalPosition;
     private Vector3 mouseOffset;    // 마우스와 캐릭터 간의 오프셋
 
+    [Header("Store Panel")]
+    [SerializeField] private GameObject storePanel;
+
     private void Start()
     {
         InitializeManagers();
         InitializeUI();
+        if (sellModeButton != null)
+            sellModeButton.onClick.AddListener(ToggleSellMode);
+        UpdateSellModeButtonText(); // 시작 시 텍스트 초기화
     }
 
     private void InitializeManagers()
@@ -313,6 +321,8 @@ public class StoreUI : MonoBehaviour
         storeButton.gameObject.SetActive(!isStoreOpen);
         readyButton.gameObject.SetActive(isStoreOpen);  // 상점이 열리면 준비완료 버튼 활성화
         isReady = false;  // 상점을 열 때마다 준비 상태 초기화
+        if (storePanel != null)
+            storePanel.SetActive(isStoreOpen); // 상점 패널 표시/숨김
         UpdateAllSlotsUI();
     }
 
@@ -349,17 +359,18 @@ public class StoreUI : MonoBehaviour
 
         if (characterSlots[slotIndex] != null)
         {
-            characterSlots[slotIndex].gameObject.SetActive(isStoreOpen && !isOccupied);
+            characterSlots[slotIndex].gameObject.SetActive(isStoreOpen && !isOccupied && !isSellMode);
         }
 
         if (levelButtons[slotIndex] != null)
         {
-            levelButtons[slotIndex].gameObject.SetActive(isStoreOpen && isOccupied && character != null && character.Level < MAX_LEVEL);
+            levelButtons[slotIndex].gameObject.SetActive(isStoreOpen && isOccupied && character != null && character.Level < MAX_LEVEL && !isSellMode);
         }
 
         if (sellButtons[slotIndex] != null)
         {
-            sellButtons[slotIndex].gameObject.SetActive(isStoreOpen && isOccupied);
+            // 판매 모드일 때만 판매 버튼 활성화
+            sellButtons[slotIndex].gameObject.SetActive(isStoreOpen && isOccupied && isSellMode);
         }
     }
 
@@ -523,8 +534,9 @@ public class StoreUI : MonoBehaviour
         readyButton.gameObject.SetActive(false);  // 준비완료 버튼 비활성화
         storeButton.gameObject.SetActive(false);  // 상점 버튼 비활성화
         isStoreOpen = false;  // 상점 상태를 닫힘으로 설정
+        if (storePanel != null)
+            storePanel.SetActive(false); // 상점 패널 숨김
         UpdateAllSlotsUI();  // 모든 버튼 상태 업데이트
-
         Manager.Game.StartStage(); // 스테이지 시작
         Debug.Log("준비 완료! 스테이지 시작!");
     }
@@ -561,6 +573,25 @@ public class StoreUI : MonoBehaviour
         {
             int currentParty = partyManager.GetCurrentPartySize();
             partyText.text = $"파티 : {currentParty}/{PartyManager.MAX_PARTY_SIZE}";
+        }
+    }
+
+    private void ToggleSellMode()
+    {
+        isSellMode = !isSellMode;
+        UpdateSellModeButtonText();
+        UpdateAllSlotsUI();
+    }
+
+    private void UpdateSellModeButtonText()
+    {
+        if (sellModeButton != null)
+        {
+            TextMeshProUGUI btnText = sellModeButton.GetComponentInChildren<TextMeshProUGUI>();
+            if (btnText != null)
+            {
+                btnText.text = isSellMode ? "배치모드전환" : "판매";
+            }
         }
     }
 }
