@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.94117653, b: 0.87843144, a: 0.78039217}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -94,7 +94,7 @@ MonoBehaviour:
   value: 50
   forbiddenArea: {fileID: 0}
   canvasParent: {fileID: 0}
-  orbEffectColor: {r: 0, g: 0.9411765, b: 0.8784314, a: 0.8235294}
+  orbEffectColor: {r: 0, g: 0.9411765, b: 0.4487803, a: 0.8235294}
   padding: 20
 --- !u!225 &239508744063105239
 CanvasGroup:
