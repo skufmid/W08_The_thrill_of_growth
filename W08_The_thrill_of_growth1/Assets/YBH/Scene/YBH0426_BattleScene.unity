@@ -1758,6 +1758,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 14.200012
       objectReference: {fileID: 0}
+    - target: {fileID: 6478147421101179167, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6799155645124699217, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
