@@ -31,3 +31,10 @@ public enum EStat
     Damage,
     LostHPRatio,
 }
+
+public enum EStoreMode
+{
+    Hire,
+    Sell,
+    Rest,
+}

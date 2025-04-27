@@ -67,7 +67,9 @@ public class StoreUI : MonoBehaviour
     private int selectedSlotIndex = -1;
     private bool isStoreOpen = false;
     private bool isReady = false;  // 준비완료 상태
-    private bool isSellMode = false; // 판매 모드 여부
+
+
+    private EStoreMode storeMode; // 상점의 모드
 
     private Character draggedCharacter = null;
     private int dragStartSlot = -1;
@@ -81,9 +83,6 @@ public class StoreUI : MonoBehaviour
     {
         InitializeManagers();
         InitializeUI();
-        if (sellModeButton != null)
-            sellModeButton.onClick.AddListener(ToggleSellMode);
-        UpdateSellModeButtonText(); // 시작 시 텍스트 초기화
     }
 
     private void InitializeManagers()
@@ -359,19 +358,21 @@ public class StoreUI : MonoBehaviour
 
         if (characterSlots[slotIndex] != null)
         {
-            characterSlots[slotIndex].gameObject.SetActive(isStoreOpen && !isOccupied && !isSellMode);
+            characterSlots[slotIndex].gameObject.SetActive(isStoreOpen && !isOccupied && storeMode == EStoreMode.Hire);
         }
 
         if (levelButtons[slotIndex] != null)
         {
-            levelButtons[slotIndex].gameObject.SetActive(isStoreOpen && isOccupied && character != null && character.Level < MAX_LEVEL && !isSellMode);
+            levelButtons[slotIndex].gameObject.SetActive(isStoreOpen && isOccupied && character != null && character.Level < MAX_LEVEL && storeMode == EStoreMode.Hire);
         }
 
         if (sellButtons[slotIndex] != null)
         {
             // 판매 모드일 때만 판매 버튼 활성화
-            sellButtons[slotIndex].gameObject.SetActive(isStoreOpen && isOccupied && isSellMode);
+            sellButtons[slotIndex].gameObject.SetActive(isStoreOpen && isOccupied && storeMode == EStoreMode.Sell);
         }
+
+        // 이곳에 회복 버튼 추가
     }
 
     private void ShowWarningMessage(string message)
@@ -576,22 +577,9 @@ public class StoreUI : MonoBehaviour
         }
     }
 
-    private void ToggleSellMode()
+    private void ToggleStoreMode(EStoreMode storeMode)
     {
-        isSellMode = !isSellMode;
-        UpdateSellModeButtonText();
+        this.storeMode = storeMode;
         UpdateAllSlotsUI();
-    }
-
-    private void UpdateSellModeButtonText()
-    {
-        if (sellModeButton != null)
-        {
-            TextMeshProUGUI btnText = sellModeButton.GetComponentInChildren<TextMeshProUGUI>();
-            if (btnText != null)
-            {
-                btnText.text = isSellMode ? "배치모드전환" : "판매";
-            }
-        }
     }
 }
