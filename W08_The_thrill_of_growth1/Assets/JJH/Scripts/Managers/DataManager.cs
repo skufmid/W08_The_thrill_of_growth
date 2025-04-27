@@ -10,6 +10,7 @@ public class DataManager
     public EnemySO[] Enemies;
     public SynergyDataSO[] synergyDataList;
     public CharacterDataSO[] characterDataList;
+    public Sprite[] CharaterSprites;
     public Dictionary<SynergyType, Sprite> synergyIcon;
     public Dictionary<CharacterType, Sprite> characterIcon;
     public Dictionary<SynergyManager.CharacterType, GameObject> projectileMap;
@@ -22,6 +23,8 @@ public class DataManager
         Enemies = Resources.LoadAll<EnemySO>("Enemies");
         synergyDataList = Resources.LoadAll<SynergyDataSO>("Synergy");
         characterDataList = Resources.LoadAll<CharacterDataSO>("CharacterSynergy");
+        CharaterSprites = Resources.LoadAll<Sprite>("CharacterSprites");
+        CharaterSprites = CharaterSprites.OrderBy(sprite => sprite.name).ToArray();
         // 딕셔너리 초기화
         synergyIcon = new Dictionary<SynergyType, Sprite>();
         characterIcon = new Dictionary<CharacterType, Sprite>();

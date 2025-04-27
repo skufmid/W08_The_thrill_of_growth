@@ -1,12 +1,20 @@
+using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
+using UnityEngine.UI;
 
 public class RightStoreUI : MonoBehaviour
 {
     private PartyManager partyManager;
     private PlayerData playerData;
     private StoreUI storeUI;
+
+    public Image mercenarySprite;
+    public TextMeshProUGUI allianceText;
+    public TextMeshProUGUI classText;
+    public TextMeshProUGUI mercenaryInfoText;
+
 
     private void Awake()
     {
@@ -79,15 +87,23 @@ public class RightStoreUI : MonoBehaviour
 
     private void DisplayPurchaseableMercenary()
     {
-        int newId = SetRandomMercenary();
-        int price = CalCulateOriginalPrice();
+        int characterId = SetRandomMercenary();
+        int orignalPrice = CalCulateOriginalPrice();
+        int changedPrice = (int)(orignalPrice * 0.8f);
 
-
+        CharacterSO character = Array.Find(Manager.Data.Charaters, c => c.Id == characterId);
+        Debug.Log(Manager.Data.CharaterSprites.Length);
+        Debug.Log(characterId);
+        mercenarySprite.sprite = Manager.Data.CharaterSprites[characterId];
+        allianceText.text = SynergyManager.SynergyTypeToKorean[character.SynergyType];
+        classText.text = SynergyManager.CharacterTypeToKorean[character.CharacterType];
+        mercenaryInfoText.text = @$"Lv 00\t{character.Name}
+Gold: <s><i>{orignalPrice}</i></s> <b><size=46>→</size> <color=#FF4040>{changedPrice}</b></color>";
     }
 
     private int CalCulateOriginalPrice()
     {
-        return 0;
+        return 999;
     }
 
     private int SetRandomMercenary()
@@ -103,13 +119,13 @@ public class RightStoreUI : MonoBehaviour
         }
 
         // 중복되지 않는 랜덤 ID 생성 (0부터 시작)
-        int newId;
+        int characterId;
         do
         {
-            newId = Random.Range(0, StoreUI.MAX_CHARACTER_ID + 1);  // 0부터 시작하도록 수정
-        } while (existingIds.Contains(newId));
+            characterId = UnityEngine.Random.Range(0, StoreUI.MAX_CHARACTER_ID + 1);  // 0부터 시작하도록 수정
+        } while (existingIds.Contains(characterId));
 
         // 생성된 캐릭터에 ID 설정
-        return newId;
+        return characterId;
     }
 }

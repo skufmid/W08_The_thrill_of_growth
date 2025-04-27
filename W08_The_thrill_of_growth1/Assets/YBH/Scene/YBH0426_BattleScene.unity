@@ -549,6 +549,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1144898844 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1818840629437089099, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
+  m_PrefabInstance: {fileID: 1767217100329776945}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1161146169
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,6 +648,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c67a521aff088b46b727f32061d109a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1582677022 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2393302785995170688, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
+  m_PrefabInstance: {fileID: 1767217100329776945}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1645052123 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6395227152911070203, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
+  m_PrefabInstance: {fileID: 1767217100329776945}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1650216146
@@ -1053,6 +1086,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50eced62f71fca742a4a41fa3815a2f3, type: 3}
+--- !u!114 &1900278177 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5164240986091810422, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
+  m_PrefabInstance: {fileID: 1767217100329776945}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1948608950
 GameObject:
   m_ObjectHideFlags: 0
@@ -1235,6 +1279,27 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &2114736805 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1516750326294180011, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
+  m_PrefabInstance: {fileID: 1767217100329776945}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1495349205645673088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114736805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f212ea7e851962744a0794cc6fd8cdc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mercenarySprite: {fileID: 1645052123}
+  allianceText: {fileID: 1582677022}
+  classText: {fileID: 1144898844}
+  mercenaryInfoText: {fileID: 1900278177}
 --- !u!1001 &1767217100329776945
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1311,10 +1376,17 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8005208341130960449, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
+      propertyPath: m_Name
+      value: MercenarInfo
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1516750326294180011, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1495349205645673088}
   m_SourcePrefab: {fileID: 100100000, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
 --- !u!1001 &4212546168442753898
 PrefabInstance:
