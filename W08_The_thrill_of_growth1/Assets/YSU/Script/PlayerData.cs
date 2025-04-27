@@ -25,6 +25,8 @@ public class PlayerData : MonoBehaviour
         }
     }
 
+    private PartyManager partyManager;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -40,6 +42,7 @@ public class PlayerData : MonoBehaviour
     }
     private void Start()
     {
+        partyManager = PartyManager.Instance;
         Manager.Game.OnEndStage += OnStageCleared;
     }
     
@@ -91,6 +94,21 @@ public class PlayerData : MonoBehaviour
     public bool HasEnoughGold(int amount)
     {
         return Gold >= amount;
+    }
+
+    public bool CanPurchaseCharacter()
+    {
+        if (partyManager.IsPartyFull())
+        {
+            return false;
+        }
+
+        if (!HasEnoughGold(partyManager.GetCharacterPrice()))
+        {
+            return false;
+        }
+
+        return true;
     }
 
     private void OnDestroy()

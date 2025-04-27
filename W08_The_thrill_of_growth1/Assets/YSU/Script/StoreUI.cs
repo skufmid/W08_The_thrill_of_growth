@@ -9,11 +9,11 @@ using Unity.VisualScripting;
 
 public class StoreUI : MonoBehaviour
 {
-    private const int GRID_SIZE = 9;
+    public const int GRID_SIZE = 9;
     private const int MAX_LEVEL = 30;
     private const int GRID_ROWS = 3;
     private const int GRID_COLS = 3;
-    private const int MAX_CHARACTER_ID = 15; // 최대 캐릭터 ID 범위
+    public const int MAX_CHARACTER_ID = 15; // 최대 캐릭터 ID 범위
 
 
     private static StoreUI instance;
@@ -55,8 +55,8 @@ public class StoreUI : MonoBehaviour
     [SerializeField] private Button sellModeButton; // 판매 모드 버튼
 
     [Header("Character Settings")]
-    [SerializeField] private Character characterPrefab;
-    [SerializeField] private Transform[] spawnPositions;
+    [SerializeField] public Character characterPrefab;
+    [SerializeField] public Transform[] spawnPositions;
     [SerializeField] private int sellPrice = 50;
     [SerializeField] private int baseLevelUpPrice = 100;  // 기본 레벨업 가격
     [SerializeField] private int levelUpPriceIncrease = 50;  // 레벨당 증가하는 가격
@@ -216,7 +216,7 @@ public class StoreUI : MonoBehaviour
 
     private void OnCharacterSlotClicked(int slotIndex)
     {
-        if (!CanPurchaseCharacter())
+        if (!playerData.CanPurchaseCharacter())
             return;
 
         if (TrySpawnCharacter(slotIndex, out Character newCharacter))
@@ -234,22 +234,6 @@ public class StoreUI : MonoBehaviour
         }
     }
 
-    private bool CanPurchaseCharacter()
-    {
-        if (partyManager.IsPartyFull())
-        {
-            ShowWarningMessage("파티가 가득 찼습니다!");
-            return false;
-        }
-
-        if (!playerData.HasEnoughGold(partyManager.GetCharacterPrice()))
-        {
-            ShowWarningMessage("골드가 부족합니다!");
-            return false;
-        }
-
-        return true;
-    }
 
     private bool TrySpawnCharacter(int slotIndex, out Character character)
     {
@@ -366,7 +350,7 @@ public class StoreUI : MonoBehaviour
         UpdateAllSlotsUI();
     }
 
-    private void UpdateAllSlotsUI()
+    public void UpdateAllSlotsUI()
     {
         for (int i = 0; i < GRID_SIZE; i++)
         {
