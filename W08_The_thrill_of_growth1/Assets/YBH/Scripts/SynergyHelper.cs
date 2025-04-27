@@ -10,6 +10,7 @@ public class SynergyHelper : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+
     }
 
     public void RunCoroutine(float healPercent)
@@ -22,8 +23,15 @@ public class SynergyHelper : MonoBehaviour
 
     public IEnumerator LightHeal(float healPercent)
     {
+
         while (true)
         {
+            if (!Manager.Battle.isInBattle)
+            {
+                yield return null; // 전투 중이 아니면 다음 프레임까지 대기
+                continue;
+            }
+
             yield return new WaitForSeconds(2f);
             List<GameObject> characters = Manager.Battle.characterList;
             Character lowestHpChar = null;
@@ -61,4 +69,5 @@ public class SynergyHelper : MonoBehaviour
             healRoutine = null;
         }
     }
+
 }
