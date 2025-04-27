@@ -19,6 +19,7 @@ public abstract class Unit : MonoBehaviour
     public float AttackSpeed;       //공격속도
     public float DefaultDamage;     //기본공격력
     public float Damage;            //공격력
+    public float DefaultVampiric;   //기본흡혈수치
     public float Vampiric;          //흡혈수치
     //애니메이션
     public Animator animator;

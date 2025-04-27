@@ -27,7 +27,7 @@ public class CharacterDropZone : MonoBehaviour, IDropHandler
                     character.DefaultAttackSpeed = character.MaxAttackspeed;
                     character.AttackSpeed = character.MaxAttackspeed;
                 }
-                    break;
+                break;
             case OrbType.MaxHP:
                 character.DefaultMaxHp += orb.value;
                 character.MaxHp += orb.value;
@@ -39,24 +39,21 @@ public class CharacterDropZone : MonoBehaviour, IDropHandler
                 break;
 
             case OrbType.Potion:
-                float hpHeal = character.MaxHp * (orb.value / 100f); // 💊 퍼센트 회복
+                float hpHeal = character.MaxHp * (orb.value / 100f); // 💊 퍼센트 회복  
                 character.Hp = Mathf.Clamp(character.Hp + hpHeal, 0, character.MaxHp);
                 break;
 
             case OrbType.ManaPotion:
-                float mpHeal = character.MaxMp * (orb.value / 100f); // 🔵 퍼센트 회복
+                float mpHeal = character.MaxMp * (orb.value / 100f); // 🔵 퍼센트 회복  
                 character.Mp = Mathf.Clamp(character.Mp + mpHeal, 0, character.MaxMp);
+                break;
+            case OrbType.Vampiric:
+                character.DefaultVampiric += orb.value; 
+                character.Vampiric = character.DefaultVampiric; 
                 break;
         }
 
-        if (orb.transform.parent != null)
-        {
-            Destroy(orb.transform.parent.gameObject); // 부모 오브젝트 삭제
-        }
-        else
-        {
-            Destroy(orb.gameObject); // 혹시 부모가 없으면 그냥 자신만 삭제
-        }
+        Destroy(orb.gameObject); // 혹시 부모가 없으면 그냥 자신만 삭제  
 
         Debug.Log($"🌟 {character.name} 성장! {orb.orbType} +{orb.value}");
     }

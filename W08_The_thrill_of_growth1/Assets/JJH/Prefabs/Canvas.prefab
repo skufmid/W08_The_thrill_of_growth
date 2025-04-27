@@ -3547,6 +3547,8 @@ MonoBehaviour:
   skillNameText: {fileID: 5341195651278646035}
   hpSlider: {fileID: 5133861160698102959}
   mpSlider: {fileID: 2228061772275224336}
+  allianceButton: {fileID: 151634584319026741}
+  classButton: {fileID: 7615199239612814346}
   skillData: {fileID: 0}
   skillIcon: {fileID: 228894262327354939}
   defaultSkillIcon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
@@ -4860,7 +4862,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &301689848836862111
 RectTransform:
   m_ObjectHideFlags: 0

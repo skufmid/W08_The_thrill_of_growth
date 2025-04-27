@@ -69,17 +69,18 @@ public class Enemy:Unit
 
     public void GiveAward()
     {
-        if(_dieOnce) return;
+        Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
+
+        if (_dieOnce) return;
         if (Random.Range(0f, 1f) < 0.1f)
         {
-            OrbSpawner.Instance.SpawnRandomOrb(transform.position);
-            _dieOnce = true;
+            OrbSpawner.Instance.SpawnRandomOrb(screenPosition);
         }
         else
         {
-            _dieOnce = true;
             //Manager.Game.GetAward...
         }
+        _dieOnce = true;
 
         //Manager.Game.GetAward...
     }
