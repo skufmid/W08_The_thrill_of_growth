@@ -48,7 +48,7 @@ public class SkillManager : MonoBehaviour
 
         Debug.Log($"Character {unit.Id} 스킬 실행");
         Character character = unit.GetComponent<Character>();
-        coefficient = Manager.Data.Skills[skillId].Coefficients[character.Star];
+        coefficient = skill.Coefficients[character.Star];
         switch (skillId)
         {
             case 0:

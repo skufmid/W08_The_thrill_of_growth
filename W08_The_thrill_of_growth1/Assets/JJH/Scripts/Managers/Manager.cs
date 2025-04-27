@@ -28,7 +28,6 @@ public class Manager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             Init();
         }
-        _data.ShowAll();
     }
 
     private void Init()
