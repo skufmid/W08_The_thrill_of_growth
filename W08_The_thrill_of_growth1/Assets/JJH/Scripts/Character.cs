@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
@@ -29,6 +30,8 @@ public class Character : Unit
     ParticleSystem particleNorth;
     ParticleSystem particleVamp;
     ParticleSystem particleHeal;
+    ParticleSystem particleOrb;
+
     protected virtual void Awake()
     {
         characterCanvas = FindAnyObjectByType<CharacterStatusUI>();
@@ -39,7 +42,6 @@ public class Character : Unit
             {
                 particleNorth = ParticleSystem;
             }
-
             if (ParticleSystem.gameObject.name == "Vampiric")
             {
                 particleVamp = ParticleSystem;
@@ -49,6 +51,10 @@ public class Character : Unit
             {
                 particleHeal = ParticleSystem;
             }
+            if (ParticleSystem.gameObject.name == "OrbEffect")
+                {
+                    particleOrb = ParticleSystem;
+                }
         }
     }
     protected void Start()
@@ -352,9 +358,7 @@ public class Character : Unit
     {
         if (particleNorth != null)
         {
-            particleNorth.Stop(); // Stop the particle system  
-            var mainModule = particleNorth.main;
-            mainModule.startColor = new Color(255,255,255,0.5f); // Example color adjustment  
+            particleNorth.Stop();
         }
     }
     void BloodLustActive()
@@ -366,9 +370,7 @@ public class Character : Unit
     }
     void BloodLustDeactive()
     {
-            particleVamp.Stop(); // Start the particle system  
-            var mainModule = particleVamp.main;
-            mainModule.startColor = new Color(255, 255, 255, 0.5f); // Example color adjustment  
+            particleVamp.Stop();
     }
     public void HealEffectActive()
     {
@@ -382,11 +384,20 @@ public class Character : Unit
     }
     void HealEffectDeactive()
     {
+            particleHeal.Stop(); 
+    }
+    public void OrbEffectActive(Color effectColor)
+    {
         if (particleHeal != null)
         {
-            particleHeal.Stop(); // Start the particle system  
-            var mainModule = particleHeal.main;
-            mainModule.startColor = new Color(255, 255, 255, 0.5f); // Example color adjustment  
+            var mainModule = particleOrb.main;
+            mainModule.startColor = effectColor; // Example color adjustment  
+            particleOrb.Play(); // Start the particle system  
         }
+        Invoke("OrbEffectDeactive", 1f);
+    }
+    void OrbEffectDeactive()
+    {
+            particleOrb.Stop(); 
     }
 }

@@ -15,6 +15,7 @@ public class Orb : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandl
     public Canvas canvasParent;
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
+    public Color orbEffectColor;
     //-------- 오브 화면밖으로 못나가게하는거-------
     [SerializeField] float padding = 20f; // 자유롭게 조정 가능
 
