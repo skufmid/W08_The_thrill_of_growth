@@ -9,7 +9,7 @@ using static UnityEngine.EventSystems.EventTrigger;
 using static UnityEngine.GraphicsBuffer;
 
 
-public class Character:Unit
+public class Character : Unit
 {
     public int Level = 1;
     public int Star = 1;
@@ -26,9 +26,30 @@ public class Character:Unit
     private UnitStatusUI statusUI;  // 캐릭터의 상태 UI
     bool hasPassive = false;
 
+    ParticleSystem particleNorth;
+    ParticleSystem particleVamp;
+    ParticleSystem particleHeal;
     protected virtual void Awake()
     {
         characterCanvas = FindAnyObjectByType<CharacterStatusUI>();
+        // "Vampiric" 이름의 파티클 시스템 찾기
+        foreach (var ParticleSystem in GetComponentsInChildren<ParticleSystem>(true))
+        {
+            if (ParticleSystem.gameObject.name == "Northward")
+            {
+                particleNorth = ParticleSystem;
+            }
+
+            if (ParticleSystem.gameObject.name == "Vampiric")
+            {
+                particleVamp = ParticleSystem;
+                
+            }
+            if(ParticleSystem.gameObject.name == "HealEffect")
+            {
+                particleHeal = ParticleSystem;
+            }
+        }
     }
     protected void Start()
     {
@@ -36,7 +57,7 @@ public class Character:Unit
         Manager.Game.OnStartStage += StartBattle;
 
         Init();
-        if(Id == 7)
+        if (Id == 7)
         {
             hasPassive = true;
             Debug.Log("Passive Skill");
@@ -106,12 +127,12 @@ public class Character:Unit
         Hp = MaxHp;
         Mp = 0;
         AttackSpeed = DefaultAttackSpeed;
-        if(DefaultAttackSpeed > MaxAttackspeed)
+        if (DefaultAttackSpeed > MaxAttackspeed)
             DefaultAttackSpeed = MaxAttackspeed;
         Damage = DefaultDamage;
         manaGain = defaultManaGain;
         Invoke("StartAutoAttack", 0.5f);
-
+        Vampiric = DefaultVampiric; // 초기화
     }
 
     private void EndBattle()
@@ -151,13 +172,13 @@ public class Character:Unit
         {
             Destroy(statusUI.gameObject);
         }
-        
+
         // PartyManager에서 제거
         PartyManager.Instance.RemoveCharacterByReference(this);
-        
+
         // StoreUI의 파티 텍스트 업데이트
         StoreUI.Instance.UpdatePartyTextExternal();
-        
+
         base.Die();
         Manager.Battle.RemoveCharacter(gameObject);
     }
@@ -165,9 +186,9 @@ public class Character:Unit
     public void StartAutoAttack()
     {
         if (_attackRoutine != null) StopCoroutine(_attackRoutine);
-            { 
-                _attackRoutine = StartCoroutine(AutoAttackLoop());
-            }
+        {
+            _attackRoutine = StartCoroutine(AutoAttackLoop());
+        }
     }
     #region 플레이어 기본 공격
     public virtual void BasicAttack()   //기본 공격 모션출력
@@ -189,10 +210,14 @@ public class Character:Unit
         }
         animator.SetFloat("SkillState", 0f);
     }
-    public virtual void DamageEnemy(Enemy Target, float ratio=1f)   //적에게 기본 공격 피해
+    public virtual void DamageEnemy(Enemy Target, float ratio = 1f)   //적에게 기본 공격 피해
     {
         Target.TakeDamage(Damage * ratio);
         Bloodlust(Damage * ratio);
+        if(Vampiric > 0)
+        {
+            BloodLustActive();
+        }
     }
 
     #endregion 플레이어 기본공격
@@ -217,9 +242,9 @@ public class Character:Unit
             float interval = 1f / AttackSpeed;
             float basespeed = 0.5f;             //기본 투사체 속도
             float projectileSpeed = basespeed / AttackSpeed;
- 
+
             yield return new WaitForSeconds(interval);
-            
+
             if (!Manager.Battle.isInBattle) yield break;
 
             if (Manager.Battle.enemyList.Count > 0)
@@ -230,7 +255,7 @@ public class Character:Unit
             if (attackTarget != null)
             {
 
-                Enemy enemy = attackTarget.GetComponent<Enemy>(); 
+                Enemy enemy = attackTarget.GetComponent<Enemy>();
                 if (enemy != null)
                 {
                     BasicAttack(); // Enemy 타입으로 전달
@@ -242,31 +267,35 @@ public class Character:Unit
             // 패시브: 야성 연사
             if (hasPassive && characterType == SynergyManager.CharacterType.Archer)
             {
-                float chance = 0.2f + (Mathf.Max(Star - 1, 0) * 0.05f);
-
-                // To resolve the ambiguity between 'UnityEngine.Random' and 'System.Random', explicitly specify the namespace for 'Random' usage.
-
-                if (UnityEngine.Random.Range(0f, 1f) <= 1.01f)
+                float baseChance = 0.2f + (Mathf.Max(Star - 1, 0) * 0.05f);
+                bool startedChain = false;
+                while (UnityEngine.Random.Range(0f, 1f) <= baseChance)
                 {
+                    if (attackTarget == null) break;
+                    if(!startedChain)
+                    {
+                        startedChain = true;
+                        AttackBoosEffect();
+                    }
                     Enemy enemy = attackTarget.GetComponent<Enemy>();
-
-                    BasicAttack();
-                    LaunchProjectile(projectileSpeed);
-                    yield return new WaitForSeconds(projectileSpeed);
-                    DamageEnemy(enemy);
+                    if (enemy != null)
+                    {
+                        BasicAttack();
+                        LaunchProjectile(projectileSpeed);
+                        yield return new WaitForSeconds(projectileSpeed);
+                        DamageEnemy(enemy);
+                    }
                 }
-                if (UnityEngine.Random.Range(0f, 1f) <= chance)
+                if(startedChain)
                 {
-                    Enemy enemy = attackTarget.GetComponent<Enemy>();
-
-                    BasicAttack();
-                    LaunchProjectile(projectileSpeed);
-                    yield return new WaitForSeconds(projectileSpeed);
-                    DamageEnemy(enemy);
+                    EndAttackBoostEffect();
                 }
             }
-            if(synergyType == SynergyManager.SynergyType.Northward)
+            //북방 시너지 추가타
+            if (synergyType == SynergyManager.SynergyType.Northward)
             {
+                Debug.Log($"[북방체크] {name} 는 북방 캐릭터임.");
+
                 float count = Manager.Synergy.northWard;
                 float chance = 0f;
 
@@ -274,25 +303,95 @@ public class Character:Unit
                 else if (count == 3) chance = 0.1f;
                 else if (count == 2) chance = 0.05f;
 
-                if (UnityEngine.Random.Range(0f, 1f) <= chance)
-                {
-                    Enemy enemy = attackTarget.GetComponent<Enemy>();
+                bool startedChain = false;
 
-                    BasicAttack();
-                    LaunchProjectile(projectileSpeed);
-                    yield return new WaitForSeconds(projectileSpeed);
-                    DamageEnemy(enemy);
+                while (UnityEngine.Random.Range(0f, 1f) <= chance)
+                {
+                    Debug.Log($"[북방 추가타 발동!] {name} 추가 공격!");
+
+                    if (attackTarget == null) break;
+                    if (!startedChain)
+                    {
+                        startedChain = true;
+                        AttackBoosEffect();
+                    }
+                    Enemy enemy = attackTarget.GetComponent<Enemy>();
+                    if (enemy != null)
+                    {
+                        BasicAttack();
+                        LaunchProjectile(projectileSpeed);
+                        yield return new WaitForSeconds(projectileSpeed);
+                        DamageEnemy(enemy);
+                    }
                 }
-                if (UnityEngine.Random.Range(0f, 1f) <= chance)
+                if (startedChain)
                 {
-                    Enemy enemy = attackTarget.GetComponent<Enemy>();
-
-                    BasicAttack();
-                    LaunchProjectile(projectileSpeed);
-                    yield return new WaitForSeconds(projectileSpeed);
-                    DamageEnemy(enemy);
+                    EndAttackBoostEffect();
                 }
             }
+
+        }
+    }
+    void AttackBoosEffect() //북부시너지, 사냥꾼용 이펙트
+    {
+        bool AtkefctforDoubble = false;
+        if(hasPassive == true)
+        {
+            AtkefctforDoubble = true;
+        }
+        else if(synergyType == SynergyManager.SynergyType.Northward)
+        {
+            AtkefctforDoubble = true;
+        }
+
+        if (AtkefctforDoubble == false) return;
+        if (particleNorth != null)
+        {
+            var mainModule = particleNorth.main;
+            mainModule.startColor = new Color(0, 191, 255, 0.3f); // Example color adjustment  
+            particleNorth.Play(); // Start the particle system  
+        }
+    }
+  
+    void EndAttackBoostEffect()
+    {
+        if (particleNorth != null)
+        {
+            particleNorth.Stop(); // Stop the particle system  
+            var mainModule = particleNorth.main;
+            mainModule.startColor = new Color(255,255,255,0.5f); // Example color adjustment  
+        }
+    }
+    void BloodLustActive()
+    {
+            var mainModule = particleVamp.main;
+            mainModule.startColor = new Color(255, 0, 0, 0.3f); // Example color adjustment  
+            particleVamp.Play(); // Start the particle system  
+        Invoke("BloodLustDeactive", 1f);
+    }
+    void BloodLustDeactive()
+    {
+            particleVamp.Stop(); // Start the particle system  
+            var mainModule = particleVamp.main;
+            mainModule.startColor = new Color(255, 255, 255, 0.5f); // Example color adjustment  
+    }
+    public void HealEffectActive()
+    {
+        if (particleHeal != null)
+        {
+            var mainModule = particleHeal.main;
+            mainModule.startColor = new Color(255, 255, 0, 0.3f); // Example color adjustment  
+            particleHeal.Play(); // Start the particle system  
+        }
+        Invoke("HealEffectDeactive", 1f);
+    }
+    void HealEffectDeactive()
+    {
+        if (particleHeal != null)
+        {
+            particleHeal.Stop(); // Start the particle system  
+            var mainModule = particleHeal.main;
+            mainModule.startColor = new Color(255, 255, 255, 0.5f); // Example color adjustment  
         }
     }
 }

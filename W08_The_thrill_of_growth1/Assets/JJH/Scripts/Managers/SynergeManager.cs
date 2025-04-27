@@ -443,7 +443,7 @@ public static readonly Dictionary<CharacterType, string> CharacterTypeToKorean =
             ch.MaxHp = ch.DefaultMaxHp;
             ch.Damage = ch.DefaultDamage;
             ch.AttackSpeed = ch.DefaultAttackSpeed;
-            ch.Vampiric = 0f;
+            ch.Vampiric = ch.DefaultVampiric;
             ch.manaGain = ch.defaultManaGain;
             northWard = 0f;
             SynergyHelper.Instance.StopHeal();

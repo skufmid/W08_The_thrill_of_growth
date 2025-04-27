@@ -4,33 +4,51 @@ using UnityEngine;
 public class OrbSpawner : MonoBehaviour
 {
     public static OrbSpawner Instance;
-    public RectTransform forbiddenArea; // 금지구역
+    RectTransform _forbiddenArea; // 금지구역
     [SerializeField] private OrbDropEntry[] orbDropEntries;
-
+    Canvas _orbCanvas;
     private void Awake()
     {
         Instance = this;
+        _orbCanvas = GetComponentInChildren<Canvas>();
+        GameObject forbiddenAreaObject = GameObject.Find("ForbiddenArea");
+        if (forbiddenAreaObject != null)
+        {
+            _forbiddenArea = forbiddenAreaObject.GetComponent<RectTransform>();
+        }
+        else
+        {
+            Debug.LogError("❗ 'ForbiddenArea'라는 이름을 가진 GameObject를 찾을 수 없습니다.");
+        }
     }
 
-    public void SpawnRandomOrb(Vector3 worldPosition)
+    public void SpawnRandomOrb(Vector3 screenPosition)
     {
         OrbDropEntry selected = GetRandomOrbEntry();
-
         if (selected.prefab == null)
         {
             Debug.LogError($"❗ {selected.type} 프리팹이 설정되지 않았습니다.");
             return;
         }
-
         float value = selected.useFixedValue
         ? selected.fixedValue
     :   Mathf.Floor(Random.Range(selected.minRandomValue, selected.maxRandomValue) * 10f) / 10f;
 
         // 프리팹 생성
-        GameObject orbGO = Instantiate(selected.prefab);
-
-        // 월드 공간 캔버스에 직접 위치 지정
-        orbGO.transform.position = worldPosition;
+        GameObject orbGO = Instantiate(selected.prefab, _orbCanvas.transform); // 오브 캔버스에 소환
+        Orb orbGOsorb = orbGO.GetComponent<Orb>();
+        orbGOsorb.forbiddenArea = _forbiddenArea; // 스포너에서 오브로 넘겨줌
+        orbGOsorb.canvasParent = _orbCanvas; // 스포너에서 오브로 넘겨줌
+        // 바로 스크린 좌표로 이동
+        RectTransform rt = orbGO.GetComponent<RectTransform>();
+        Vector2 localPoint;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            _orbCanvas.transform as RectTransform,
+            screenPosition,
+            null, // Overlay는 Camera가 필요 없음
+            out localPoint
+        );
+        rt.anchoredPosition = localPoint;
 
         //// 캔버스에 넣기
         //Canvas canvas = GameObject.FindObjectOfType<Canvas>();
@@ -47,9 +65,9 @@ public class OrbSpawner : MonoBehaviour
         {
             Debug.LogError("❗ Orb 컴포넌트를 찾을 수 없습니다.");
         }
-        if (forbiddenArea != null)
+        if (_forbiddenArea != null)
         {
-            //orb.forbiddenArea = forbiddenArea; // 스포너에서 오브로 넘겨줌
+            orb.forbiddenArea = _forbiddenArea; // 스포너에서 오브로 넘겨줌
         }
 
     }
