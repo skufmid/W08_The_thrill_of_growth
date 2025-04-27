@@ -48,7 +48,7 @@ public class SkillManager : MonoBehaviour
 
         Debug.Log($"Character {unit.Id} 스킬 실행");
         Character character = unit.GetComponent<Character>();
-        coefficient = Manager.Data.Skills[skillId].Coefficients[character.Star];
+        coefficient = skill.Coefficients[character.Star];
         switch (skillId)
         {
             case 0:
@@ -156,7 +156,7 @@ public class SkillManager : MonoBehaviour
             case 15:
                 Targets = new GameObject[1];
                 Targets[0] = unit.gameObject;
-                value = unit.AttackSpeed;
+                value = unit.Damage;
                 skillComponent.ApplyEffectAmountSkill(Targets, EStat.AttackSpeed, null, value * coefficient / 100);
                 SpawnSkillFX(skill.skillPrefab, Targets);
                 break;

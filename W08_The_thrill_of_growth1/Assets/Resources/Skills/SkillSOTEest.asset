@@ -16,6 +16,10 @@ MonoBehaviour:
   Name: "\uB9E4\uC6B0 \uAC15\uD55C\uC2A4\uD0AC"
   sprite: {fileID: 0}
   animation: {fileID: 0}
+  Coefficients:
+  - 0
+  - 0
   SkillDescription: "\uB9E4\uC6B0\uAC15\uD55C\uC2A4\uD0AC \uB9E4\uC6B0\uAC15\uD55C\uC2A4\uD0AC
     \uB9E4\uC6B0\uAC15\uD55C\uC2A4\uD0AC \uB9E4\uC6B0\uAC15\uD55C\uC2A4\uD0AC \uB9E4\uC6B0\uAC15\uD55C\uC2A4\uD0AC
     \uB9E4\uC6B0\uAC15\uD55C\uC2A4\uD0AC "
+  skillPrefab: {fileID: 0}
