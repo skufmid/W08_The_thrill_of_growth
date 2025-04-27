@@ -135,6 +135,11 @@ public class Character:Unit
 
     }
 
+    public void RestoreFullly()
+    {
+        Hp = MaxHp;
+    }
+
     public void StarUP()
     {
         Star++;
