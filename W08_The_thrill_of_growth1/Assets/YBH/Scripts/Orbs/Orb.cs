@@ -7,6 +7,8 @@ public enum OrbType { Damage, AttackSpeed, MaxHP, ManaGain, Potion, ManaPotion, 
 public class Orb : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public OrbType orbType;                             //오브의 타입( 공격력, 공격속도, 최대체력, 마나회복, 포션, 마나포션 등등)
+    public bool isOnSell;                               // 상점에서 판매하고 있는지 여부
+    public int price;                                   // 가격
     public float value;                                 //오브의 직접적인 수치( 퍼센트적용이나 마나재생이나 이런것들 들어가있음)
     public static bool IsDraggingOrb = false;           //오브 드래그시 다른 UI들 다 막아버리려고만든거
     public RectTransform forbiddenArea;
@@ -16,6 +18,8 @@ public class Orb : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandl
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
     public Color orbEffectColor;
+    OrbSelfPush selfPush;
+
     //-------- 오브 화면밖으로 못나가게하는거-------
     [SerializeField] float padding = 20f; // 자유롭게 조정 가능
 
@@ -23,6 +27,8 @@ public class Orb : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandl
     {
     rectTransform = GetComponent<RectTransform>();
     canvasGroup = GetComponent<CanvasGroup>();
+    selfPush = GetComponent<OrbSelfPush>();
+
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -41,7 +47,8 @@ public class Orb : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandl
 
         string desc = GetTooltipDescription();
         TooltipManager.Instance.Show(desc, eventData.position);
-
+        if (selfPush != null)
+            selfPush.enabled = false; // 드래그할 때 밀어내기 중지
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -78,13 +85,17 @@ public class Orb : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandl
 
 
     }
-    
+
     public void OnEndDrag(PointerEventData eventData)
     {
         IsDraggingOrb = false;
-        canvasGroup.blocksRaycasts = true;
-
-
+        Invoke("RaycastOn", 0.05f); // 드래그 끝나고 0.1초 후에 RaycastOn() 호출
+    }
+    void RaycastOn()
+    {
+        canvasGroup.blocksRaycasts = true; // 마지막에 켜야함
+        if (selfPush != null)
+            selfPush.enabled = true; // 드래그 끝나면 다시 밀어내기 켜기
     }
     private string GetTooltipDescription()
     {

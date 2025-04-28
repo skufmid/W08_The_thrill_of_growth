@@ -10,6 +10,7 @@ public class DataManager
     public EnemySO[] Enemies;
     public SynergyDataSO[] synergyDataList;
     public CharacterDataSO[] characterDataList;
+    public Sprite[] CharaterSprites;
     public Dictionary<SynergyType, Sprite> synergyIcon;
     public Dictionary<CharacterType, Sprite> characterIcon;
     public Dictionary<SynergyManager.CharacterType, GameObject> projectileMap;
@@ -18,10 +19,13 @@ public class DataManager
     {
         Resources.UnloadUnusedAssets();        // 데이터 초기화
         Charaters = Resources.LoadAll<CharacterSO>("Characters");
+        Charaters = Charaters.OrderBy(charcter => charcter.Id).ToArray();
         Skills = Resources.LoadAll<SkillSO>("Skills");
         Enemies = Resources.LoadAll<EnemySO>("Enemies");
         synergyDataList = Resources.LoadAll<SynergyDataSO>("Synergy");
         characterDataList = Resources.LoadAll<CharacterDataSO>("CharacterSynergy");
+        CharaterSprites = Resources.LoadAll<Sprite>("CharacterSprites");
+        CharaterSprites = CharaterSprites.OrderBy(sprite => sprite.name).ToArray();
         // 딕셔너리 초기화
         synergyIcon = new Dictionary<SynergyType, Sprite>();
         characterIcon = new Dictionary<CharacterType, Sprite>();
@@ -38,7 +42,7 @@ public class DataManager
             if (!characterIcon.ContainsKey(character.charactertType))
                 characterIcon.Add(character.charactertType, character.icon);
         }
-        //ShowAll();
+        ShowAll();
         // Projectile Map 초기화
         projectileMap = new Dictionary<SynergyManager.CharacterType, GameObject>();
         GameObject[] projectilePrefabs = Resources.LoadAll<GameObject>("Projectiles");
@@ -69,7 +73,7 @@ public class DataManager
     {
         foreach (var character in Charaters)
         {
-            //Debug.Log($"이름: {character.Name}, 클래스: {character.Class}, HP: {character.BaseHP}");
+            //Debug.Log($"이름: {character.Name}, 아이디: {character.Id}, HP: {character.BaseHP}");
         }
         
         foreach (var skill in Skills)
@@ -90,6 +94,7 @@ public class DataManager
         {
             //Debug.LogError($"시너지2: {character.charactertType}, 설명: {character.icon.name}");
         }
+
 
     }
     public Sprite GetCharacterIcon(CharacterType type)   // 캐릭터 아이콘 가져오기

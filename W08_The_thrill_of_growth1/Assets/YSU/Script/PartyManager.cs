@@ -52,7 +52,7 @@ public class PartyManager : MonoBehaviour
     }
 
     [SerializeField]
-    private PartySlot[] partySlots;
+    public PartySlot[] partySlots;
 
     private void Awake()
     {

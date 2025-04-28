@@ -90,8 +90,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60cf152d096e3f4a999d2a4759f0b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbType: 5
-  value: 50
+  orbType: 6
+  value: 0.05
   forbiddenArea: {fileID: 0}
   canvasParent: {fileID: 0}
   orbEffectColor: {r: 0.4627451, g: 0, b: 0, a: 0.8156863}
