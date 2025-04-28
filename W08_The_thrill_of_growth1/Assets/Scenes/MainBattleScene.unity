@@ -623,7 +623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9078b5ded8a09842821bb0aa89a90c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gold: 5000
+  gold: 200
   baseStageReward: 200
   stageRewardIncrease: 50
 --- !u!4 &657107223
@@ -1602,10 +1602,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3006112469836184260, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3750644698951103186, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4251056471630167623, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
