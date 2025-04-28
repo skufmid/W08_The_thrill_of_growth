@@ -47,8 +47,8 @@ public class EnemyStatusUI : MonoBehaviour
         }
 
         nameText.text = enemy.Name;
-        hpText.text = $"{enemy.Hp} / {enemy.MaxHp}";
-        mpText.text = $"{enemy.Mp} / {enemy.MaxMp}";
+        hpText.text = $"{enemy.Hp:F1} / {enemy.MaxHp:F1}";
+        mpText.text = $"{enemy.Mp:F1} / {enemy.MaxMp:F1}";
 
         hpSlider.value = (float)enemy.Hp / enemy.MaxHp;
         mpSlider.value = (float)enemy.Mp / enemy.MaxMp;

@@ -100,8 +100,8 @@ public class CharacterStatusUI : MonoBehaviour
            
         levelText.text = $"Lv.{character.Level}";
         nameText.text = character.Name;
-        hpText.text = $"{character.Hp} / {character.MaxHp}";
-        mpText.text = $"{character.Mp} / {character.MaxMp}";
+        hpText.text = $"{character.Hp:F1} / {character.MaxHp:F1}";
+        mpText.text = $"{character.Mp:F1} / {character.MaxMp:F1}";
         
         hpSlider.value = (float)character.Hp / character.MaxHp;
         mpSlider.value = (float)character.Mp / character.MaxMp;
@@ -111,7 +111,7 @@ public class CharacterStatusUI : MonoBehaviour
 
         // Fixed the problematic line
         damageText.text = $"{totalDamage:F1} (+{character.DefaultDamage:F1} + {character.Damage - character.DefaultDamage:F1})";
-        attackSpeedText.text = $"{totalAttackSpeed:F2}(+{character.DefaultAttackSpeed:F1} + {character.AttackSpeed - character.DefaultAttackSpeed:F1})";
+        attackSpeedText.text = $"{totalAttackSpeed:F2}(+{character.DefaultAttackSpeed:F2} + {character.AttackSpeed - character.DefaultAttackSpeed:F2})";
 
         allianceText.text = SynergyManager.SynergyTypeToKorean[character.synergyType];
         classText.text = SynergyManager.CharacterTypeToKorean[character.characterType];
