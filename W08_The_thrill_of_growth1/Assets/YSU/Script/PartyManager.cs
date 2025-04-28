@@ -104,7 +104,7 @@ public class PartyManager : MonoBehaviour
     }
 
     // 캐릭터 구매 및 추가
-    public bool PurchaseAndAddCharacter(Character character, int slotIndex)
+    public bool PurchaseAndAddCharacter(Character character, int slotIndex, int characterPrice=100)
     {
         // PlayerData가 없다면 다시 한번 찾기 시도
         if (playerData == null)

@@ -53,4 +53,12 @@ public class RightStoreItemUI : MonoBehaviour
             Debug.Log($"아이템 구매에 필요한 골드가 부족합니다. 필요 골드: {price}");
         }
     }
+
+    public void DisplayPurchaseableItem()
+    {
+        for (int i = 0; i < Items.Length; i++)
+        {
+            Items[i].gameObject.SetActive(true);
+        }
+    }
 }
