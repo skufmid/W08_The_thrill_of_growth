@@ -113,7 +113,7 @@ public class RightStoreMercenaryUI : MonoBehaviour
     {
         characterId = SetRandomMercenary();
         int orignalPrice = CalCulateOriginalPrice();
-        int changedPrice = (int)(orignalPrice * 0.8f);
+        int changedPrice = orignalPrice != 100 ? (int)(orignalPrice * 0.8f): 100 ;
 
         CharacterSO character = Array.Find(Manager.Data.Charaters, c => c.Id == characterId);
         Debug.Log(characterId);
@@ -121,8 +121,16 @@ public class RightStoreMercenaryUI : MonoBehaviour
         mercenarySprite.color = Color.white;
         allianceText.text = SynergyManager.SynergyTypeToKorean[character.SynergyType];
         classText.text = SynergyManager.CharacterTypeToKorean[character.CharacterType];
-        mercenaryInfoText.text = @$"Lv 00\t{character.Name}
-Gold: <s><i>{orignalPrice}</i></s> <b><size=46>→</size> <color=#FF4040>{changedPrice}</b></color>";
+        if (orignalPrice != 100)
+        {
+            mercenaryInfoText.text = @$"Lv {level}\t{character.Name}
+Gold: <s><i>{orignalPrice}</i></s> <b>→ <color=#FF4040>{changedPrice}</b></color>";
+        }
+        else
+        {
+            mercenaryInfoText.text = @$"Lv {level}\t{character.Name}
+Gold: {orignalPrice}";
+        }
     }
 
     private void ClearPurchaseableMercenary()
@@ -137,8 +145,9 @@ Gold: <s><i>{orignalPrice}</i></s> <b><size=46>→</size> <color=#FF4040>{change
 
     private int CalCulateOriginalPrice()
     {
-        //Mathf.Min(Manager.Game.stageNum / 5 - 1, 1)
-        return 100;
+        level = Mathf.Clamp((Manager.Game.stageNum / 5 - 1) * 5, 1, 30);
+        int price = level * (level + 1) / 2 * 100;
+        return price;
     }
 
     private int SetRandomMercenary()

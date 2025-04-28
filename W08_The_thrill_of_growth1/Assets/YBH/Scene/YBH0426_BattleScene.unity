@@ -1366,7 +1366,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1516750326294180011, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1547091201307358668, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1516,6 +1516,19 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -30
       objectReference: {fileID: 0}
+    - target: {fileID: 5164240986091810422, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
+      propertyPath: m_text
+      value: "Lv 20\t\uCE90\uB9AD\uD130 \uC774\uB984\nGold: <s><i>5000</i></s> <b>\u2192
+        <color=#FF4040>4000</b></color>"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5164240986091810422, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5164240986091810422, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
+      propertyPath: m_lineSpacing
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5312650606758185047, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1570,7 +1583,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9094976611305620906, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
