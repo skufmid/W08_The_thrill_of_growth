@@ -130,8 +130,8 @@ public class Character : Unit
     private void StartBattle()
     {
         MaxHp = DefaultMaxHp;
-        Hp = MaxHp;
-        Mp = 0;
+        //Hp = MaxHp;     전투로직 변경하면서 변경함.
+        //Mp = 0;
         AttackSpeed = DefaultAttackSpeed;
         if (DefaultAttackSpeed > MaxAttackspeed)
             DefaultAttackSpeed = MaxAttackspeed;
@@ -143,6 +143,7 @@ public class Character : Unit
 
     private void EndBattle()
     {
+        Hp += DefaultMaxHp * 0.2f;
         Debug.Log("FinishBattle 실행");
     }
 
@@ -158,8 +159,9 @@ public class Character : Unit
         if (character == null) return;
 
         DefaultMaxHp = character.BaseHP + (Level - 1) * character.HPPerLevel;
+        Hp += character.HPPerLevel;
         DefaultDamage = character.BaseDamage + (Level - 1) * character.DamagePerLevel;
-
+        Damage += character.DamagePerLevel;
     }
 
     public void RestoreFullly()
@@ -218,6 +220,7 @@ public class Character : Unit
     }
     public virtual void DamageEnemy(Enemy Target, float ratio = 1f)   //적에게 기본 공격 피해
     {
+        if (Target == null) return;
         Target.TakeDamage(Damage * ratio);
         Bloodlust(Damage * ratio);
         if(Vampiric > 0)

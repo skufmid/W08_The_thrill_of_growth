@@ -45,7 +45,7 @@ public class CharacterDropZone : MonoBehaviour, IDropHandler
 
             case OrbType.ManaPotion:
                 float mpHeal = character.MaxMp * (orb.value / 100f); // 🔵 퍼센트 회복  
-                character.Mp = Mathf.Clamp(character.Mp + mpHeal, 0, character.MaxMp);
+                character.Mp += mpHeal;
                 break;
             case OrbType.Vampiric:
                 character.DefaultVampiric += orb.value; 

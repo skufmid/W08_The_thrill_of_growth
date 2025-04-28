@@ -1,8 +1,17 @@
 using UnityEngine;
 
-[System.Serializable]
-public struct OrbDropEntry
+
+
+public enum OrbCategory
 {
+    Potion,
+    Item,
+    Unique
+}
+[System.Serializable]
+public class OrbDropEntry
+{
+    public OrbCategory category;
     public OrbType type;
     public GameObject prefab;
     public float spawnRate;        // 확률 (총합 100 기준이든 비율이든 가능)

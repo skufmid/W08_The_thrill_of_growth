@@ -1,16 +1,21 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 
 public class OrbSpawner : MonoBehaviour
 {
     public static OrbSpawner Instance;
-    RectTransform _forbiddenArea; // 금지구역
-    [SerializeField] private OrbDropEntry[] orbDropEntries;
-    Canvas _orbCanvas;
+
+    [Header("Drop Settings")]
+    [SerializeField] private OrbDropEntry[] orbDropEntries; // 오브 드랍 데이터들
+    private Canvas _orbCanvas;
+    private RectTransform _forbiddenArea;
+
     private void Awake()
     {
         Instance = this;
         _orbCanvas = GetComponentInChildren<Canvas>();
+
         GameObject forbiddenAreaObject = GameObject.Find("ForbiddenArea");
         if (forbiddenAreaObject != null)
         {
@@ -21,7 +26,86 @@ public class OrbSpawner : MonoBehaviour
             Debug.LogError("❗ 'ForbiddenArea'라는 이름을 가진 GameObject를 찾을 수 없습니다.");
         }
     }
+    public void SpawnOrbsOnDeath(Vector3 screenPosition, float potionChance, float itemChance, float uniqueChance)
+    {
+        TrySpawnCategory(OrbCategory.Potion, screenPosition, potionChance);
+        TrySpawnCategory(OrbCategory.Item, screenPosition, itemChance);
+        TrySpawnCategory(OrbCategory.Unique, screenPosition, uniqueChance);
+    }
 
+    private void TrySpawnCategory(OrbCategory category, Vector3 screenPosition, float dropChance)
+    {
+        List<OrbDropEntry> entries = GetEntriesByCategory(category);
+        if (entries.Count == 0) return;
+
+        if (Random.value <= dropChance)
+        {
+            OrbDropEntry selected = GetRandomOrbEntry(entries);
+            if (selected != null)
+            {
+                SpawnOrb(selected, screenPosition);
+            }
+        }
+    }
+
+    private List<OrbDropEntry> GetEntriesByCategory(OrbCategory category)
+    {
+        List<OrbDropEntry> result = new List<OrbDropEntry>();
+        foreach (var entry in orbDropEntries)
+        {
+            if (entry.category == category)
+                result.Add(entry);
+        }
+        return result;
+    }
+
+    private OrbDropEntry GetRandomOrbEntry(List<OrbDropEntry> entries)
+    {
+        float total = 0f;
+        foreach (var entry in entries)
+            total += entry.spawnRate;
+
+        float roll = Random.Range(0f, total);
+        float current = 0f;
+        foreach (var entry in entries)
+        {
+            current += entry.spawnRate;
+            if (roll <= current)
+                return entry;
+        }
+
+        return null;
+    }
+
+    private void SpawnOrb(OrbDropEntry selected, Vector3 screenPosition)
+    {
+        GameObject orbGO = Instantiate(selected.prefab, _orbCanvas.transform);
+
+        RectTransform rt = orbGO.GetComponent<RectTransform>();
+        Vector2 localPoint;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            _orbCanvas.transform as RectTransform,
+            screenPosition,
+            null, // Overlay 모드일 경우 카메라 필요 없음
+            out localPoint
+        );
+        rt.anchoredPosition = localPoint;
+
+        Orb orb = orbGO.GetComponent<Orb>();
+        if (orb != null)
+        {
+            orb.orbType = selected.type;
+            orb.value = selected.useFixedValue
+                ? selected.fixedValue
+                : Mathf.Floor(Random.Range(selected.minRandomValue, selected.maxRandomValue) * 10f) / 10f;
+            orb.forbiddenArea = _forbiddenArea;
+            orb.canvasParent = _orbCanvas;
+        }
+        else
+        {
+            Debug.LogError("❗ Spawn된 오브에 Orb 컴포넌트가 없습니다.");
+        }
+    }
     public void SpawnRandomOrb(Vector3 screenPosition)
     {
         OrbDropEntry selected = GetRandomOrbEntry();
@@ -50,11 +134,6 @@ public class OrbSpawner : MonoBehaviour
         );
         rt.anchoredPosition = localPoint;
 
-        //// 캔버스에 넣기
-        //Canvas canvas = GameObject.FindObjectOfType<Canvas>();
-        //orbGO.transform.SetParent(canvas.transform, true); // true: worldPosition 유지
-
-        // Orb 컴포넌트 설정
         Orb orb = orbGO.GetComponentInChildren<Orb>();
         if (orb != null)
         {

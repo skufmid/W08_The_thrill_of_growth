@@ -72,17 +72,23 @@ public class Enemy:Unit
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
 
         if (_dieOnce) return;
-        if (Random.Range(0f, 1f) < 1f)
-        {
-            OrbSpawner.Instance.SpawnRandomOrb(screenPosition);
-        }
-        else
-        {
-            //Manager.Game.GetAward...
-        }
-        _dieOnce = true;
 
-        //Manager.Game.GetAward...
+        float potionChance = 0.06f;
+        float itemChance = 0.06f;
+        float uniqueChance = 0.03f;
+
+        //if (isBoss)
+        //{
+        //    // 보스는 드랍률 강화
+        //    potionChance = 1.0f;
+        //    itemChance = 0.8f;
+        //    uniqueChance = 0.5f;
+        //}
+
+        OrbSpawner.Instance.SpawnOrbsOnDeath(screenPosition, potionChance, itemChance, uniqueChance);
+
+        Destroy(gameObject);
+        _dieOnce = true;
     }
 
     private void OnMouseDown()
