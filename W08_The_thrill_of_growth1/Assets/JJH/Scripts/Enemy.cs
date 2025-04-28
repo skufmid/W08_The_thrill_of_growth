@@ -8,6 +8,7 @@ public class Enemy : Unit
     [SerializeField] private GameObject hpBarPrefab;  // HP바 프리팹
     private EnemyHPBar enemyHPBar;
     [SerializeField] bool isBoss = false; // 보스 여부
+    ParticleSystem deathEffect; // 죽을 때 나오는 이펙트
     public void Awake()
     {
         enemyInfoUI = FindAnyObjectByType<EnemyStatusUI>();
@@ -31,7 +32,10 @@ public class Enemy : Unit
         Manager.Battle.AddEnemy(gameObject);
         Debug.Log($"{name} Init");
         beginCombat = true;                             //마나재생 시작하자마자 킬려고
-
+        if(isBoss)
+        {
+            deathEffect.Play();
+        }
     }
 
     protected override void Init()
@@ -40,14 +44,15 @@ public class Enemy : Unit
 
         if (isBoss)
         {
-             enemyCount = 1;
+            deathEffect= GetComponentInChildren<ParticleSystem>();
+            enemyCount = 1;
         }
             int stage = Manager.Game.stageNum;
             Debug.Log($"{stage} level 해골병사 소환");
             Name = "해골 병사";
 
             // 스테이지별 총합 기준, 적 마리수(7)로 나눔
-            float totalHp = 675f * stage;
+            float totalHp = 700f * stage;
             float totalDamage = 22f * stage;
 
             float unitHp = totalHp / enemyCount;
@@ -81,6 +86,13 @@ public class Enemy : Unit
         if (enemyHPBar != null)
         {
             Destroy(enemyHPBar.gameObject);
+        }
+        if(isBoss)
+        {
+            if (deathEffect != null)
+            {
+                deathEffect.Play();
+            }
         }
         Manager.Battle.RemoveEnemy(gameObject);
         GiveAward();

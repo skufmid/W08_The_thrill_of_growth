@@ -16,4 +16,4 @@ MonoBehaviour:
   displayName: Kingdom
   icon: {fileID: 21300000, guid: 391c79340432edb4b9020a7973240a92, type: 3}
   description: "\uC655\uAD6D\n\n2\uC778: \uBAA8\uB4E0 \uC2A4\uD0EF +10%\n3\uC778:
-    \uBAA8\uB4E0 \uC2A4\uD0EF +15%\n4\uC778: \uBAA8\uB4E0 \uC2A4\uD0EF +20%"
+    \uBAA8\uB4E0 \uC2A4\uD0EF +15%\n4\uC778: \uBAA8\uB4E0 \uC2A4\uD0EF +25%"
