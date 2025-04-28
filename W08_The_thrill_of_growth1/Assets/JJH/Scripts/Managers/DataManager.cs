@@ -19,6 +19,7 @@ public class DataManager
     {
         Resources.UnloadUnusedAssets();        // 데이터 초기화
         Charaters = Resources.LoadAll<CharacterSO>("Characters");
+        Charaters = Charaters.OrderBy(charcter => charcter.Id).ToArray();
         Skills = Resources.LoadAll<SkillSO>("Skills");
         Enemies = Resources.LoadAll<EnemySO>("Enemies");
         synergyDataList = Resources.LoadAll<SynergyDataSO>("Synergy");

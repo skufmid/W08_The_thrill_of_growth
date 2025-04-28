@@ -1316,17 +1316,33 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1895247747194715198, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
+      propertyPath: m_Name
+      value: TutorialButton
+      objectReference: {fileID: 0}
     - target: {fileID: 1958362579022921099, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1.0000229
+      value: 1.0000153
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159535091551545950, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 13.2999115
       objectReference: {fileID: 0}
     - target: {fileID: 2219991280345257367, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2221293020944884081, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 21.599945
+      objectReference: {fileID: 0}
     - target: {fileID: 3006112469836184260, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4248153620422347526, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4251056471630167623, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1376,9 +1392,17 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6260941041140932677, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 14.200058
+      objectReference: {fileID: 0}
     - target: {fileID: 8005208341130960449, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
       propertyPath: m_Name
       value: MercenarInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 8529932400279151945, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
+      propertyPath: m_Name
+      value: SynergyButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

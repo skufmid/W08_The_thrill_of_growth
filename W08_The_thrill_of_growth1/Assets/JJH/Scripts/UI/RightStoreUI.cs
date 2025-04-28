@@ -92,7 +92,6 @@ public class RightStoreUI : MonoBehaviour
         int changedPrice = (int)(orignalPrice * 0.8f);
 
         CharacterSO character = Array.Find(Manager.Data.Charaters, c => c.Id == characterId);
-        Debug.Log(Manager.Data.CharaterSprites.Length);
         Debug.Log(characterId);
         mercenarySprite.sprite = Manager.Data.CharaterSprites[characterId];
         allianceText.text = SynergyManager.SynergyTypeToKorean[character.SynergyType];
