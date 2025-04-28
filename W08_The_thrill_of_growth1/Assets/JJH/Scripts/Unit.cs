@@ -110,9 +110,9 @@ public abstract class Unit : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.1f);
             if (Manager.Battle.isInBattle == false) continue;
-            Mp += manaGain;
+            Mp += manaGain / 10f;
 
             if(Mp >= MaxMp)
             {

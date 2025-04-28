@@ -137,7 +137,8 @@ Gold: <s><i>{orignalPrice}</i></s> <b><size=46>→</size> <color=#FF4040>{change
 
     private int CalCulateOriginalPrice()
     {
-        return 1000;
+        //Mathf.Min(Manager.Game.stageNum / 5 - 1, 1)
+        return 100;
     }
 
     private int SetRandomMercenary()

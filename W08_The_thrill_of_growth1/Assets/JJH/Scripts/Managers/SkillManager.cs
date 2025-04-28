@@ -62,7 +62,7 @@ public class SkillManager : MonoBehaviour
                 float HpRatio = unit.Hp / unit.MaxHp;
                 if (HpRatio < 0.8f)
                 {
-                    coefficient = 1.00f;
+                    coefficient = 100f;
                 }
                 Targets = Manager.Battle.GetRandomEnemy(1);
                 skillComponent.DamageSkill(Targets, unit, unit.Damage * coefficient / 100);
