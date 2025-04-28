@@ -53,6 +53,7 @@ public class StoreUI : MonoBehaviour
     [SerializeField] private Button[] levelButtons = new Button[GRID_SIZE];
     [SerializeField] private float dragOffset = 1f;  // 드래그 시 캐릭터가 띄워질 높이
     [SerializeField] private Button sellModeButton; // 판매 모드 버튼
+    [SerializeField] private RightStoreMercenaryUI rightStoreUI;
 
     [Header("Character Settings")]
     [SerializeField] public Character characterPrefab;
@@ -344,7 +345,10 @@ public class StoreUI : MonoBehaviour
         readyButton.gameObject.SetActive(isStoreOpen);  // 상점이 열리면 준비완료 버튼 활성화
         isReady = false;  // 상점을 열 때마다 준비 상태 초기화
         if (storePanel != null)
+        {
             storePanel.SetActive(isStoreOpen); // 상점 패널 표시/숨김
+            if (isStoreOpen) rightStoreUI.DisplayPurchaseableMercenary();
+        }
         if (tavernPanel != null)
             tavernPanel.SetActive(isStoreOpen); // 타번 패널 표시/숨김
         UpdateAllSlotsUI();

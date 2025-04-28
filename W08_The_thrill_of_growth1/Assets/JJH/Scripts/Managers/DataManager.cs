@@ -42,7 +42,7 @@ public class DataManager
             if (!characterIcon.ContainsKey(character.charactertType))
                 characterIcon.Add(character.charactertType, character.icon);
         }
-        //ShowAll();
+        ShowAll();
         // Projectile Map 초기화
         projectileMap = new Dictionary<SynergyManager.CharacterType, GameObject>();
         GameObject[] projectilePrefabs = Resources.LoadAll<GameObject>("Projectiles");
@@ -73,7 +73,7 @@ public class DataManager
     {
         foreach (var character in Charaters)
         {
-            //Debug.Log($"이름: {character.Name}, 클래스: {character.Class}, HP: {character.BaseHP}");
+            //Debug.Log($"이름: {character.Name}, 아이디: {character.Id}, HP: {character.BaseHP}");
         }
         
         foreach (var skill in Skills)
@@ -94,6 +94,7 @@ public class DataManager
         {
             //Debug.LogError($"시너지2: {character.charactertType}, 설명: {character.icon.name}");
         }
+
 
     }
     public Sprite GetCharacterIcon(CharacterType type)   // 캐릭터 아이콘 가져오기

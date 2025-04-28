@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RightStoreUI : MonoBehaviour
+public class RightStoreMercenaryUI : MonoBehaviour
 {
     private PartyManager partyManager;
     private PlayerData playerData;
@@ -15,15 +16,17 @@ public class RightStoreUI : MonoBehaviour
     public TextMeshProUGUI classText;
     public TextMeshProUGUI mercenaryInfoText;
 
+    int characterId;
+    int level;
 
     private void Awake()
     {
         storeUI = FindAnyObjectByType<StoreUI>();
+        InitializeManagers();
     }
     private void Start()
     {
-        InitializeManagers();
-        DisplayPurchaseableMercenary();
+
     }
 
     private void InitializeManagers()
@@ -38,7 +41,7 @@ public class RightStoreUI : MonoBehaviour
             return;
         }
     }
-    private void OnMercenaryBuyClicked(int charaterId, int level)
+    public void OnMercenaryBuyClicked()
     {
         if (!CanPurchaseMercenary())
             return;
@@ -53,12 +56,13 @@ public class RightStoreUI : MonoBehaviour
             }
         }
 
-        if (TrySpawnMercenary(slotIndex, out Character newCharacter, charaterId, level))
+        if (TrySpawnMercenary(slotIndex, out Character newCharacter, characterId, level))
         {
             if (partyManager.PurchaseAndAddCharacter(newCharacter, slotIndex))
             {
                 storeUI.UpdateAllSlotsUI();
                 storeUI.UpdatePartyTextExternal();
+                ClearPurchaseableMercenary();
             }
             else
             {
@@ -75,6 +79,26 @@ public class RightStoreUI : MonoBehaviour
     private bool TrySpawnMercenary(int slotIndex, out Character character, int charaterId, int level)
     {
         character = null;
+
+        if (characterId < 0 || characterId > StoreUI.MAX_CHARACTER_ID)
+        {
+            Debug.Log($"Invalid character ID: {characterId}");
+            return false;
+        }
+
+        // 이미 존재하는 캐릭터라면 생성하지 않음
+        List<int> existingIds = new List<int>();
+        for (int i = 0; i < partyManager.partySlots.Length; i++)
+        {
+            Character existingChar = partyManager.GetCharacterAtSlot(i);
+            if (existingChar != null)
+            {
+                existingIds.Add(existingChar.Id);
+            }
+        }
+
+        if (existingIds.Contains(characterId)) return false;
+
         if (slotIndex >= 0 && slotIndex < storeUI.spawnPositions.Length && storeUI.spawnPositions[slotIndex] != null)
         {
             character = Instantiate(storeUI.characterPrefab, storeUI.spawnPositions[slotIndex].position, Quaternion.Euler(0, 180, 0));
@@ -85,24 +109,35 @@ public class RightStoreUI : MonoBehaviour
         return false;
     }
 
-    private void DisplayPurchaseableMercenary()
+    public void DisplayPurchaseableMercenary()
     {
-        int characterId = SetRandomMercenary();
+        characterId = SetRandomMercenary();
         int orignalPrice = CalCulateOriginalPrice();
         int changedPrice = (int)(orignalPrice * 0.8f);
 
         CharacterSO character = Array.Find(Manager.Data.Charaters, c => c.Id == characterId);
         Debug.Log(characterId);
         mercenarySprite.sprite = Manager.Data.CharaterSprites[characterId];
+        mercenarySprite.color = Color.white;
         allianceText.text = SynergyManager.SynergyTypeToKorean[character.SynergyType];
         classText.text = SynergyManager.CharacterTypeToKorean[character.CharacterType];
         mercenaryInfoText.text = @$"Lv 00\t{character.Name}
 Gold: <s><i>{orignalPrice}</i></s> <b><size=46>→</size> <color=#FF4040>{changedPrice}</b></color>";
     }
 
+    private void ClearPurchaseableMercenary()
+    {
+        characterId = -1;
+        mercenarySprite.sprite = null;
+        mercenarySprite.color = Color.clear;
+        allianceText.text = string.Empty;
+        classText.text = string.Empty;
+        mercenaryInfoText.text = string.Empty;
+    }
+
     private int CalCulateOriginalPrice()
     {
-        return 999;
+        return 1000;
     }
 
     private int SetRandomMercenary()
