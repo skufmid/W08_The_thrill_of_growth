@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 public class PlayerData : MonoBehaviour
 {
-    [SerializeField] private int gold = 1000; // 시작 골드
-    [SerializeField] private int baseStageReward = 100; // 기본 스테이지 보상
-    [SerializeField] private int stageRewardIncrease = 50; // 스테이지당 증가하는 보상량
+[SerializeField] private int gold = 1000; // 시작 골드
+[SerializeField] private int baseStageReward = 100; // 기본 스테이지 보상
+[SerializeField] private int stageRewardIncrease = 325; // 스테이지당 증가하는 보상량
 
     private static PlayerData instance;
     public static PlayerData Instance
@@ -65,6 +65,14 @@ public class PlayerData : MonoBehaviour
         int currentStage = Manager.Game.stageNum;
         int reward = baseStageReward + (currentStage - 1) * stageRewardIncrease;
         AddGold(reward);
+
+        // 10, 20, 30, 40스테이지 클리어 시 5000골드 추가 지급
+        if (currentStage % 10 == 0 && currentStage <= 40)
+        {
+            AddGold(5000);
+            Debug.Log($"Bonus! Stage {currentStage} Cleared! Extra 5000 Gold awarded.");
+        }
+
         Debug.Log($"Stage {currentStage} Cleared! Reward: {reward} Gold");
     }
 

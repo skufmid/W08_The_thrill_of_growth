@@ -1,13 +1,13 @@
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
-public class Enemy:Unit
+public class Enemy : Unit
 {
     EnemyStatusUI enemyInfoUI;
     bool _dieOnce;
     [SerializeField] private GameObject hpBarPrefab;  // HP바 프리팹
     private EnemyHPBar enemyHPBar;
-
+    [SerializeField] bool isBoss = false; // 보스 여부
     public void Awake()
     {
         enemyInfoUI = FindAnyObjectByType<EnemyStatusUI>();
@@ -31,21 +31,40 @@ public class Enemy:Unit
         Manager.Battle.AddEnemy(gameObject);
         Debug.Log($"{name} Init");
         beginCombat = true;                             //마나재생 시작하자마자 킬려고
+
     }
 
     protected override void Init()
     {
-        int level = Manager.Game.stageNum;
-        Debug.Log($"{level} level 해골병사 소환");
-        Name = "해골 병사";
-        DefaultMaxHp = 30 + (level - 1) * 30f + Random.Range(-5, 5);
-        MaxHp = DefaultMaxHp;
-        MaxMp = Random.Range(25, 65);
-        DefaultDamage = 4 + (level - 1) * 4f + Random.Range(-1, 1);
-        DefaultAttackSpeed = 0;
+        int enemyCount = 7;
 
-        base.Init();
-        Debug.Log("Enemy Init");
+        if (isBoss)
+        {
+             enemyCount = 1;
+        }
+            int stage = Manager.Game.stageNum;
+            Debug.Log($"{stage} level 해골병사 소환");
+            Name = "해골 병사";
+
+            // 스테이지별 총합 기준, 적 마리수(7)로 나눔
+            float totalHp = 675f * stage;
+            float totalDamage = 20f * stage;
+
+            float unitHp = totalHp / enemyCount;
+            float unitDamage = totalDamage / enemyCount;
+
+            DefaultMaxHp = unitHp + Random.Range(-5f, 5f);
+            MaxHp = DefaultMaxHp;
+            MaxMp = Random.Range(30, 70);
+            DefaultDamage = unitDamage + Random.Range(-1f, 1f);
+            DefaultAttackSpeed = 0;
+        if(isBoss)
+        {
+            unitHp *= totalHp * 10;
+            MaxMp = 30;
+        }
+            base.Init();
+            Debug.Log("Enemy Init");
     }
 
     public override void SkillAttack(int skillId)
@@ -77,13 +96,13 @@ public class Enemy:Unit
         float itemChance = 0.06f;
         float uniqueChance = 0.03f;
 
-        //if (isBoss)
-        //{
-        //    // 보스는 드랍률 강화
-        //    potionChance = 1.0f;
-        //    itemChance = 0.8f;
-        //    uniqueChance = 0.5f;
-        //}
+        if (isBoss)
+        {
+            // 보스는 드랍률 강화
+            potionChance = 0.1f;
+            itemChance = 1f;
+            uniqueChance = 0.05f;
+        }
 
         OrbSpawner.Instance.SpawnOrbsOnDeath(screenPosition, potionChance, itemChance, uniqueChance);
 
@@ -99,7 +118,7 @@ public class Enemy:Unit
     public override GameObject SelectTarget()
     {
         return BattleManager.Instance.GetTargetByPositionPriority();
-        
+
     }
     public override void TakeDamage(float damage)
     {
@@ -109,5 +128,37 @@ public class Enemy:Unit
     {
         Character player = attackTarget.GetComponent<Character>();
         player.TakeDamage(Damage);
+    }
+    public void bossCheck(int bossNumber) // 스테이지에 따라 보스 외형을 다르게
+    {
+        // 보스 상태 이름 배열
+        string[] bossStates = { "Boss_Conquest", "Boss_Famine", "Boss_War", "Boss_Death" };
+        foreach (string stateName in bossStates)
+        {
+            Transform stateTransform = transform.Find(stateName);
+            if (stateTransform != null)
+            {
+                stateTransform.gameObject.SetActive(false);
+            }
+        }
+
+        // 현재 보스 번호에 해당하는 상태 활성화
+        if (bossNumber >= 0 && bossNumber < bossStates.Length)
+        {
+            Transform targetState = transform.Find(bossStates[bossNumber]);
+            if (targetState != null)
+            {
+                targetState.gameObject.SetActive(true);
+                Debug.Log($"보스 상태 활성화: {bossStates[bossNumber]}");
+            }
+            else
+            {
+                Debug.LogWarning($"❗ {bossStates[bossNumber]} 상태를 찾을 수 없습니다.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"❗ 유효하지 않은 보스 번호: {bossNumber}");
+        }
     }
 }
