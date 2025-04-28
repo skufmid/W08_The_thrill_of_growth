@@ -136,18 +136,18 @@ public static readonly Dictionary<CharacterType, string> CharacterTypeToKorean =
         {
             if (warriorCount >= 4)
             {
-                ApplyVampiricBuff(0.2f);
+                ApplyVampiricBuff(0.1f);
                 activatedTypes.Add(CharacterType.Warrior);
             }
             else if (warriorCount >= 3)
             {
                 activatedTypes.Add(CharacterType.Warrior);
-                ApplyVampiricBuff(0.1f);
+                ApplyVampiricBuff(0.05f);
             }
             else if (warriorCount >= 2)
             {
                 activatedTypes.Add(CharacterType.Warrior);
-                ApplyVampiricBuff(0.05f);
+                ApplyVampiricBuff(0.025f);
             }
         }
         // 마법사 시너지
