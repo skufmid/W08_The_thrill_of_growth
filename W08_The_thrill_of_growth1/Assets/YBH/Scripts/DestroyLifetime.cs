@@ -16,17 +16,8 @@ public class DestroyLifetime : MonoBehaviour
     {
 
     }
-    void DestroySelf()
+    public void DestroySelf()
     {
         Destroy(gameObject);
-    }
-    IEnumerator DestroyCoroutine()
-    {
-        yield return new WaitForSeconds(Lifetime);
-        Destroy(gameObject);
-        if(gameObject == null)
-        {
-            yield break;
-        }
     }
 }

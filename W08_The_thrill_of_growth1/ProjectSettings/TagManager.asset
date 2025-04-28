@@ -50,5 +50,8 @@ TagManager:
   - name: Effect
     uniqueID: 3138555793
     locked: 0
+  - name: Orbs
+    uniqueID: 15790359
+    locked: 0
   m_RenderingLayers:
   - Default

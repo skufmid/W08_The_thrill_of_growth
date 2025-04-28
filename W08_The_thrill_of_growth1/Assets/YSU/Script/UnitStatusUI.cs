@@ -112,7 +112,7 @@ public class UnitStatusUI : MonoBehaviour
         if (targetUnit == null) return;
 
         // UI 위치 업데이트 (캐릭터 위로)
-        Vector3 targetPosition = targetUnit.transform.position + Vector3.up * 1.2f; // 2.5f에서 1.2f로 수정
+        Vector3 targetPosition = targetUnit.transform.position + new Vector3(0, 0.85f, 0); // 2.5f에서 1.2f로 수정
         Vector3 screenPos = mainCamera.WorldToScreenPoint(targetPosition);
         
         if (screenPos.z < 0)

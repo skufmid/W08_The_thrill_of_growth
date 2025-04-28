@@ -91,8 +91,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbType: 1
-  value: 100
+  value: 0.1
   forbiddenArea: {fileID: 0}
+  canvasParent: {fileID: 0}
+  orbEffectColor: {r: 1, g: 0.6392157, b: 0, a: 0.78431374}
   padding: 20
 --- !u!225 &985300346617413447
 CanvasGroup:
@@ -118,3 +120,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e67b146c57ad9344ae23bf0be36b38b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMovable: 1

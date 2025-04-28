@@ -9,7 +9,7 @@ public class CharacterDropZone : MonoBehaviour, IDropHandler
     {
         Orb orb = eventData.pointerDrag.GetComponent<Orb>();
         if (orb == null) return;
-
+        character.OrbEffectActive(orb.orbEffectColor);
         switch (orb.orbType)
         {
             case OrbType.Damage:
