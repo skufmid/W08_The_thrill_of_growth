@@ -82,9 +82,7 @@ public class Orb : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandl
     public void OnEndDrag(PointerEventData eventData)
     {
         IsDraggingOrb = false;
-        canvasGroup.blocksRaycasts = true;
-
-
+        canvasGroup.blocksRaycasts = true; // 마지막에 켜야함
     }
     private string GetTooltipDescription()
     {

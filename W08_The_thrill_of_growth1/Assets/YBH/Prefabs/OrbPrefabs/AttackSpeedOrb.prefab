@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbType: 1
-  value: 100
+  value: 0.1
   forbiddenArea: {fileID: 0}
   canvasParent: {fileID: 0}
   orbEffectColor: {r: 1, g: 0.6392157, b: 0, a: 0.78431374}

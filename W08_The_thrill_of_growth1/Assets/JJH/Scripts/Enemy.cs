@@ -72,7 +72,7 @@ public class Enemy:Unit
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
 
         if (_dieOnce) return;
-        if (Random.Range(0f, 1f) < 0.1f)
+        if (Random.Range(0f, 1f) < 1f)
         {
             OrbSpawner.Instance.SpawnRandomOrb(screenPosition);
         }
