@@ -54,6 +54,7 @@ public class StoreUI : MonoBehaviour
     [SerializeField] private float dragOffset = 1f;  // 드래그 시 캐릭터가 띄워질 높이
     [SerializeField] private Button sellModeButton; // 판매 모드 버튼
     [SerializeField] private RightStoreMercenaryUI rightStoreUI;
+    [SerializeField] private RightStoreItemUI rightItemUI;
 
     [Header("Character Settings")]
     [SerializeField] public Character characterPrefab;
