@@ -19,7 +19,7 @@ MonoBehaviour:
   Prefabs: {fileID: 9066123265180376611, guid: aa2dd946405dde34698ef7add325abb6, type: 3}
   BaseHP: 211
   HPPerLevel: 65.48
-  MP: 90
+  MP: 60
   BaseDamage: 76
   DamagePerLevel: 23.59
   AttackSpeed: 1.16

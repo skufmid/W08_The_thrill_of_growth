@@ -18,10 +18,10 @@ MonoBehaviour:
   animation: {fileID: 0}
   Coefficients:
   - 0
-  - 120
-  - 125
-  - 130
-  - 135
+  - 150
+  - 200
+  - 250
+  - 300
   SkillDescription: "\uC804\uC7A5\uC5D0\uC11C \uBB34\uC791\uC704\uB85C 3\uBA85\uC758
     \uC801\uC744 \uC120\uD0DD, \uAC01\uAC01\uC5D0\uAC8C \uB3D9\uC77C\uD55C \uACF5\uACA9\uB825
     \uAE30\uBC18 \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4.\n\uD2B9\uC815 \uB300\uC0C1\uC744
