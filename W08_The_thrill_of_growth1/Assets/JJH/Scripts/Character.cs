@@ -143,7 +143,7 @@ public class Character : Unit
 
     private void EndBattle()
     {
-        Hp += DefaultMaxHp * 0.2f;
+        Hp += DefaultMaxHp * 0.1f;
         Debug.Log("FinishBattle 실행");
     }
 

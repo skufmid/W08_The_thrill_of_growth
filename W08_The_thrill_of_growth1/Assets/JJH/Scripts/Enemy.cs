@@ -53,11 +53,9 @@ public class Enemy : Unit
 
             // 스테이지별 총합 기준, 적 마리수(7)로 나눔
             float totalHp = 700f * stage;
-            float totalDamage = 22f * stage;
-
+            float totalDamage = 22f * stage + 56;
             float unitHp = totalHp / enemyCount;
             float unitDamage = totalDamage / enemyCount;
-
             DefaultMaxHp = unitHp + Random.Range(-5f, 5f);
             MaxHp = DefaultMaxHp;
             MaxMp = Random.Range(30, 70);
