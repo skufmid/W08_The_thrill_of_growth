@@ -7,6 +7,8 @@ public enum OrbType { Damage, AttackSpeed, MaxHP, ManaGain, Potion, ManaPotion, 
 public class Orb : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public OrbType orbType;                             //오브의 타입( 공격력, 공격속도, 최대체력, 마나회복, 포션, 마나포션 등등)
+    public bool isOnSell;                               // 상점에서 판매하고 있는지 여부
+    public int price;                                   // 가격
     public float value;                                 //오브의 직접적인 수치( 퍼센트적용이나 마나재생이나 이런것들 들어가있음)
     public static bool IsDraggingOrb = false;           //오브 드래그시 다른 UI들 다 막아버리려고만든거
     public RectTransform forbiddenArea;

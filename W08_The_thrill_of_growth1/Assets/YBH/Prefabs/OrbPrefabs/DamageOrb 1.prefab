@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 672009493399960979}
   - component: {fileID: 1537373346577529949}
   m_Layer: 5
-  m_Name: DamageOrb
+  m_Name: DamageOrb 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,8 +92,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orbType: 0
   isOnSell: 0
-  price: 100
-  value: 1
+  price: 1000
+  value: 10
   forbiddenArea: {fileID: 0}
   canvasParent: {fileID: 0}
   orbEffectColor: {r: 1, g: 0.27450982, b: 0, a: 0.78039217}
