@@ -48,7 +48,7 @@ public class Enemy : Unit
 
             // 스테이지별 총합 기준, 적 마리수(7)로 나눔
             float totalHp = 675f * stage;
-            float totalDamage = 20f * stage;
+            float totalDamage = 22f * stage;
 
             float unitHp = totalHp / enemyCount;
             float unitDamage = totalDamage / enemyCount;
@@ -60,7 +60,7 @@ public class Enemy : Unit
             DefaultAttackSpeed = 0;
         if(isBoss)
         {
-            unitHp *= totalHp * 10;
+            unitHp *= totalHp * 30;
             MaxMp = 30;
         }
             base.Init();
