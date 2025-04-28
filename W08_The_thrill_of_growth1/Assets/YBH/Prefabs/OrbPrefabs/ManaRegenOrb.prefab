@@ -92,7 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orbType: 3
   isOnSell: 0
-  price: 500
+  price: 1500
   value: 1
   forbiddenArea: {fileID: 0}
   canvasParent: {fileID: 0}
