@@ -116,6 +116,18 @@ public class CharacterStatusUI : MonoBehaviour
         allianceText.text = SynergyManager.SynergyTypeToKorean[character.synergyType];
         classText.text = SynergyManager.CharacterTypeToKorean[character.characterType];
 
+        var allianceHover = allianceButton.GetComponent<AllianceImageHover>();
+        if (allianceHover != null)
+        {
+            allianceHover.synergyType = character.synergyType;
+        }
+
+        var classHover = classButton.GetComponent<ClassImageHover>();
+        if (classHover != null)
+        {
+            classHover.characterType = character.characterType;
+        }
+
         if (allianceColors.TryGetValue(character.synergyType, out var allianceColor))
         {
             allianceButton.color = allianceColor;

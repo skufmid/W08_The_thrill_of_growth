@@ -472,4 +472,23 @@ public static readonly Dictionary<CharacterType, string> CharacterTypeToKorean =
         Manager.Synergy.ResetAndReevaluateSynergies(Manager.Battle.characterList);
     }
 
+    //시너지, 클래스 설명관련
+    public static string GetSynergyDescription(SynergyType type)
+    {
+        var data = Manager.Data.synergyDataList.FirstOrDefault(x => x.synergyType == type);
+        if (data != null)
+            return data.description;
+        else
+            return "알 수 없는 세력입니다.";
+    }
+
+    public static string GetClassDescription(CharacterType type)
+    {
+        var data = Manager.Data.characterDataList.FirstOrDefault(x => x.charactertType == type);
+        if (data != null)
+            return data.description;
+        else
+            return "알 수 없는 직업입니다.";
+    }
+
 }
