@@ -35,13 +35,22 @@ public class Enemy:Unit
 
     protected override void Init()
     {
-        int level = Manager.Game.stageNum;
-        Debug.Log($"{level} level 해골병사 소환");
+        int stage = Manager.Game.stageNum;
+        Debug.Log($"{stage} level 해골병사 소환");
         Name = "해골 병사";
-        DefaultMaxHp = 30 + (level - 1) * 30f + Random.Range(-5, 5);
+
+        // 스테이지별 총합 기준, 적 마리수(7)로 나눔
+        float totalHp = 675f * stage;
+        float totalDamage = 18f * stage;
+        int enemyCount = 7; // Grid에서 실제 생성되는 적 마리수와 맞춤
+
+        float unitHp = totalHp / enemyCount;
+        float unitDamage = totalDamage / enemyCount;
+
+        DefaultMaxHp = unitHp + Random.Range(-5f, 5f);
         MaxHp = DefaultMaxHp;
-        MaxMp = Random.Range(25, 65);
-        DefaultDamage = 4 + (level - 1) * 4f + Random.Range(-1, 1);
+        MaxMp = Random.Range(30, 70);
+        DefaultDamage = unitDamage + Random.Range(-1f, 1f);
         DefaultAttackSpeed = 0;
 
         base.Init();
@@ -69,26 +78,19 @@ public class Enemy:Unit
 
     public void GiveAward()
     {
-        Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
+        if(_dieOnce) return;
+        if (Random.Range(0f, 1f) < 0.1f)
+        {
+            OrbSpawner.Instance.SpawnRandomOrb(transform.position);
+            _dieOnce = true;
+        }
+        else
+        {
+            _dieOnce = true;
+            //Manager.Game.GetAward...
+        }
 
-        if (_dieOnce) return;
-
-        float potionChance = 0.06f;
-        float itemChance = 0.06f;
-        float uniqueChance = 0.03f;
-
-        //if (isBoss)
-        //{
-        //    // 보스는 드랍률 강화
-        //    potionChance = 1.0f;
-        //    itemChance = 0.8f;
-        //    uniqueChance = 0.5f;
-        //}
-
-        OrbSpawner.Instance.SpawnOrbsOnDeath(screenPosition, potionChance, itemChance, uniqueChance);
-
-        Destroy(gameObject);
-        _dieOnce = true;
+        //Manager.Game.GetAward...
     }
 
     private void OnMouseDown()
