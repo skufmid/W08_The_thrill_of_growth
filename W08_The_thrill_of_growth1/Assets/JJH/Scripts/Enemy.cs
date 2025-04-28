@@ -53,7 +53,9 @@ public class Enemy : Unit
 
             // 스테이지별 총합 기준, 적 마리수(7)로 나눔
             float totalHp = 700f * stage;
-            float totalDamage = 22f * stage + 56;
+             float AddictDamage = 35;
+            if (Manager.Game.stageNum >= 11)    {AddictDamage += 21;}
+            float totalDamage = 22f * stage + AddictDamage;
             float unitHp = totalHp / enemyCount;
             float unitDamage = totalDamage / enemyCount;
             DefaultMaxHp = unitHp + Random.Range(-5f, 5f);
@@ -63,8 +65,9 @@ public class Enemy : Unit
             DefaultAttackSpeed = 0;
         if(isBoss)
         {
+            unitDamage *= 0.35f;
             unitHp *= totalHp * 30;
-            MaxMp = 30;
+            MaxMp = 10;
         }
             base.Init();
             Debug.Log("Enemy Init");
