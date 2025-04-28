@@ -44,6 +44,8 @@ public class RightStoreItemUI : MonoBehaviour
                 Orb orb = orbGO.GetComponent<Orb>();
                 orb.forbiddenArea = ForbiddenArea; // 스포너에서 오브로 넘겨줌
                 orb.canvasParent = OrbCanvas; // 스포너에서 오브로 넘겨줌
+
+                Items[index].gameObject.SetActive(false);
             }
         }
         else

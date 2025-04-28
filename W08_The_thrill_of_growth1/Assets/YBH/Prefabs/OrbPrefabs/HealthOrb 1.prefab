@@ -90,10 +90,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60cf152d096e3f4a999d2a4759f0b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbType: 4
+  orbType: 2
   isOnSell: 0
-  price: 1000
-  value: 100
+  price: 300
+  value: 30
   forbiddenArea: {fileID: 0}
   canvasParent: {fileID: 0}
   orbEffectColor: {r: 0, g: 0.9411765, b: 0.24705882, a: 0.8352941}

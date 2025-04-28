@@ -92,8 +92,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orbType: 3
   isOnSell: 0
-  price: 0
-  value: 50
+  price: 500
+  value: 1
   forbiddenArea: {fileID: 0}
   canvasParent: {fileID: 0}
   orbEffectColor: {r: 0, g: 0.49019608, b: 1, a: 0.9019608}
