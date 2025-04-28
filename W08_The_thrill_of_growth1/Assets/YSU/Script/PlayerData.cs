@@ -65,6 +65,14 @@ public class PlayerData : MonoBehaviour
         int currentStage = Manager.Game.stageNum;
         int reward = baseStageReward + (currentStage - 1) * stageRewardIncrease;
         AddGold(reward);
+
+        // 10, 20, 30, 40스테이지 클리어 시 5000골드 추가 지급
+        if (currentStage % 10 == 0 && currentStage <= 40)
+        {
+            AddGold(5000);
+            Debug.Log($"Bonus! Stage {currentStage} Cleared! Extra 5000 Gold awarded.");
+        }
+
         Debug.Log($"Stage {currentStage} Cleared! Reward: {reward} Gold");
     }
 
