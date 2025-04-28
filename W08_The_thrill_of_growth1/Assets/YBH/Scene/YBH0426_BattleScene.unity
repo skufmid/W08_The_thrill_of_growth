@@ -625,7 +625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gold: 200
   baseStageReward: 100
-  stageRewardIncrease: 350
+  stageRewardIncrease: 140
 --- !u!4 &657107223
 Transform:
   m_ObjectHideFlags: 0
