@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 public class PlayerData : MonoBehaviour
 {
-    [SerializeField] private int gold = 1000; // 시작 골드
-    [SerializeField] private int baseStageReward = 100; // 기본 스테이지 보상
-    [SerializeField] private int stageRewardIncrease = 50; // 스테이지당 증가하는 보상량
+[SerializeField] private int gold = 1000; // 시작 골드
+[SerializeField] private int baseStageReward = 100; // 기본 스테이지 보상
+[SerializeField] private int stageRewardIncrease = 325; // 스테이지당 증가하는 보상량
 
     private static PlayerData instance;
     public static PlayerData Instance
