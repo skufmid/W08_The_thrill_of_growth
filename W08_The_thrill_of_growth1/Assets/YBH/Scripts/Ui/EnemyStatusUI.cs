@@ -53,7 +53,7 @@ public class EnemyStatusUI : MonoBehaviour
         hpSlider.value = (float)enemy.Hp / enemy.MaxHp;
         mpSlider.value = (float)enemy.Mp / enemy.MaxMp;
 
-        damageUIText.text = "데미지";
+        damageUIText.text = "공격력";
         damageText.text = $"{enemy.Damage:F1}";
     }
 }

@@ -95,7 +95,7 @@ public class CharacterStatusUI : MonoBehaviour
         }
 
 
-        damageUIText.text = "데미지";
+        damageUIText.text = "공격력";
         attackSpeedUIText.text = "공격 속도";
            
         levelText.text = $"Lv.{character.Level}";
