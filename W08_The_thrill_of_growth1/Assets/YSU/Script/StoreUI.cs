@@ -348,7 +348,13 @@ public class StoreUI : MonoBehaviour
         if (storePanel != null)
         {
             storePanel.SetActive(isStoreOpen); // 상점 패널 표시/숨김
-            if (isStoreOpen) rightStoreUI.DisplayPurchaseableMercenary();
+            if (isStoreOpen)
+            {
+                rightStoreUI.DisplayPurchaseableMercenary();
+                rightItemUI.DisplayPurchaseableItem();
+            }
+
+
         }
         if (tavernPanel != null)
             tavernPanel.SetActive(isStoreOpen); // 타번 패널 표시/숨김

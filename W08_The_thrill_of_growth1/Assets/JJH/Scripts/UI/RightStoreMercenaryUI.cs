@@ -18,6 +18,7 @@ public class RightStoreMercenaryUI : MonoBehaviour
 
     int characterId;
     int level;
+    int changedPrice;
 
     private void Awake()
     {
@@ -58,7 +59,7 @@ public class RightStoreMercenaryUI : MonoBehaviour
 
         if (TrySpawnMercenary(slotIndex, out Character newCharacter, characterId, level))
         {
-            if (partyManager.PurchaseAndAddCharacter(newCharacter, slotIndex))
+            if (partyManager.PurchaseAndAddCharacter(newCharacter, slotIndex, changedPrice))
             {
                 storeUI.UpdateAllSlotsUI();
                 storeUI.UpdatePartyTextExternal();
@@ -73,7 +74,15 @@ public class RightStoreMercenaryUI : MonoBehaviour
 
     private bool CanPurchaseMercenary()
     {
-        return true;
+        if (playerData.HasEnoughGold(changedPrice))
+        {
+            return true;
+        }
+        else
+        {
+            Debug.Log($"아이템 구매에 필요한 골드가 부족합니다. 필요 골드: {changedPrice}");
+        }
+        return false;
     }
 
     private bool TrySpawnMercenary(int slotIndex, out Character character, int charaterId, int level)
@@ -113,7 +122,7 @@ public class RightStoreMercenaryUI : MonoBehaviour
     {
         characterId = SetRandomMercenary();
         int orignalPrice = CalCulateOriginalPrice();
-        int changedPrice = orignalPrice != 100 ? (int)(orignalPrice * 0.8f): 100 ;
+        changedPrice = orignalPrice != 100 ? (int)(orignalPrice * 0.8f): 100 ;
 
         CharacterSO character = Array.Find(Manager.Data.Charaters, c => c.Id == characterId);
         Debug.Log(characterId);

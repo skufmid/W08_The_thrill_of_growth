@@ -1718,7 +1718,7 @@ GameObject:
   - component: {fileID: 6476680597029803151}
   - component: {fileID: 2368496542426657320}
   - component: {fileID: 1423731677753180940}
-  - component: {fileID: 2252064076768787619}
+  - component: {fileID: 7741503146446237954}
   m_Layer: 5
   m_Name: RightStorePanel
   m_TagString: Untagged
@@ -1742,7 +1742,7 @@ RectTransform:
   - {fileID: 1070242910090402442}
   m_Father: {fileID: 2260034977750097575}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.65, y: 0}
+  m_AnchorMin: {x: 0.65, y: 0.1}
   m_AnchorMax: {x: 1, y: 0.9}
   m_AnchoredPosition: {x: 0, y: 5}
   m_SizeDelta: {x: -30, y: -10}
@@ -1801,7 +1801,7 @@ MonoBehaviour:
   allianceText: {fileID: 2393302785995170688}
   classText: {fileID: 1818840629437089099}
   mercenaryInfoText: {fileID: 5164240986091810422}
---- !u!114 &2252064076768787619
+--- !u!114 &7741503146446237954
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1825,6 +1825,7 @@ MonoBehaviour:
   - {fileID: 3510457236846674373, guid: eac7bb7b5f9c55b4383d62eeb5211ed1, type: 3}
   - {fileID: 7989460730535451550, guid: 4b930ad49c89e584e82247c1a5e9e544, type: 3}
   - {fileID: 6290234985964458202, guid: 571dd44d4715de048a0d2c72f65907d2, type: 3}
+  - {fileID: 383795771101564747, guid: c0d1c486ef3c90345ac171de7deccd58, type: 3}
 --- !u!1 &1710574207425902053
 GameObject:
   m_ObjectHideFlags: 0
@@ -3469,7 +3470,7 @@ RectTransform:
   m_Father: {fileID: 1070242910090402442}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.8}
+  m_AnchorMax: {x: 1, y: 0.75}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -10}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3806,7 +3807,7 @@ MonoBehaviour:
   dragOffset: 1
   sellModeButton: {fileID: 6591231421937644795}
   rightStoreUI: {fileID: 1423731677753180940}
-  rightItemUI: {fileID: 2252064076768787619}
+  rightItemUI: {fileID: 7741503146446237954}
   characterPrefab: {fileID: -944908440756895315, guid: 1f4f224e75344704a8952e4e59b442a1, type: 3}
   spawnPositions:
   - {fileID: 5574253858166008405}
@@ -4935,7 +4936,7 @@ RectTransform:
   - {fileID: 2925516423527958252}
   m_Father: {fileID: 1070242910090402442}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.05, y: 0.8}
+  m_AnchorMin: {x: 0.05, y: 0.75}
   m_AnchorMax: {x: 0.954, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -20}
@@ -10010,7 +10011,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1423731677753180940}
-        m_TargetAssemblyTypeName: RightStoreUI, Assembly-CSharp
+        m_TargetAssemblyTypeName: RightStoreMercenaryUI, Assembly-CSharp
         m_MethodName: OnMercenaryBuyClicked
         m_Mode: 1
         m_Arguments:
@@ -12513,7 +12514,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5647912059584477421, guid: 6a1cbab072c88254b904f5d9723efd62, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.75
+      value: 0.67
       objectReference: {fileID: 0}
     - target: {fileID: 5647912059584477421, guid: 6a1cbab072c88254b904f5d9723efd62, type: 3}
       propertyPath: m_AnchorMin.x
@@ -12521,7 +12522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5647912059584477421, guid: 6a1cbab072c88254b904f5d9723efd62, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0.33
       objectReference: {fileID: 0}
     - target: {fileID: 5647912059584477421, guid: 6a1cbab072c88254b904f5d9723efd62, type: 3}
       propertyPath: m_SizeDelta.x
@@ -12726,7 +12727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5647912059584477421, guid: 6a1cbab072c88254b904f5d9723efd62, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5647912059584477421, guid: 6a1cbab072c88254b904f5d9723efd62, type: 3}
       propertyPath: m_AnchorMin.x
@@ -12836,7 +12837,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5647912059584477421, guid: 6a1cbab072c88254b904f5d9723efd62, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.75
+      value: 0.67
       objectReference: {fileID: 0}
     - target: {fileID: 5647912059584477421, guid: 6a1cbab072c88254b904f5d9723efd62, type: 3}
       propertyPath: m_SizeDelta.x
@@ -13002,7 +13003,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8883291701397771318, guid: 0c98b9423ce2e7646827b78759c99b8d, type: 3}
       propertyPath: m_text
-      value: "Lv 20\t\uCE90\uB9AD\uD130 \uC774\uB984\nGold: <s><i>5000</i></s> <b><size=46>\u2192</size>
+      value: "Lv 20\t\uCE90\uB9AD\uD130 \uC774\uB984\nGold: <s><i>5000</i></s> <b>\u2192
         <color=#FF4040>4000</b></color>"
       objectReference: {fileID: 0}
     - target: {fileID: 8883291701397771318, guid: 0c98b9423ce2e7646827b78759c99b8d, type: 3}
@@ -13015,7 +13016,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8883291701397771318, guid: 0c98b9423ce2e7646827b78759c99b8d, type: 3}
       propertyPath: m_lineSpacing
-      value: -100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8883291701397771318, guid: 0c98b9423ce2e7646827b78759c99b8d, type: 3}
       propertyPath: m_HorizontalAlignment
@@ -13527,7 +13528,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5647912059584477421, guid: 6a1cbab072c88254b904f5d9723efd62, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 0.33
       objectReference: {fileID: 0}
     - target: {fileID: 5647912059584477421, guid: 6a1cbab072c88254b904f5d9723efd62, type: 3}
       propertyPath: m_AnchorMin.x
@@ -13535,7 +13536,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5647912059584477421, guid: 6a1cbab072c88254b904f5d9723efd62, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5647912059584477421, guid: 6a1cbab072c88254b904f5d9723efd62, type: 3}
       propertyPath: m_SizeDelta.x
