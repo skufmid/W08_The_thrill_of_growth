@@ -154,7 +154,7 @@ Gold: {orignalPrice}";
 
     private int CalCulateOriginalPrice()
     {
-        level = Mathf.Clamp((Manager.Game.stageNum / 5 - 1) * 5, 1, 30);
+        level = Mathf.Clamp((Manager.Game.stageNum / 10 ) * 5, 1, 15);
         int price = level * (level + 1) / 2 * 100;
         return price;
     }
