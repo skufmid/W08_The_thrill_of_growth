@@ -7,7 +7,7 @@ public class Enemy:Unit
     bool _dieOnce;
     [SerializeField] private GameObject hpBarPrefab;  // HP바 프리팹
     private EnemyHPBar enemyHPBar;
-
+    bool isBoss = false; // 보스 여부
     public void Awake()
     {
         enemyInfoUI = FindAnyObjectByType<EnemyStatusUI>();
@@ -78,19 +78,26 @@ public class Enemy:Unit
 
     public void GiveAward()
     {
-        if(_dieOnce) return;
-        if (Random.Range(0f, 1f) < 0.1f)
+        Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
+
+        if (_dieOnce) return;
+
+        float potionChance = 0.06f;
+        float itemChance = 0.06f;
+        float uniqueChance = 0.03f;
+
+        if (isBoss)
         {
-            OrbSpawner.Instance.SpawnRandomOrb(transform.position);
-            _dieOnce = true;
-        }
-        else
-        {
-            _dieOnce = true;
-            //Manager.Game.GetAward...
+            // 보스는 드랍률 강화
+            potionChance = 0.1f;
+            itemChance = 1f;
+            uniqueChance = 0.05f;
         }
 
-        //Manager.Game.GetAward...
+        OrbSpawner.Instance.SpawnOrbsOnDeath(screenPosition, potionChance, itemChance, uniqueChance);
+
+        Destroy(gameObject);
+        _dieOnce = true;
     }
 
     private void OnMouseDown()

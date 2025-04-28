@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ca3c3a3c9b969104d885b9afd9f1a285
+guid: 5df88a0f3be3dd54699460ddadd48f95
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3950438662374055047
-    second: HpIcon_0
+      213: 7955836740550861611
+    second: DmgIcon_Platinum_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 20
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HpIcon_0
+      name: DmgIcon_Platinum_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 9
-        width: 20
-        height: 13
+        x: 4
+        y: 0
+        width: 12
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 78c56c97807c2d630800000000000000
-      internalID: 3950438662374055047
+      spriteID: b23298b1d5fc86e60800000000000000
+      internalID: 7955836740550861611
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      HpIcon_0: 3950438662374055047
+      DmgIcon_Platinum_0: 7955836740550861611
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

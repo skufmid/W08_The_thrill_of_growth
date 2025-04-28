@@ -119,33 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &2677367 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2225854314058785308, guid: e1a4879e202c5674aaed624980c2489e, type: 3}
-  m_PrefabInstance: {fileID: 4212546168442753898}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &2677371
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2677367}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a59e740c6a4e33a489892adc1bcbbf4b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &79387599
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,6 +738,7 @@ GameObject:
   - component: {fileID: 1676408146}
   - component: {fileID: 1676408145}
   - component: {fileID: 1676408144}
+  - component: {fileID: 1676408148}
   m_Layer: 5
   m_Name: FloatingTextManagerCanvas
   m_TagString: Untagged
@@ -855,6 +829,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!225 &1676408148
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676408143}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1001 &1798083413
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1663,17 +1649,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8521562771497240207, guid: e1a4879e202c5674aaed624980c2489e, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2225854314058785308, guid: e1a4879e202c5674aaed624980c2489e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2677371}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a4879e202c5674aaed624980c2489e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
