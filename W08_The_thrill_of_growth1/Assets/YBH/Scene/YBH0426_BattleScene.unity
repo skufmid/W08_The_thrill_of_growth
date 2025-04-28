@@ -1600,6 +1600,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2060607129092174350, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 400
+      objectReference: {fileID: 0}
     - target: {fileID: 2219991280345257367, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1696,6 +1700,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -6270953770400647376, guid: 1aa90cfe44b15a543abed69cabfcd115, type: 3}
+    - target: {fileID: 6903950300413979652, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7741503146446237954, guid: f7f8a767b2a8361458fec00fef591da9, type: 3}
       propertyPath: OrbCanvas
       value: 
