@@ -8,6 +8,8 @@ public class GameManager
     public Action OnStartStage;
     public Action OnLateStartStage;
     public Action OnEndStage;
+    private GameObject endingPanelInstance;
+
     public void Init()
     {
         stageNum = 1;
@@ -27,6 +29,25 @@ public class GameManager
         Debug.Log($"Stage Win! stageNum:{stageNum}");
         stageNum++;
         OnEndStage?.Invoke();
+
+        if (stageNum == 41)
+        {
+            if (endingPanelInstance == null)
+            {
+                GameObject prefab = Resources.Load<GameObject>("Canvas(End)");
+                if (prefab != null)
+                {
+                    endingPanelInstance = GameObject.Instantiate(prefab);
+                }
+                else
+                {
+                    Debug.LogError("Resources/Canvas(End).prefab을 찾을 수 없습니다!");
+                }
+            }
+            // 41스테이지(40클리어)에서만 엔딩 패널 띄우고 return
+            return;
+        }
+
         StartStore();
     }
     public void DefeatStage()
