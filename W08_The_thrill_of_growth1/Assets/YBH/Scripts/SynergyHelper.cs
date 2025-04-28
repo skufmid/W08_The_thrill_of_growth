@@ -6,7 +6,6 @@ public class SynergyHelper : MonoBehaviour
 {
     public static SynergyHelper Instance;
     private Coroutine healRoutine;
-    public GameObject healEffectPrefab;
     private void Awake()
     {
         Instance = this;
@@ -57,7 +56,6 @@ public class SynergyHelper : MonoBehaviour
                 float amount = lowestHpChar.MaxHp * healPercent;
                 lowestHpChar.Hp = Mathf.Min(lowestHpChar.Hp + amount, lowestHpChar.MaxHp);
                 lowestHpChar.HealEffectActive();
-                if (healEffectPrefab != null)Instantiate(healEffectPrefab, lowestHpChar.transform.position, Quaternion.identity);
             }
         }
     }

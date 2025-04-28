@@ -274,7 +274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3145662240495754595, guid: 5435b9ef2c1c67848aa780e45380dbf7, type: 3}
       propertyPath: orbDropEntries.Array.data[3].fixedValue
-      value: 0.01
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 3145662240495754595, guid: 5435b9ef2c1c67848aa780e45380dbf7, type: 3}
       propertyPath: orbDropEntries.Array.data[4].fixedValue
@@ -959,6 +959,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 1271300807714185477, guid: 4cd8f181d54278a419e3793e8899b241, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1486506859511660799, guid: 4cd8f181d54278a419e3793e8899b241, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -90
@@ -1230,7 +1234,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d125a0e3182c4904ebbb1bb25d6d3001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healEffectPrefab: {fileID: 0}
 --- !u!4 &1948608952
 Transform:
   m_ObjectHideFlags: 0
