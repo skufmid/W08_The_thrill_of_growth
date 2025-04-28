@@ -377,7 +377,7 @@ public static readonly Dictionary<CharacterType, string> CharacterTypeToKorean =
             ch.Hp = ch.Hp * (1 + ratio);
             ch.Damage *= 1 + ratio;
             ch.AttackSpeed *= 1 + ratio;
-            ch.Vampiric += ch.Vampiric * ratio;
+            //ch.Vampiric += ch.Vampiric * ratio; 흡혈 붙으면 너무사기임
             ch.manaGain += ch.defaultManaGain * ratio;
         }
     }

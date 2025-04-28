@@ -19,7 +19,7 @@ public class Orb : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandl
     private CanvasGroup canvasGroup;
     public Color orbEffectColor;
     OrbSelfPush selfPush;
-
+    
     //-------- 오브 화면밖으로 못나가게하는거-------
     [SerializeField] float padding = 20f; // 자유롭게 조정 가능
 
@@ -28,7 +28,6 @@ public class Orb : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandl
     rectTransform = GetComponent<RectTransform>();
     canvasGroup = GetComponent<CanvasGroup>();
     selfPush = GetComponent<OrbSelfPush>();
-
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -114,7 +113,7 @@ public class Orb : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandl
             case OrbType.ManaPotion:
                 return $"일회용 마나 회복 +{value}%";
             case OrbType.Vampiric:
-                return $"흡혈 +{value}% 영구적 증가";
+                return $"흡혈 +{value*100}% 영구적 증가";
             default:
                 return "알 수 없는 오브";
         }
