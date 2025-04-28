@@ -254,11 +254,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3145662240495754595, guid: 5435b9ef2c1c67848aa780e45380dbf7, type: 3}
       propertyPath: orbDropEntries.Array.data[3].spawnRate
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3145662240495754595, guid: 5435b9ef2c1c67848aa780e45380dbf7, type: 3}
       propertyPath: orbDropEntries.Array.data[4].spawnRate
-      value: 50
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 3145662240495754595, guid: 5435b9ef2c1c67848aa780e45380dbf7, type: 3}
       propertyPath: orbDropEntries.Array.data[5].spawnRate
@@ -274,7 +274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3145662240495754595, guid: 5435b9ef2c1c67848aa780e45380dbf7, type: 3}
       propertyPath: orbDropEntries.Array.data[3].fixedValue
-      value: 0.02
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 3145662240495754595, guid: 5435b9ef2c1c67848aa780e45380dbf7, type: 3}
       propertyPath: orbDropEntries.Array.data[4].fixedValue
