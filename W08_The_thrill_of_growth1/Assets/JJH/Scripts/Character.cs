@@ -159,6 +159,7 @@ public class Character : Unit
         if (character == null) return;
 
         DefaultMaxHp = character.BaseHP + (Level - 1) * character.HPPerLevel;
+        MaxHp = DefaultMaxHp;
         Hp += character.HPPerLevel;
         DefaultDamage = character.BaseDamage + (Level - 1) * character.DamagePerLevel;
         Damage += character.DamagePerLevel;
