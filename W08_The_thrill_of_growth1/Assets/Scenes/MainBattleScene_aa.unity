@@ -309,12 +309,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3145662240495754595, guid: 5435b9ef2c1c67848aa780e45380dbf7, type: 3}
+      propertyPath: orbDropEntries.Array.data[1].maxRandomValue
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3145662240495754595, guid: 5435b9ef2c1c67848aa780e45380dbf7, type: 3}
+      propertyPath: orbDropEntries.Array.data[1].minRandomValue
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3145662240495754595, guid: 5435b9ef2c1c67848aa780e45380dbf7, type: 3}
       propertyPath: orbDropEntries.Array.data[2].maxRandomValue
-      value: 50
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 3145662240495754595, guid: 5435b9ef2c1c67848aa780e45380dbf7, type: 3}
       propertyPath: orbDropEntries.Array.data[2].minRandomValue
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3145662240495754595, guid: 5435b9ef2c1c67848aa780e45380dbf7, type: 3}
       propertyPath: orbDropEntries.Array.data[3].maxRandomValue

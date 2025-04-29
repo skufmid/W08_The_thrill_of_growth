@@ -11,6 +11,7 @@ public class Enemy : Unit
     ParticleSystem deathEffect; // 죽을 때 나오는 이펙트
     public void Awake()
     {
+        Time.timeScale = 5f;
         enemyInfoUI = FindAnyObjectByType<EnemyStatusUI>();
         // HP바 생성 (UICanvas의 자식으로)
         if (hpBarPrefab != null)
@@ -48,16 +49,18 @@ public class Enemy : Unit
             enemyCount = 1;
         }
             int stage = Manager.Game.stageNum;
+            int stageMultiplier = stage / 20; // 30스테이지마다 1씩 올라감
             Debug.Log($"{stage} level 해골병사 소환");
             Name = "해골 병사";
-
-            // 스테이지별 총합 기준, 적 마리수(7)로 나눔
-            float totalHp = 700f * stage;
-            float AddictDamage = 28;
-            if (Manager.Game.stageNum >= 11)    {AddictDamage += 28;}
+            float AddictHealth = stageMultiplier * (700f * stage * 0.2f); // 기본 체력의 20% 추가
+                                                                          // 스테이지별 총합 기준, 적 마리수(7)로 나눔
+        float totalHp = 700f * stage + AddictHealth;
+            float AddictDamage = stageMultiplier * (22f * stage * 0.1f);  // 기본 데미지의 10% 추가
+        if (Manager.Game.stageNum >= 11)    {AddictDamage += 28;}
             float totalDamage = 22f * stage + AddictDamage;
             float unitHp = totalHp / enemyCount;
             float unitDamage = totalDamage / enemyCount;
+
             DefaultMaxHp = unitHp + Random.Range(-5f, 5f);
             MaxHp = DefaultMaxHp;
             MaxMp = Random.Range(30, 70);
@@ -65,7 +68,7 @@ public class Enemy : Unit
             DefaultAttackSpeed = 0;
         if(isBoss)
         {
-            unitDamage *= 0.33f;
+            unitDamage *= 0.35f;
             DefaultDamage = unitDamage;
             unitHp *= totalHp * 30;
             MaxMp = 10;
