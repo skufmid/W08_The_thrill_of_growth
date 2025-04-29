@@ -11,7 +11,6 @@ public class Enemy : Unit
     ParticleSystem deathEffect; // 죽을 때 나오는 이펙트
     public void Awake()
     {
-        Time.timeScale = 5f;
         enemyInfoUI = FindAnyObjectByType<EnemyStatusUI>();
         // HP바 생성 (UICanvas의 자식으로)
         if (hpBarPrefab != null)
